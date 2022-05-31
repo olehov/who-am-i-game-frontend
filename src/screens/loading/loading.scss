@@ -1,0 +1,28 @@
+@import '../../styles/colors.scss';
+
+.loading {
+  background-color: $primary-backgroung-blue;
+  color: $main-font-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__waiting-message {
+    max-width: 600px;
+    max-height: 39px;
+    font-weight: 400;
+    font-size: 32px;
+  }
+
+  &__clip-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__clip-container_timer {
+    top: 52%;
+    position: absolute;
+  }
+}
