@@ -22,7 +22,9 @@ function Loading() {
   return (
     <div className="loading">
       <GameTitle />
-      <h3 className="loading__waiting-message">Please wait until we find your opponents</h3>
+      <h3 className="loading__waiting-message">
+        Please wait until we find your opponents
+      </h3>
       <div className="loading__clip-container">
         <p className="loading__clip-container_start">GAME START</p>
         <div className="loading__clip-container_timer">
