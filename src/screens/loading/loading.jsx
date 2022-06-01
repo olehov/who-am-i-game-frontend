@@ -19,7 +19,7 @@ function Loading() {
 
     return function cleaup() {
       clearTimeout(timer);
-    };
+    }
   });
 
   return (
