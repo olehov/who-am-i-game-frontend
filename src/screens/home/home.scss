@@ -1,0 +1,33 @@
+@import '../../styles/colors.scss';
+
+.homepage {
+  background-color: $primary-background-blue;
+  color: $main-font-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__players_online {
+    max-width: 255px;
+    max-height: 39px;
+    font-weight: 400;
+    font-size: 32px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 425px) {
+  .homepage {
+    &__game-title {
+      font-weight: 700;
+      font-size: 56px;
+    }
+
+    &__players_online {
+      font-weight: 400;
+      font-size: 32px;
+    }
+  }
+}

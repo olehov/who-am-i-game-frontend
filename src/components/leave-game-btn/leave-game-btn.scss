@@ -1,0 +1,22 @@
+@import '../../styles/colors.scss';
+
+.leave-game-btn {
+  max-width: 648px;
+  max-height: 51px;
+  background-color: $btn-pink;
+  color: $font-black;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 40px 16px 40px;
+  cursor: pointer;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-top: 32px;
+}
+
+.leave-game-btn:hover {
+  background-color: $btn-green;
+  color: $secondary-background-blue;
+}

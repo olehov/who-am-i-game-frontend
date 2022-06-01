@@ -1,0 +1,39 @@
+@import '../../styles/colors.scss';
+
+.loading {
+  background-color: $primary-background-blue;
+  color: $main-font-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__waiting-message {
+    max-width: 600px;
+    max-height: 39px;
+    font-weight: 400;
+    font-size: 32px;
+    margin-top: 3px;
+  }
+
+  &__clip-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__clip-container_start {
+    margin-bottom: 0px;
+    max-height: 19px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  &__clip-container_timer {
+    font-weight: 900;
+    font-size: 52px;
+    max-height: 58px;
+    max-width: 177px;
+  }
+}
