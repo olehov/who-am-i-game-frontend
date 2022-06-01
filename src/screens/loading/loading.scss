@@ -1,5 +1,13 @@
 @import '../../styles/colors.scss';
 
+@mixin waiting-msg {
+  max-width: 700px;
+  max-height: 39px;
+  font-weight: 900;
+  font-size: 24px;
+  margin-top: 3px;
+}
+
 .loading {
   background-color: $primary-background-blue;
   color: $main-font-color;
@@ -10,11 +18,15 @@
   align-items: center;
 
   &__waiting-message {
-    max-width: 600px;
-    max-height: 39px;
-    font-weight: 400;
-    font-size: 32px;
-    margin-top: 3px;
+    @include waiting-msg();
+
+    color: $font-yellow;
+  }
+
+  &__queue-number {
+    @include waiting-msg();
+
+    color: $btn-green;
   }
 
   &__clip-container {
