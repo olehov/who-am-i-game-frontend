@@ -1,0 +1,55 @@
+@import '../../styles/globals.scss';
+@import '../../styles/colors.scss';
+
+.player-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $main-font-color;
+  font-family: 'Inter';
+  margin-bottom: 30px;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: #00faac;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.player-name {
+  margin-right: 16px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.player-decription {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: $font-black;
+  background: #00faac;
+  border-radius: 200px;
+  padding: 16px 32px;
+}
+
+.player-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: #ffd1af;
+  border-radius: 200px;
+  color: $font-black;
+  font-weight: 700;
+  font-size: 18px;
+}
