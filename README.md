@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# WHO AM I GAME FRONTEND
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Quick setup
 
-## Available Scripts
+Prerequisites
 
-In the project directory, you can run:
+Install [node](https://nodejs.org/uk/download/)
 
-### `yarn start`
+Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Install dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```bash
+   yarn
+   ```
 
-### `yarn test`
+2. Start dev server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   yarn start
+   ```
 
-### `yarn build`
+   Runs the app in the development mode.
+   Open http://localhost:3000 to view it in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   The page will reload when you make changes.
+   You may also see any lint errors in the console.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Make production build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   yarn build
+   ```
 
-### `yarn eject`
+   Builds the app for production to the build folder.
+   It correctly bundles React in production mode and optimizes the build for the best performance.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   The build is minified and the filenames include the hashes.
+   Your app is ready to be deployed!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   See the section about deployment for more information.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Proxying API Requests in Development
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   `"proxy": "http://localhost:4000"`
 
-## Learn More
+## Code style
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Just use Prettier and adhere to ESLint recommendations. It should cover 90% of cases. If in doubt, just ask others.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Git conventions
 
-### Code Splitting
+Branch names should be prefixed with `tech/`, `feature/` or `bugfix/` followed by ticket number from Jira,
+dash and a few descriptive words.  
+Example: `feature/JCWAIG-19-implement-waiting-screen`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Commit messages must follow the following format:
 
-### Analyzing the Bundle Size
+```text
+[Ticket number] [message]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[Optional body]
+```
 
-### Making a Progressive Web App
+Example: `JSWAIG-19 Implement waiting screen`.  
+Long example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```text
+JSWAIG-19 Implement waiting screen
 
-### Advanced Configuration
+* Add base layout
+* Add timer
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The message should be capped at 75 characters and must be in indefinite tense. It should read as _'\[If accepted, this commit will\] add order creation'_.
 
-### Deployment
+If provided, the body might include a detailed header, long description and a list of changes with bullet points, all of which are optional (you can use `*` in Markdown).  
+Please, DO NOT use `fixes`, `applied fixes` and other meaningless messages. If you apply fixes in a batch, use
+`git commit --amend` to prevent creating meaningless commits.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+PR titles should follow the same format as commit messages. Just so that you know, if you submit a PR with one commit only, GitHub assigns the title of the commit to the PR and saves you quite a bit of typing.
