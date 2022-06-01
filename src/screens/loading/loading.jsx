@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import GameTitle from '../../components/game-title/game-title';
 import LeaveGameBtn from '../../components/leave-game-btn/leave-game-btn';
 import './loading.scss';
@@ -9,7 +8,7 @@ function Loading() {
   const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (seconds < 60) {
         setSeconds(seconds + 1);
       } else {
@@ -17,13 +16,20 @@ function Loading() {
         setSeconds(0);
       }
     }, 1000);
+
+    return function cleaup() {
+      clearTimeout(timer);
+    }
   });
 
   return (
     <div className="loading">
       <GameTitle />
+      <h3 className="loading__queue-number">
+        23 PLYERS ARE IN A QUEUE
+      </h3>
       <h3 className="loading__waiting-message">
-        Please wait until we find your opponents
+        PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
       <div className="loading__clip-container">
         <p className="loading__clip-container_start">GAME START</p>
