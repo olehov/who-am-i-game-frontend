@@ -1,0 +1,20 @@
+@import '../../styles/colors.scss';
+
+.list_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 50%;
+  gap: 32px;
+  background: $secondary-background-blue;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.users {
+  justify-content: flex-start;
+}
+
+.history {
+  justify-content: space-between;
+}
