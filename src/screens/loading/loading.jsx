@@ -25,8 +25,9 @@ function Loading() {
   return (
     <div className="loading">
       <GameTitle />
+      <h3 className="loading__queue-number">23 PLYERS ARE IN A QUEUE</h3>
       <h3 className="loading__waiting-message">
-        Please wait until we find your opponents
+        PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
       <div className="loading__clip-container">
         <p className="loading__clip-container_start">GAME START</p>
