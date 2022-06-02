@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import GameTitle from '../../components/game-title/game-title';
 import LeaveGameBtn from '../../components/leave-game-btn/leave-game-btn';
 import './loading.scss';
@@ -9,7 +8,7 @@ function Loading() {
   const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (seconds < 60) {
         setSeconds(seconds + 1);
       } else {
@@ -17,6 +16,10 @@ function Loading() {
         setSeconds(0);
       }
     }, 1000);
+
+    return function cleanup() {
+      clearTimeout(timer);
+    };
   });
 
   return (

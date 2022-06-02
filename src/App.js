@@ -1,6 +1,5 @@
-import Homepage from './screens/home/home';
 import Loading from './screens/loading/loading';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
