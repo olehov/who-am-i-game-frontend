@@ -8,10 +8,10 @@ function Homepage() {
   return (
     <div className="homepage">
       <GameTitle />
-      <SetGameStatusBtn />
       <span className="homepage__players_online">
         {playersNumber} {playersNumber > 1 ? 'Players' : 'Player'} Online
       </span>
+      <SetGameStatusBtn isOnWaitingScreen />
     </div>
   );
 }

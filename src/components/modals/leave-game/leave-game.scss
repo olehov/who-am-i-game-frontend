@@ -1,4 +1,5 @@
 @import '../../../styles/colors.scss';
+@import '../../../styles/mixins';
 
 @mixin selector-btn {
   width: 100%;
@@ -38,15 +39,7 @@
   }
 
   &__cross-btn {
-    height: 18px;
-    width: 18px;
-    background-image: url('../../../icons/cross.svg');
-    background-size: 17.5px;
-    background-repeat: no-repeat;
-    background-color: $modals-background;
-    border: none;
-    cursor: pointer;
-    margin-right: 47px;
+    @include cross-btn;
   }
 
   &__question {
