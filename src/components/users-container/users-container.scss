@@ -1,5 +1,3 @@
-@import '../../styles/colors.scss';
-
 .users_list {
   width: calc(100% + 20px);
   padding-right: 20px;
@@ -15,30 +13,10 @@ hr {
   width: 100%;
 }
 
-/*ширина скролла*/
-::-webkit-scrollbar {
-  width: 8px;
-}
-/*трек скроллбара*/
-::-webkit-scrollbar-track {
-  background: $secondary-background-blue;
-}
-/*ползунок скроллбара*/
-::-webkit-scrollbar-thumb {
-  background: $primary-background-blue;
-  border-radius: 200px;
-  transition-property: border;
-  transition-duration: 1s;
-}
-
 @media screen and (max-width: 1280px) {
   .users_list {
     width: calc(100% + 12px);
     padding-right: 12px;
     gap: 24px;
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
   }
 }
