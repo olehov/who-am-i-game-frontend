@@ -11,7 +11,7 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
-    color: $white-color;
+    color: $modals-background;
     overflow: hidden;
   }
 
@@ -19,7 +19,7 @@
     min-width: 48px;
     height: 48px;
     border-radius: 200px;
-    background-color: $white-color;
+    background-color: $modals-background;
   }
 
   &_character {
@@ -30,7 +30,7 @@
     line-height: 19px;
     text-transform: uppercase;
     color: $primary-background-blue;
-    background-color: $white-color;
+    background-color: $modals-background;
     border-radius: 200px;
   }
 
