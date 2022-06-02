@@ -1,6 +1,14 @@
 @import '../../styles/colors.scss';
 @import '../../styles/mixins';
 
+@mixin waiting-msg {
+  max-width: 700px;
+  max-height: 39px;
+  font-weight: 900;
+  font-size: 24px;
+  margin-top: 3px;
+}
+
 .loading {
   @include message-screen;
 
