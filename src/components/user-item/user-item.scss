@@ -1,0 +1,55 @@
+@import '../../styles/colors.scss';
+
+.user_item {
+  width: calc(100% - 24px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &_name {
+    margin: 0 16px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: $modals-background;
+    overflow: hidden;
+  }
+
+  &_icon {
+    min-width: 48px;
+    height: 48px;
+    border-radius: 200px;
+    background-color: $modals-background;
+  }
+
+  &_character {
+    padding: 16px 32px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: uppercase;
+    color: $primary-background-blue;
+    background-color: $modals-background;
+    border-radius: 200px;
+  }
+
+  &.current_user .user_item_character {
+    background-color: $btn-green;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .user_item {
+    &_name {
+      margin: 0 18px;
+      font-size: 16px;
+      line-height: 19px;
+    }
+    &_character {
+      padding: 16px 24px;
+      font-size: 14px;
+      line-height: 15px;
+    }
+  }
+}
