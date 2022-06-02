@@ -1,22 +1,43 @@
 @import '../../styles/colors.scss';
 
-.leave-game-btn {
-  max-width: 648px;
+@mixin btn-big {
   max-height: 51px;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 16px;
+  padding: 16px 0% 16px 0%;
+}
+
+.leave-game-btn {
   background-color: $btn-pink;
   color: $font-black;
   border: none;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 16px 40px 16px 40px;
+  width: 100%;
   cursor: pointer;
-  padding-left: 15%;
-  padding-right: 15%;
-  margin-top: 32px;
 }
 
 .leave-game-btn:hover {
   background-color: $btn-green;
   color: $secondary-background-blue;
+}
+
+.loading-page {
+  @include btn-big();
+
+  max-width: 580px;
+  margin-top: 32px;
+}
+
+.lobby-page {
+  @include btn-big();
+
+  max-width: 1230px;
+}
+
+.game-page {
+  max-width: 184px;
+  max-height: 51px;
+  padding: 16px 40px 16px 40px;
+  border-radius: 25px;
+  font-weight: 700;
 }

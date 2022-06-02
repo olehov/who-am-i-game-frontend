@@ -17,7 +17,7 @@ function Loading() {
       }
     }, 1000);
 
-    return function cleaup() {
+    return function cleanup() {
       clearTimeout(timer);
     };
   });
