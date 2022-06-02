@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 40px;
   font-weight: 900;
   font-size: 32px;
   line-height: 39px;
@@ -16,7 +15,7 @@ h1 {
   text-transform: uppercase;
 }
 
-.button_live_game {
+.button_leave_game {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,4 +31,18 @@ h1 {
   line-height: 19px;
   text-transform: uppercase;
   color: $font-black;
+}
+
+@media screen and (max-width: 1280px) {
+  .header {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .button_leave_game {
+    gap: 6px;
+    width: 160px;
+    height: 45px;
+  }
 }

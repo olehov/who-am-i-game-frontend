@@ -6,7 +6,7 @@ import './history-container.scss';
 function HistoryContainer() {
   return (
     <ContainerWrapper className="history">
-      <div className="list">
+      <div className="history_list">
         <HistoryItem />
         <HistoryItem />
       </div>

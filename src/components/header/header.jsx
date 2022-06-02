@@ -4,7 +4,7 @@ function Header() {
   return (
     <header className="header">
       <h1>Who am I</h1>
-      <button className="button_live_game">Leave game</button>
+      <button className="button_leave_game">Leave game</button>
     </header>
   );
 }

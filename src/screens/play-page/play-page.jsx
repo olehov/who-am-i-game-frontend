@@ -5,10 +5,13 @@ import './play-page.scss';
 
 function PlayPage() {
   return (
-    <MainLayout>
-      <UsersContainer />
-      <HistoryContainer />
-    </MainLayout>
+    console.log(window.screen.width),
+    (
+      <MainLayout>
+        <UsersContainer />
+        <HistoryContainer />
+      </MainLayout>
+    )
   );
 }
 

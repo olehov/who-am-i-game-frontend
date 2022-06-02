@@ -10,7 +10,7 @@ function UsersContainer(props) {
         className="current_user"
       />
       <hr />
-      <div className="list">
+      <div className="users_list">
         <UserItem user={{ name: 'Khalilormous', character: 'Orlando Bloom' }} />
         <UserItem user={{ name: 'KayPee', character: 'Geoffrey Rush' }} />
         <UserItem user={{ name: 'Ted_Read', character: 'Dwayne Johnson' }} />
