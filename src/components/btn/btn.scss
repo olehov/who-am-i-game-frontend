@@ -11,6 +11,12 @@
   padding: 24px 0;
   border-radius: 8px;
   outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  font-size: 17px;
 }
 
 .btn-green-solid {
@@ -20,13 +26,13 @@
   background: $btn-pink;
 }
 .btn-yellow-solid {
-  background: $btn-yellow ;
+  background: $btn-yellow;
 }
 .btn-disabled {
-  background: $btn-lightgray ;
+  background: $btn-lightgray;
   color: $font-gray;
 }
 .btn-lightgray-outline {
-  background: $btn-lightgray ;
-  border: 4px solid $font-black ;
+  background: $btn-lightgray;
+  border: 4px solid $font-black;
 }
