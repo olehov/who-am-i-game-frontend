@@ -15,10 +15,23 @@ function InputCharacter() {
       </header>
       <div className="input-player">
         <div className="player-card-wrapp">
-          <PlayerCard name={'Player 1'} desription={'this is you'} />
-          <PlayerCard name={'Player 2'} desription={'this is you'} />
-          <PlayerCard name={'Player 3'} desription={'this is you'} />
-          <PlayerCard name={'Player 4'} desription={'this is you'} />
+          <PlayerCard
+            avatar={'avatar01'}
+            name={'Player 1'}
+            desription={'this is you'}
+            playerStaus="yes"
+          />
+          <PlayerCard avatar={'avatar02'} name={'Player 2'} playerStaus="no" />
+          <PlayerCard
+            avatar={'avatar03'}
+            name={'Player 3'}
+            playerStaus="wait"
+          />
+          <PlayerCard
+            avatar={'avatar04'}
+            name={'Player 4'}
+            playerStaus="wait"
+          />
         </div>
         <div className="btn-wrapp">
           <Btn>Suggest a character</Btn>

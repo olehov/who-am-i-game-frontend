@@ -1,17 +1,22 @@
-import React from 'react'
-import './player-card.scss'
+import React from 'react';
+import './player-card.scss';
 
-function PlayerCard({name, desription}) {
+function PlayerCard({
+  avatar,
+  name,
+  desription = 'd-none',
+  playerStaus = 'd-none',
+}) {
   return (
     <div className="player-card">
-    <div className="player">
-      <div className="avatar"></div>
-      <div className="player-name">{name}</div>
-      <div className="player-decription">{desription}</div>
+      <div className="player">
+        <div className={`avatar ${avatar}`}></div>
+        <div className="player-name">{name}</div>
+        <div className={`player-decription ${desription}`}>{desription}</div>
+      </div>
+      <div className={`player-status ${playerStaus}`}></div>
     </div>
-    <div className="player-status">?</div>
-  </div>
-  )
+  );
 }
 
-export default PlayerCard
+export default PlayerCard;
