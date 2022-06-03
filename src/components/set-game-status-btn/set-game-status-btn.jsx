@@ -1,7 +1,7 @@
 import './set-game-status-btn.scss';
 
-function SetGameStatusBtn(props) {
-  return <>{props.children}</>;
+function SetGameStatusBtn({ children }) {
+  return <button className="set-game-status-btn">{children}</button>;
 }
 
 export default SetGameStatusBtn;

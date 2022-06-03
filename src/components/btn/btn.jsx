@@ -8,9 +8,20 @@ import './btn.scss';
 // 'btn-disabled'
 // 'btn-lightgray-outline'
 
-function Btn({ children, type, onClick, btnStyle = 'btn-green-solid' }) {
+function Btn({
+  children,
+  type = 'submit',
+  onClick,
+  btnStyle = 'btn-green-solid',
+  disabled,
+}) {
   return (
-    <button className={`btn ${btnStyle}`} onClick={onClick} type={type}>
+    <button
+      className={`btn ${btnStyle}`}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
