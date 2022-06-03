@@ -1,3 +1,4 @@
+import Btn from '../btn/btn';
 import './question-form.scss';
 
 function QuestionForm() {
@@ -10,9 +11,9 @@ function QuestionForm() {
           placeholder="Type your question"
           maxLength="256"
         />
-        <button className="btn btn_ask">Ask</button>
+        <Btn btnStyle="btn_ask">Ask</Btn>
       </div>
-      <button className="btn btn_guess">I'm ready to guess</button>
+      <Btn btnStyle="btn_guess">I'm ready to guess</Btn>
     </div>
   );
 }

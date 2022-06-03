@@ -4,7 +4,7 @@ import HistoryContainer from '../../components/history-container/history-contain
 
 function PlayPage() {
   return (
-    <MainLayout>
+    <MainLayout button>
       <UsersContainer />
       <HistoryContainer />
     </MainLayout>

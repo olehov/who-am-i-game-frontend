@@ -1,6 +1,10 @@
 @import '../../styles/_colors.scss';
 
 .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
