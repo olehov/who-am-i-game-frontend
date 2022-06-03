@@ -1,4 +1,3 @@
-import React from 'react';
 import Btn from '../../components/btn/btn';
 import PlayerCard from '../../components/player-card/player-card';
 import './input-character.scss';
