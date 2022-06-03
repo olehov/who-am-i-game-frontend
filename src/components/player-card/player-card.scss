@@ -1,4 +1,4 @@
-@import '../../styles/_colors.scss';
+@import '../../styles/colors.scss';
 
 .player-card {
   display: flex;
@@ -57,7 +57,7 @@
   border-radius: 200px;
 }
 
-.wait {
+.dont-know {
   background-image: url(../../assets/svg/question-mark.svg);
 }
 .yes {

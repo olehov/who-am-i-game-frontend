@@ -16,21 +16,21 @@ function InputCharacter() {
       <div className="input-player">
         <div className="player-card-wrapp">
           <PlayerCard
-            avatar={'avatar01'}
-            name={'Player 1'}
-            desription={'this is you'}
+            avatar="avatar01"
+            name="Player 1"
+            desription="this is you"
             playerStaus="yes"
           />
-          <PlayerCard avatar={'avatar02'} name={'Player 2'} playerStaus="no" />
+          <PlayerCard avatar="avatar02" name="Player 2" playerStaus="no" />
           <PlayerCard
-            avatar={'avatar03'}
-            name={'Player 3'}
-            playerStaus="wait"
+            avatar="avatar03"
+            name="Player 3"
+            playerStaus="dont-know"
           />
           <PlayerCard
-            avatar={'avatar04'}
-            name={'Player 4'}
-            playerStaus="wait"
+            avatar="avatar04"
+            name="Player 4"
+            playerStaus="dont-know"
           />
         </div>
         <div className="btn-wrapp">
