@@ -1,0 +1,46 @@
+@import './styles/colors.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1 {
+  margin: 0;
+  color: $modals-background;
+  text-transform: uppercase;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $secondary-background-blue;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-background-blue;
+  border-radius: 200px;
+  transition-property: border;
+  transition-duration: 1s;
+}
+
+@media screen and (max-width: 1280px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+}
