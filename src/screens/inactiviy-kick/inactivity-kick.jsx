@@ -10,7 +10,9 @@ function InactivityKick() {
       <h3 className="inactivity-kick__message">
         SORRY, YOU HAVE BEEN KICKED FROM THE GAME DUE TO INACTIVITY
       </h3>
-      <SetGameStatusBtn />
+      <SetGameStatusBtn>
+        <button className="set-game-status-btn">PLAY QUICK GAME</button>
+      </SetGameStatusBtn>
     </div>
   );
 }

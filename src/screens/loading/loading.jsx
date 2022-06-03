@@ -15,7 +15,7 @@ function Loading() {
       <h3 className="loading__waiting-message">
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
-      <Timer />
+      <Timer time={0} />
       <LeaveGameBtn />
       <GuessCharacterModal
         displayModal={displayModal}

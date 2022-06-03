@@ -10,7 +10,7 @@ function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
   }
 
   return (
-    <div className="character-modal-container">
+    <form className="character-modal-container">
       <div className="character-modal-container__message-container">
         <h3 className="character-modal-container__message-container_message">
           BEFORE WE START
@@ -41,8 +41,8 @@ function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
           }}
         />
         <button
-          className={`character-modal-container__main_suggest-btn ${'active'}`}
-          disabled={characterName.length >= 3 ? false : true}
+          className="character-modal-container__main_suggest-btn"
+          disabled={characterName.length < 3}
           onClick={() => {
             setDisplayModal(false);
           }}
@@ -50,7 +50,7 @@ function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
           SUGGEST
         </button>
       </div>
-    </div>
+    </form>
   );
 }
 
