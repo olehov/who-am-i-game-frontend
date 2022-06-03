@@ -1,0 +1,27 @@
+@import '../../styles/colors.scss';
+
+.container_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 50%;
+  gap: 32px;
+  background: $secondary-background-blue;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.users {
+  justify-content: flex-start;
+}
+
+.history {
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1280px) {
+  .container_wrapper {
+    padding: 24px;
+    gap: 24px;
+  }
+}

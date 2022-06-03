@@ -1,0 +1,14 @@
+.game-title {
+  max-width: 450px;
+  max-height: 97px;
+  font-weight: 900;
+  font-size: 80px;
+  line-height: 96px;
+}
+
+@media (max-width: 425px) {
+  .game-title {
+    font-weight: 700;
+    font-size: 56px;
+  }
+}
