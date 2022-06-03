@@ -1,14 +1,15 @@
 import GameTitle from '../../components/game-title/game-title';
+import PlayerCard from '../../components/player-card/player-card';
 import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
-import './inactivity-kick.scss';
+import './victory-screen.scss';
 
-function InactivityKick() {
+function Victory() {
   return (
-    <div className="inactivity-kick">
+    <div className="victory-screen">
       <GameTitle />
-      <p className="inactivity-kick__player">Green Dean</p>
-      <h3 className="inactivity-kick__message">
-        SORRY, YOU HAVE BEEN KICKED FROM THE GAME DUE TO INACTIVITY
+      <PlayerCard avatar={'avatar01'} name={'GreenDean'} />
+      <h3 className="victory-screen__message">
+        CONGRATULATIONS. YOU HAVE WON THE GAME
       </h3>
       <SetGameStatusBtn>
         <button className="set-game-status-btn">GO TO MAIN MENU</button>
@@ -17,4 +18,4 @@ function InactivityKick() {
   );
 }
 
-export default InactivityKick;
+export default Victory;
