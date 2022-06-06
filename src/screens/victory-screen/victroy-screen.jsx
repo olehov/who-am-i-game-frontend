@@ -11,9 +11,7 @@ function Victory() {
       <h3 className="victory-screen__message">
         CONGRATULATIONS. YOU HAVE WON THE GAME
       </h3>
-      <SetGameStatusBtn>
-        <button className="set-game-status-btn">GO TO MAIN MENU</button>
-      </SetGameStatusBtn>
+      <SetGameStatusBtn>GO TO MAIN MENU</SetGameStatusBtn>
     </div>
   );
 }

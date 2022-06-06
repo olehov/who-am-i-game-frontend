@@ -14,9 +14,7 @@ function LostGame() {
           ANGLINA JLIE
         </span>
       </h3>
-      <SetGameStatusBtn>
-        <button className="set-game-status-btn">GO TO MAIN MENU</button>
-      </SetGameStatusBtn>
+      <SetGameStatusBtn>GO TO MAIN MENU</SetGameStatusBtn>
     </div>
   );
 }

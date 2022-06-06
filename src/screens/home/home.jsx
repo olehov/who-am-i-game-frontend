@@ -11,9 +11,7 @@ function Homepage() {
       <span className="homepage__players_online">
         {playersNumber} {playersNumber > 1 ? 'Players' : 'Player'} Online
       </span>
-      <SetGameStatusBtn>
-        <button className="set-game-status-btn">PLAY QUICK GAME</button>
-      </SetGameStatusBtn>
+      <SetGameStatusBtn>PLAY QUICK GAME</SetGameStatusBtn>
     </div>
   );
 }
