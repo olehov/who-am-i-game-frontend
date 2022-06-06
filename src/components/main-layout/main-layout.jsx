@@ -1,10 +1,12 @@
 import Header from '../header/header';
 import './main-layout.scss';
 
-function MainLayout({children, HeaderRigthBlock}) {
+function MainLayout({ children, HeaderRigthBlock }) {
   return (
     <div className="layout">
-      <Header><HeaderRigthBlock /></Header>
+      <Header>
+        <HeaderRigthBlock />
+      </Header>
       <div className="content_wrapper">{children}</div>
     </div>
   );
