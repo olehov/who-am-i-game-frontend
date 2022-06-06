@@ -27,47 +27,4 @@
   text-transform: uppercase;
 }
 
-.input-timer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
 
-  .lable {
-    color: $main-font-color;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    text-transform: uppercase;
-  }
-
-  .timer {
-    color: $main-font-color;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 56px;
-    text-transform: uppercase;
-  }
-}
-
-.input-player {
-  background: $secondary-background-blue;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  border-radius: 8px;
-  padding: 24px;
-
-  .player-card-wrapp {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-  }
-
-  .btn-wrapp {
-    display: flex;
-    flex-direction: column;
-  }
-}
