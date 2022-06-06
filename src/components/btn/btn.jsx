@@ -10,7 +10,7 @@ import './btn.scss';
 
 function Btn({
   children,
-  type = 'submit',
+  type = 'button',
   onClick,
   btnStyle = 'btn-green-solid',
   disabled,

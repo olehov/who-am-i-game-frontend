@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CountdownTimer from '../../timer-countdown/timer-countdown';
+import CountdownTimer from '../../timer/timer-countdown/timer-countdown';
 import Btn from '../../btn/btn';
 import './guess-a-character.scss';
 
@@ -31,7 +31,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
       </div>
       <div className="guess-character-modal__timer-container">
         <p className="guess-character-modal__timer-container_name">TIME LEFT</p>
-        <CountdownTimer time={60} inLobby small />
+        <CountdownTimer time={60} inLobby={'in-lobby'} small={'v-small'} />
       </div>
       <input
         className="guess-character-modal__players-guess"

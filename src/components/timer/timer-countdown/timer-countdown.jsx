@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import convertTime from '../../helper-functions/convert-time';
+import convertTime from '../../../helper-functions/convert-time';
 import clsx from 'clsx';
-import './timer-countdown.scss';
+import '../timer.scss';
 
 function CountdownTimer({ inLobby, time, small }) {
   const [seconds, setSeconds] = useState(time);
@@ -12,9 +12,11 @@ function CountdownTimer({ inLobby, time, small }) {
     }, 1000);
 
     return function cleanup() {
-      clearTimeout(timer);
+      if (seconds === 0) {
+        clearTimeout(timer);
+      }
     };
-  });
+  }, [seconds]);
 
   useEffect(() => {
     if (inLobby && seconds === 0) {

@@ -1,5 +1,5 @@
 function convertTime(time) {
-  const minutes = time / 60 >= 1 ? Math.floor(time / 60) : 0;
+  const minutes = Math.floor(time / 60);
   const seconds = time % 60;
 
   if (seconds <= 0 && minutes === 0) {
