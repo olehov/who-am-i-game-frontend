@@ -1,10 +1,20 @@
+import GameTitle from '../game-title/game-title';
+import LeaveGameBtn from '../leave-game-btn/leave-game-btn';
+import LeaveGameModal from '../modals/leave-game/leave-game';
+import { useState } from 'react';
 import './header.scss';
 
 function Header() {
+  const [displayModal, setDisplayModal] = useState(false);
+
   return (
     <header className="header">
-      <h1>Who am I</h1>
-      <button className="button_leave_game">Leave game</button>
+      <GameTitle small={'small'} />
+      <LeaveGameBtn page={'game-page'} setModalActive={setDisplayModal} />
+      <LeaveGameModal
+        showModal={displayModal}
+        setModalActive={setDisplayModal}
+      />
     </header>
   );
 }

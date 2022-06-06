@@ -1,13 +1,9 @@
 import GameTitle from '../../components/game-title/game-title';
 import LeaveGameBtn from '../../components/leave-game-btn/leave-game-btn';
 import Timer from '../../components/timer/timer';
-import GuessCharacterModal from '../../components/modals/guess-a-character/guess-a-character';
 import './loading.scss';
-import { useState } from 'react';
 
 function Loading() {
-  const [displayModal, setDisplayModal] = useState(true);
-
   return (
     <div className="loading">
       <GameTitle />
@@ -16,11 +12,7 @@ function Loading() {
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
       <Timer />
-      <LeaveGameBtn />
-      <GuessCharacterModal
-        displayModal={displayModal}
-        setDisplayModal={setDisplayModal}
-      />
+      <LeaveGameBtn page={'loading-page'} />
     </div>
   );
 }

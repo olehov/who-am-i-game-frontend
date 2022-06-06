@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CountdownTimer from '../../timer/timer-countdown/timer-countdown';
 import Btn from '../../btn/btn';
+import checkGuess from '../../../helper-functions/check-guess.js';
 import './guess-a-character.scss';
 
 function GuessCharacterModal({ displayModal, setDisplayModal }) {
   const [guess, setGuess] = useState('');
+
+  useEffect(() => {
+    return () => setGuess('');
+  }, [displayModal]);
 
   if (!displayModal) {
     return null;
@@ -45,7 +50,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
       <div className="guess-character-modal__guess-container">
         <Btn
           btnStyle="btn-yellow-solid"
-          disabled={guess.length < 3}
+          disabled={checkGuess(guess)}
           type="submit"
         >
           I WANT TO GUESS

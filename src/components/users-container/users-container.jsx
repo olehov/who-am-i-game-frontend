@@ -1,10 +1,15 @@
 import ContainerWrapper from '../container-wrapper/container-wrapper';
+import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import UserItem from '../user-item/user-item';
 import './users-container.scss';
 
-function UsersContainer(props) {
+function UsersContainer() {
   return (
     <ContainerWrapper className="users">
+      <div className="users__timer-container">
+        <p className="users__turn">TURN TIME</p>
+        <CountdownTimer small={'v-small'} time={60} />
+      </div>
       <UserItem
         user={{ name: 'GreenDean', character: 'This is you' }}
         className="current_user"

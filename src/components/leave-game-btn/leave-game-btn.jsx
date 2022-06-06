@@ -1,21 +1,17 @@
-import { useState } from 'react';
-import LeaveGameModal from '../modals/leave-game/leave-game';
+import clsx from 'clsx';
 import './leave-game-btn.scss';
 
-function LeaveGameBtn({ page }) {
-  const [modalActive, setModalActive] = useState(false);
-
+function LeaveGameBtn({ page, setModalActive }) {
   return (
     <>
       <button
-        className={`leave-game-btn ${`loading`}-page`}
+        className={clsx('leave-game-btn', [page])}
         onClick={() => {
           setModalActive(true);
         }}
       >
-        Leave Game
+        LEAVE GAME
       </button>
-      <LeaveGameModal showModal={modalActive} setModalActive={setModalActive} />
     </>
   );
 }

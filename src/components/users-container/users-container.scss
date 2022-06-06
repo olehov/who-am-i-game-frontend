@@ -1,3 +1,18 @@
+@import '../../styles/colors';
+
+.users {
+  &__timer-container {
+    display: flex;
+    justify-content: space-between;
+    color: $modals-background;
+  }
+
+  &__turn {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
 .users_list {
   width: calc(100% + 20px);
   padding-right: 20px;
