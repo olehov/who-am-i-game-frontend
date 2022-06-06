@@ -5,12 +5,22 @@ import './btn.scss';
 // 'btn-green-solid'
 // 'btn-pink-solid'
 // 'btn-yellow-solid'
-// 'btn-disabled'
 // 'btn-lightgray-outline'
 
-function Btn({ children, type, onClick, btnStyle = 'btn-green-solid' }) {
+function Btn({
+  children,
+  type = 'submit',
+  onClick,
+  btnStyle = 'btn-green-solid',
+  disabled,
+}) {
   return (
-    <button className={clsx('btn', btnStyle)} onClick={onClick} type={type}>
+    <button
+      className={clsx('btn', btnStyle)}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

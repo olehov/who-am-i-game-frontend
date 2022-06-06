@@ -27,7 +27,7 @@
 .btn-yellow-solid {
   background: $btn-yellow;
 }
-.btn-disabled {
+.btn:disabled {
   background: $btn-lightgray;
   color: $font-gray;
 }
