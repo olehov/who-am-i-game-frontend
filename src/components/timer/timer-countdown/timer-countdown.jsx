@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import convertTime from '../../helper-functions/convert-time';
+import convertTime from '../../../helper-functions/convert-time';
 import clsx from 'clsx';
-import './timer-countdown.scss';
+import '../timer.scss';
 
 function CountdownTimer({ inLobby, time, small }) {
   const [seconds, setSeconds] = useState(time);
@@ -14,13 +14,20 @@ function CountdownTimer({ inLobby, time, small }) {
     return function cleanup() {
       clearTimeout(timer);
     };
-  });
+  }, [seconds]);
 
   useEffect(() => {
     if (inLobby && seconds === 0) {
       alert('You have been kicked out for inactivity');
     }
   });
+
+  console.log(
+    clsx('timer__start', {
+      inLobby,
+      small,
+    })
+  );
 
   return (
     <div className="timer">

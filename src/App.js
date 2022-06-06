@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Homepage from './screens/home/home';
 import Loading from './screens/loading/loading';
 import PlayPage from './screens/play-page/play-page';
+import InactivityKick from './screens/inactiviy-kick/inactivity-kick';
 import './App.scss';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="loading" element={<Loading />} />
         <Route path="play" element={<PlayPage />} />
+        <Route path="inactive" element={<InactivityKick />} />
       </Routes>
     </div>
   );
