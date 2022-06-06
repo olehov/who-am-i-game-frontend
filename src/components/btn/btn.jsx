@@ -7,22 +7,31 @@ import './btn.scss';
 // 'btn-yellow-solid'
 // 'btn-lightgray-outline'
 
+// <-- Use this names for icon Styles -->
+// 'check-icon'
+// 'cross-icon'
+// 'question-icon'
+
 function Btn({
   children,
+  icon = 'd-none',
   type = 'submit',
   onClick,
   btnStyle = 'btn-green-solid',
   disabled,
 }) {
   return (
-    <button
-      className={clsx('btn', btnStyle)}
-      onClick={onClick}
-      type={type}
-      disabled={disabled}
-    >
-      {children}
-    </button>
+    <>
+      <button
+        className={clsx('btn', btnStyle)}
+        onClick={onClick}
+        type={type}
+        disabled={disabled}
+      >
+        <div className={icon}></div>
+        {children}
+      </button>
+    </>
   );
 }
 

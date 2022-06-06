@@ -1,13 +1,35 @@
 @import '../../styles/colors.scss';
 
+.check-icon {
+  width: 17px;
+  height: 13px;
+  background-image: url(../../assets/svg/check-icon-btn.svg);
+}
+
+.cross-icon {
+  width: 14px;
+  height: 14px;
+  background-image: url(../../assets/svg/cross-icon-btn.svg);
+}
+
+.question-icon {
+  width: 11px;
+  height: 19px;
+  background-image: url(../../assets/svg/question-icon-btn.svg);
+}
+
 .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px !important;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
   font-size: 16px;
   text-transform: uppercase;
   color: $font-black;
-  padding: 24px 0;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -17,6 +39,7 @@
 
 .btn:hover {
   font-size: 17px;
+  filter: brightness(85%);
 }
 
 .btn-green-solid {
@@ -38,17 +61,12 @@
 }
 
 .btn-leave-game {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
-  width: 184px;
+  width: 200px;
   height: 51px;
   background: $btn-pink;
   border-radius: 200px !important;
   font-weight: 700;
-  font-size: 16px;
 
   @media screen and (max-width: 1280px) {
     .button_leave_game {
