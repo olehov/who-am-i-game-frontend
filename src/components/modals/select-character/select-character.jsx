@@ -10,7 +10,13 @@ function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
   }
 
   return (
-    <form className="character-modal-container">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setDisplayModal(false);
+      }}
+      className="character-modal-container"
+    >
       <div className="character-modal-container__message-container">
         <h3 className="character-modal-container__message-container_message">
           BEFORE WE START
@@ -43,9 +49,7 @@ function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
         <button
           className="character-modal-container__main_suggest-btn"
           disabled={characterName.length < 3}
-          onClick={() => {
-            setDisplayModal(false);
-          }}
+          type="submit"
         >
           SUGGEST
         </button>
