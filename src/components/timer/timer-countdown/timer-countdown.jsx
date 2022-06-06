@@ -11,11 +11,11 @@ function CountdownTimer({ inLobby, time, small }) {
       setSeconds(seconds - 1);
     }, 1000);
 
-    return function cleanup() {
-      if (seconds === 0) {
-        clearTimeout(timer);
-      }
-    };
+    if (seconds <= 0) {
+      clearTimeout(timer);
+    }
+
+    return () => clearTimeout(timer);
   }, [seconds]);
 
   useEffect(() => {
