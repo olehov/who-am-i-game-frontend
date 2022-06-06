@@ -8,7 +8,7 @@ function HistoryItem(props) {
     <div className="history_item">
       <div className="history_item_question">
         {guess && <span className="my_guess">My guess</span>}
-        <img src={user.icon} alt="icon" />
+        <img src={user.iconSrc} alt="icon" />
         <p>{question}</p>
       </div>
       <div className="history_item_icons_box">

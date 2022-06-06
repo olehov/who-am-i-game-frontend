@@ -4,23 +4,23 @@ import question_mark from '../../assets/svg/question-mark.svg';
 import x from '../../assets/svg/x.svg';
 
 function AnswerIcon(props) {
-  const { userIcon, status } = props.answer;
-  let icon = null;
+  const { userIconSrc, status } = props.answer;
+  let iconSrc = null;
   switch (status) {
     case 'yes':
-      icon = check;
+      iconSrc = check;
       break;
     case 'no':
-      icon = x;
+      iconSrc = x;
       break;
     default:
-      icon = question_mark;
+      iconSrc = question_mark;
   }
 
   return (
     <div className="icon_wrapper">
-      <img src={userIcon} alt="icon" />
-      <img src={icon} alt={status} className="icon_status" />
+      <img src={userIconSrc} alt="icon" />
+      <img src={iconSrc} alt={status} className="icon_status" />
     </div>
   );
 }

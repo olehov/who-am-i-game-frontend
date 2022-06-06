@@ -1,4 +1,3 @@
-import { createBrowserHistory } from 'history';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './countdown-timer.scss';
@@ -23,7 +22,7 @@ function CountdownTimer(props) {
       <div>turn time</div>
       <div className="time">
         <span>00:</span>
-        <span class="time_seconds">
+        <span className="time_seconds">
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
         </span>
       </div>

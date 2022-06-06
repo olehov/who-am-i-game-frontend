@@ -1,0 +1,37 @@
+@import '../../styles/colors';
+
+.text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  height: 48px;
+  border-radius: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.text_answer {
+  background: $primary-background-blue;
+}
+
+.text.text_answer_yes {
+  background: $btn-green;
+}
+
+.text.text_answer_no {
+  background: $btn-pink;
+}
+
+.text_yes {
+  color: $btn-green;
+}
+
+.text_no {
+  color: $btn-pink;
+}
+
+.text_know {
+  color: $btn-orange;
+}

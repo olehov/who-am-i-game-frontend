@@ -39,3 +39,17 @@
   background: $btn-lightgray;
   border: 4px solid $font-black;
 }
+
+.btn-orange-solid {
+  background: $btn-orange;
+}
+
+.btn-half {
+  border: none;
+  width: 50%;
+}
+
+.btn-third {
+  border: none;
+  width: 30%;
+}
