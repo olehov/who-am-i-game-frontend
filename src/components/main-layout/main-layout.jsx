@@ -1,13 +1,19 @@
+import Btn from '../btn/btn';
 import Header from '../header/header';
+import InputCharacterTimer from '../input-character-timer/input-character-timer';
 import './main-layout.scss';
 
-function MainLayout({ children, HeaderRigthBlock }) {
+function MainLayout(props) {
   return (
     <div className="layout">
       <Header>
-        <HeaderRigthBlock />
+        {props.timer ? (
+          <InputCharacterTimer />
+        ) : (
+          <Btn btnStyle="btn-leave-game">Leave game</Btn>
+        )}
       </Header>
-      <div className="content_wrapper">{children}</div>
+      <div className="content_wrapper">{props.children}</div>
     </div>
   );
 }
