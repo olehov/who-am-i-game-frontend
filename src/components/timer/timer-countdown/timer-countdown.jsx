@@ -24,13 +24,6 @@ function CountdownTimer({ inLobby, time, small }) {
     }
   });
 
-  console.log(
-    clsx('timer__start', {
-      inLobby,
-      small,
-    })
-  );
-
   return (
     <div className="timer">
       <p
