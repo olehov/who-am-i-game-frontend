@@ -26,14 +26,19 @@
     background-color: $btn-green;
     border-radius: 200px;
 
+    &.guess {
+      background: $font-yellow;
+    }
+
     .my_guess {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
+      margin-right: 8px;
       padding: 8px 16px;
       gap: 8px;
-      background: #fafafa;
+      background: $modals-background;
       border-radius: 200px;
       text-transform: capitalize;
     }

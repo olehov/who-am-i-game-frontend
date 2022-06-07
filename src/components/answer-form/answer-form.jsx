@@ -1,19 +1,8 @@
 import Btn from '../btn/btn';
+import { ReactComponent as Check } from '../../assets/svg/check-icon-btn.svg';
+import { ReactComponent as Question } from '../../assets/svg/question-icon-btn.svg';
+import { ReactComponent as Cross } from '../../assets/svg/cross-icon-btn.svg';
 import './answer-form.scss';
-import check from '../../assets/svg/check-icon-btn.svg';
-import question from '../../assets/svg/question-icon-btn.svg';
-import cross from '../../assets/svg/cross-icon-btn.svg';
-import clsx from 'clsx';
-
-function IconImage(props) {
-  return (
-    <img
-      src={props.imgSrc}
-      alt="icon"
-      className={clsx('message_icon', props.message)}
-    />
-  );
-}
 
 function AnswerForm(props) {
   let btnRow = null;
@@ -22,15 +11,15 @@ function AnswerForm(props) {
     btnRow = (
       <div className="row" onClick={props.onClick}>
         <Btn className="btn-green-solid btn-third">
-          <IconImage imgSrc={check} />
+          <Check fill="#1e1b18" />
           yes
         </Btn>
         <Btn className="btn-pink-solid btn-third">
-          <IconImage imgSrc={cross} />
+          <Cross fill="#1e1b18" />
           no
         </Btn>
         <Btn className="btn-orange-solid btn-third">
-          <IconImage imgSrc={question} />
+          <Question fill="#1e1b18" />
           don't know
         </Btn>
       </div>
@@ -41,11 +30,11 @@ function AnswerForm(props) {
     btnRow = (
       <div className="row" onClick={props.onClick}>
         <Btn className="btn-green-solid btn-half">
-          <IconImage imgSrc={check} />
+          <Check fill="#1e1b18" />
           yes
         </Btn>
         <Btn className="btn-pink-solid btn-half">
-          <IconImage imgSrc={cross} />
+          <Cross fill="#1e1b18" />
           no
         </Btn>
       </div>

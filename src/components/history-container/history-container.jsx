@@ -15,7 +15,7 @@ import './history-container.scss';
 //'response' - giving a response for the question ('yes' or 'no')
 
 function HistoryContainer() {
-  const [mode, setMode] = useState('ask');
+  const [mode, setMode] = useState('answer');
   const [message, setMessage] = useState("don't know");
   let bottomElement = useRef(null);
 
