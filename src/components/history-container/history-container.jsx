@@ -1,11 +1,11 @@
 import HistoryItem from '../history-item/history-item';
 import ContainerWrapper from '../container-wrapper/container-wrapper';
 import QuestionForm from '../question-form/question-form';
-import './history-container.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
+import './history-container.scss';
 
 //---------types of mode-----------
 //'ask' - asking a question
@@ -15,8 +15,9 @@ import MessageBlock from '../message-block/message-block';
 //'response' - giving a response for the question ('yes' or 'no')
 
 function HistoryContainer() {
-  const [mode, setMode] = useState('answer');
-  const [message, setMessage] = useState('no');
+  const [mode, setMode] = useState('ask');
+  const [message, setMessage] = useState("don't know");
+  let bottomElement = useRef(null);
 
   const handleClick = (event) => {
     setMode('wait');
@@ -24,12 +25,12 @@ function HistoryContainer() {
   };
 
   useEffect(() => {
-    let listBottom = document.querySelector('.list_scroll_bottom');
+    const listBottom = bottomElement.current;
 
     if (!listBottom) return;
 
     listBottom.scrollIntoView({
-      behavior: 'auto' || 'smooth',
+      behavior: 'auto',
       block: 'end',
     });
   });
@@ -40,14 +41,14 @@ function HistoryContainer() {
         {history.map((item, index) => (
           <HistoryItem question={item} key={index} />
         ))}
-        <div className="list_scroll_bottom"></div>
+        <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
       {mode === 'ask' && <QuestionForm />}
       {(mode === 'answer' || mode === 'guess') && (
         <AnswerForm mode={mode} onClick={handleClick} />
       )}
       {(mode === 'wait' || mode === 'response') && (
-        <MessageBlock mode={mode} message={message} />
+        <MessageBlock mode={mode} message={message} className={mode} />
       )}
     </ContainerWrapper>
   );

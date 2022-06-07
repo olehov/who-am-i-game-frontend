@@ -10,28 +10,39 @@
   border-radius: 8px;
   font-weight: 900;
   text-transform: uppercase;
+
+  &.wait {
+    background: $primary-background-blue;
+  }
+  &.response.yes {
+    background: $btn-green;
+  }
+  &.response.no {
+    background: $btn-pink;
+  }
+  &.response.know {
+    background: $btn-orange;
+  }
 }
 
-.text_answer {
-  background: $primary-background-blue;
+.wait {
+  &.yes {
+    color: $btn-green;
+  }
+  &.no {
+    color: $btn-pink;
+  }
+  &.know {
+    color: $btn-orange;
+  }
+  .yes,
+  .no,
+  .know {
+    background: none;
+  }
 }
 
-.text.text_answer_yes {
-  background: $btn-green;
-}
-
-.text.text_answer_no {
-  background: $btn-pink;
-}
-
-.text_yes {
-  color: $btn-green;
-}
-
-.text_no {
-  color: $btn-pink;
-}
-
-.text_know {
-  color: $btn-orange;
+.message_icon.yes {
+  stroke: $btn-green;
+  fill: $btn-green;
 }

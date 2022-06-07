@@ -9,7 +9,7 @@ function MainLayout(props) {
         {props.timer ? (
           <div>timer</div>
         ) : (
-          <Btn btnStyle="btn-leave-game">Leave game</Btn>
+          <Btn className="btn-leave-game">Leave game</Btn>
         )}
       </Header>
       <div className="content_wrapper">{props.children}</div>

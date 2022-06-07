@@ -11,9 +11,9 @@ function QuestionForm() {
           placeholder="Type your question"
           maxLength="256"
         />
-        <Btn btnStyle="btn_ask">Ask</Btn>
+        <Btn className="btn_ask">Ask</Btn>
       </div>
-      <Btn btnStyle="btn_guess">I'm ready to guess</Btn>
+      <Btn className="btn_guess">I'm ready to guess</Btn>
     </div>
   );
 }

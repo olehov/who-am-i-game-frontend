@@ -1,46 +1,51 @@
+import clsx from 'clsx';
 import './message-block.scss';
+import check from '../../assets/svg/check-icon-btn.svg';
+import question from '../../assets/svg/question-icon-btn.svg';
+import cross from '../../assets/svg/cross-icon-btn.svg';
 
 function MessageBlock(props) {
-  let messageBlock;
+  let message = props.message;
+  let iconSrc = '#';
 
-  if (props.mode === 'wait') {
-    let message = '';
-    let classes = 'text text_answer';
+  if (message === 'yes') {
+    iconSrc = check;
+  }
 
-    if (props.message === 'yes') {
-      message = 'Yes';
-      classes = classes + ' text_yes';
-    }
+  if (message === 'no') {
+    iconSrc = cross;
+  }
 
-    if (props.message === 'no') {
-      message = 'No';
-      classes = classes + ' text_no';
-    }
-
-    if (props.message === "don't know") {
-      message = "Don't know";
-      classes = classes + ' text_know';
-    }
-    messageBlock = <div className={classes}>{message}</div>;
+  if (message === "don't know") {
+    iconSrc = question;
   }
 
   if (props.mode === 'response') {
-    let message = '';
-    let classes = 'text';
-
-    if (props.message === 'yes') {
+    if (message === 'yes') {
       message = 'Right. Your turn';
-      classes = classes + ' text_answer_yes';
     }
 
-    if (props.message === 'no') {
+    if (message === 'no') {
+      iconSrc = cross;
       message = 'Wrong. Passing turn';
-      classes = classes + ' text_answer_no';
     }
-    messageBlock = <div className={classes}>{message}</div>;
+
+    if (message === "don't know") {
+      iconSrc = question;
+      message = "Don't know. Try again";
+    }
   }
 
-  return messageBlock;
+  return (
+    <div className={clsx('text', props.message, props.className)}>
+      <img
+        src={iconSrc}
+        alt="icon"
+        className={clsx('message_icon', props.message)}
+      />
+      {message}
+    </div>
+  );
 }
 
 export default MessageBlock;

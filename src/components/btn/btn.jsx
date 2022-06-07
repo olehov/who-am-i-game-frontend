@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import './btn.scss';
 
@@ -12,12 +13,12 @@ function Btn({
   children,
   type = 'button',
   onClick,
-  btnStyle = 'btn-green-solid',
+  className = 'btn-green-solid',
   disabled,
 }) {
   return (
     <button
-      className={`btn ${btnStyle}`}
+      className={clsx('btn', className)}
       onClick={onClick}
       type={type}
       disabled={disabled}
