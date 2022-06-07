@@ -1,0 +1,33 @@
+@mixin message-screen {
+  background-color: $primary-background-blue;
+  color: $main-font-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin cross-btn {
+  height: 18px;
+  width: 18px;
+  background-image: url('../../../icons/cross.svg');
+  background-size: 17.5px;
+  background-repeat: no-repeat;
+  background-color: $modals-background;
+  border: none;
+  cursor: pointer;
+  margin-right: 47px;
+}
+
+@mixin modal-msg-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin modal-msg {
+  font-weight: 900;
+  font-size: 32px;
+  padding-left: 40px;
+}

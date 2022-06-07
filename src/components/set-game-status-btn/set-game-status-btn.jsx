@@ -1,7 +1,7 @@
 import './set-game-status-btn.scss';
 
-function SetGameStatusBtn() {
-  return <button className="set-game-status-btn">Play A Quick Game</button>;
+function SetGameStatusBtn({ children }) {
+  return <button className="set-game-status-btn">{children}</button>;
 }
 
 export default SetGameStatusBtn;

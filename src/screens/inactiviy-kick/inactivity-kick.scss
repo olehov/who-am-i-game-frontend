@@ -1,0 +1,21 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.inactivity-kick {
+  @include message-screen;
+
+  .inactivity-kick {
+    &__player {
+      margin-top: 0px;
+    }
+
+    &__message {
+      max-width: 900px;
+      max-height: 39px;
+      font-weight: 900;
+      font-size: 24px;
+      margin-top: 3px;
+      color: $font-yellow;
+    }
+  }
+}

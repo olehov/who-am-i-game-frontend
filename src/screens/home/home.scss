@@ -1,21 +1,15 @@
 @import '../../styles/colors.scss';
+@import '../../styles/mixins';
 
 .homepage {
-  background-color: $primary-background-blue;
-  color: $main-font-color;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include message-screen;
 
   &__players_online {
-    max-width: 255px;
     max-height: 39px;
-    font-weight: 400;
+    font-weight: 900;
     font-size: 32px;
-    margin-top: 25px;
     color: $btn-green;
+    margin-bottom: 53px;
   }
 }
 
@@ -29,6 +23,7 @@
     &__players_online {
       font-weight: 400;
       font-size: 32px;
+      margin-top: 0px;
     }
   }
 }
