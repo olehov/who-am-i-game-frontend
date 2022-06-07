@@ -6,7 +6,13 @@ function LeaveGameModal({ showModal, setModalActive }) {
   }
 
   return (
-    <div className="modal-container">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setModalActive(false);
+      }}
+      className="modal-container"
+    >
       <div className="modal-container__title-container">
         <h3 className="modal-container__title">LEAVE THE GAME</h3>
         <button
@@ -20,12 +26,7 @@ function LeaveGameModal({ showModal, setModalActive }) {
         Are you sure you want to leave the game?
       </p>
       <div className="modal-container__selector-container">
-        <button
-          className="modal-container__leave-btn"
-          onClick={() => {
-            setModalActive(false);
-          }}
-        >
+        <button type="submit" className="modal-container__leave-btn">
           LEAVE
         </button>
         <button
@@ -37,7 +38,7 @@ function LeaveGameModal({ showModal, setModalActive }) {
           CANCEL
         </button>
       </div>
-    </div>
+    </form>
   );
 }
 

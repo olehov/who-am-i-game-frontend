@@ -1,0 +1,12 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.victory-screen {
+  @include message-screen;
+
+  &__message {
+    margin-top: 0px;
+    margin-bottom: 80px;
+    color: $btn-green;
+  }
+}

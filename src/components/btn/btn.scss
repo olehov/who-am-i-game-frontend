@@ -14,9 +14,11 @@
   padding: 24px 0;
   border: none;
   border-radius: 8px;
+  border: none;
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .btn:hover {
@@ -32,7 +34,7 @@
 .btn-yellow-solid {
   background: $btn-yellow;
 }
-.btn-disabled {
+.btn:disabled {
   background: $btn-lightgray;
   color: $font-gray;
 }
