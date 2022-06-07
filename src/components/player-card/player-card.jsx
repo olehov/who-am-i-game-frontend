@@ -17,7 +17,7 @@ import './player-card.scss';
 function PlayerCard({
   avatarClassName,
   name,
-  desriptionClassName = 'd-none',
+  description = 'd-none',
   playerStausClassName = 'd-none',
 }) {
   return (
@@ -25,8 +25,12 @@ function PlayerCard({
       <div className="player">
         <div className={clsx('avatar', avatarClassName)}></div>
         <div className="player-name">{name}</div>
-        <div className={clsx('player-decription', desriptionClassName)}>
-          {desription}
+        <div
+          className={clsx('player-decription', {
+            'd-none': description == 'd-none',
+          })}
+        >
+          {description}
         </div>
       </div>
       <div className={clsx('player-status', playerStausClassName)}></div>

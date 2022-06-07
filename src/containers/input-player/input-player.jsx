@@ -9,7 +9,7 @@ function InputPlayer() {
         <PlayerCard
           avatarClassName="avatar01"
           name="Player 1"
-          desriptionClassName="this is you"
+          description="this is you"
           playerStausClassName="yes"
         />
         <PlayerCard
@@ -30,7 +30,7 @@ function InputPlayer() {
       </div>
       <div className="btn-wrapp">
         <Btn>Suggest a character</Btn>
-        <Btn btnStyleClassName={'btn-pink-solid'}>Leave Game</Btn>
+        <Btn className={'btn-pink-solid'}>Leave Game</Btn>
       </div>
     </div>
   );

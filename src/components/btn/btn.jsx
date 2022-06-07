@@ -6,6 +6,7 @@ import './btn.scss';
 // 'btn-pink-solid'
 // 'btn-yellow-solid'
 // 'btn-lightgray-outline'
+// 'btn-blue-outline'
 
 // <-- Use this names for icon Styles -->
 // 'check-icon'
@@ -17,13 +18,13 @@ function Btn({
   iconClassName = 'd-none',
   type = 'button',
   onClick,
-  btnStyleClassName = 'btn-green-solid',
+  className = 'btn-green-solid',
   disabled,
 }) {
   return (
     <>
       <button
-        className={clsx('btn', btnStyleClassName)}
+        className={clsx('btn', className)}
         onClick={onClick}
         type={type}
         disabled={disabled}
