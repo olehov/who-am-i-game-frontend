@@ -15,21 +15,21 @@ import './player-card.scss';
 // if you don't asined description and player status it will be hidden
 
 function PlayerCard({
-  avatar,
+  avatarClassName,
   name,
-  desription = 'd-none',
-  playerStaus = 'd-none',
+  desriptionClassName = 'd-none',
+  playerStausClassName = 'd-none',
 }) {
   return (
     <div className="player-card">
       <div className="player">
-        <div className={clsx('avatar', avatar)}></div>
+        <div className={clsx('avatar', avatarClassName)}></div>
         <div className="player-name">{name}</div>
-        <div className={clsx('player-decription', desription)}>
+        <div className={clsx('player-decription', desriptionClassName)}>
           {desription}
         </div>
       </div>
-      <div className={clsx('player-status', playerStaus)}></div>
+      <div className={clsx('player-status', playerStausClassName)}></div>
     </div>
   );
 }

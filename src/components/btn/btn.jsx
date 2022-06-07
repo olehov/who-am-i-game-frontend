@@ -14,21 +14,21 @@ import './btn.scss';
 
 function Btn({
   children,
-  icon = 'd-none',
-  type = 'submit',
+  iconClassName = 'd-none',
+  type = 'button',
   onClick,
-  btnStyle = 'btn-green-solid',
+  btnStyleClassName = 'btn-green-solid',
   disabled,
 }) {
   return (
     <>
       <button
-        className={clsx('btn', btnStyle)}
+        className={clsx('btn', btnStyleClassName)}
         onClick={onClick}
         type={type}
         disabled={disabled}
       >
-        <div className={icon}></div>
+        <div className={iconClassName}></div>
         {children}
       </button>
     </>
