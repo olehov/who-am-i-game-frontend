@@ -15,7 +15,7 @@ import './btn.scss';
 function Btn({
   children,
   icon = 'd-none',
-  type = 'submit',
+  type = 'button',
   onClick,
   btnStyle = 'btn-green-solid',
   disabled,

@@ -1,0 +1,33 @@
+@import '../../styles/colors';
+
+.timer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__start {
+    margin-bottom: 0px;
+    max-height: 19px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  &__time {
+    font-weight: 900;
+    font-size: 52px;
+    max-height: 58px;
+    max-width: 177px;
+  }
+
+  .time-small {
+    font-size: 24px;
+  }
+
+  .in-lobby {
+    text-align: end;
+  }
+
+  .v-small {
+    display: none;
+  }
+}
