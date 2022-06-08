@@ -1,10 +1,10 @@
 import './header.scss';
 
-function Header() {
+function Header({ children }) {
   return (
     <header className="header">
       <h1>Who am I</h1>
-      <button className="button_leave_game">Leave game</button>
+      {children}
     </header>
   );
 }

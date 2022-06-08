@@ -1,4 +1,4 @@
-import React from 'react';
+import clsx from 'clsx';
 import './player-card.scss';
 
 // <-- Use this names for Avavr icons -->
@@ -8,26 +8,32 @@ import './player-card.scss';
 // 'avatar04'
 
 // <-- Use this names for Player Satus -->
-// 'wait'
+// 'dont-know'
 // 'yes'
 // 'no'
 
 // if you don't asined description and player status it will be hidden
 
 function PlayerCard({
-  avatar,
+  avatarClassName,
   name,
-  desription = 'd-none',
-  playerStaus = 'd-none',
+  description = 'd-none',
+  playerStausClassName = 'd-none',
 }) {
   return (
     <div className="player-card">
       <div className="player">
-        <div className={`avatar ${avatar}`}></div>
+        <div className={clsx('avatar', avatarClassName)}></div>
         <div className="player-name">{name}</div>
-        <div className={`player-decription ${desription}`}>{desription}</div>
+        <div
+          className={clsx('player-decription', {
+            'd-none': description == 'd-none',
+          })}
+        >
+          {description}
+        </div>
       </div>
-      <div className={`player-status ${playerStaus}`}></div>
+      <div className={clsx('player-status', playerStausClassName)}></div>
     </div>
   );
 }
