@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { currentUser, history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
-import GuessCharacterModal from '../modals/guess-a-character/guess-a-character';
 import './history-container.scss';
 
 //---------types of mode-----------
