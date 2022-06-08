@@ -22,17 +22,15 @@ function Btn({
   disabled,
 }) {
   return (
-    <>
-      <button
-        className={clsx('btn', className)}
-        onClick={onClick}
-        type={type}
-        disabled={disabled}
-      >
-        <div className={iconClassName}></div>
-        {children}
-      </button>
-    </>
+    <button
+      className={clsx('btn', className)}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+    >
+      <div className={iconClassName}></div>
+      {children}
+    </button>
   );
 }
 

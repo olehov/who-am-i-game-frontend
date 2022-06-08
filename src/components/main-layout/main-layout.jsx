@@ -1,6 +1,6 @@
 import Btn from '../btn/btn';
 import Header from '../header/header';
-import InputCharacterTimer from '../input-character-timer/input-character-timer';
+import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import './main-layout.scss';
 
 function MainLayout(props) {
@@ -8,7 +8,7 @@ function MainLayout(props) {
     <div className="layout">
       <Header>
         {props.timer ? (
-          <InputCharacterTimer />
+          <CountdownTimer inLobby time={120} />
         ) : (
           <Btn className="btn-leave-game">Leave game</Btn>
         )}
