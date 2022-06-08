@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <header className="header">
-      <GameTitle small={'small'} />
+      <GameTitle className={'small'} />
       <LeaveGameBtn page={'game-page'} setModalActive={setDisplayModal} />
       <LeaveGameModal
         showModal={displayModal}

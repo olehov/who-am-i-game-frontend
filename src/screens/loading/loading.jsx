@@ -16,7 +16,10 @@ function Loading() {
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
       <Timer />
-      <LeaveGameBtn page={'loading-page'} setModalActive={setModalActive} />
+      <LeaveGameBtn
+        className={'loading-page'}
+        setModalActive={setModalActive}
+      />
       <LeaveGameModal showModal={modalActive} setModalActive={setModalActive} />
     </div>
   );

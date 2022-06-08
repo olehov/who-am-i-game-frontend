@@ -1,17 +1,22 @@
-import React from 'react';
 import Btn from '../../components/btn/btn';
 import PlayerCard from '../../components/player-card/player-card';
+import GameTitle from '../../components/game-title/game-title';
+import CountdownTimer from '../../components/timer/timer-countdown/timer-countdown';
+import LeaveGameBtn from '../../components/leave-game-btn/leave-game-btn';
+import LeaveGameModal from '../../components/modals/leave-game/leave-game';
+import SelectCharacterModal from '../../components/modals/select-character/select-character';
+import { useState } from 'react';
 import './input-character.scss';
 
-function InputCharacter() {
+function Lobby() {
+  const [showLeaveModal, setLeaveModalActive] = useState(false);
+  const [showSuggestModal, setSuggestModal] = useState(false);
+
   return (
     <div className="input-screen container">
       <header className="header">
-        <h1 className="title">who am i</h1>
-        <div className="input-timer">
-          <div className="lable">Game start</div>
-          <div className="timer">00:46</div>
-        </div>
+        <GameTitle className={'small'} />
+        <CountdownTimer inLobby={'in-lobby'} />
       </header>
       <div className="input-player">
         <div className="player-card-wrapp">
@@ -34,12 +39,30 @@ function InputCharacter() {
           />
         </div>
         <div className="btn-wrapp">
-          <Btn>Suggest a character</Btn>
-          <Btn btnStyle={'btn-pink-solid'}>Leave Game</Btn>
+          <Btn
+            onClick={() => {
+              setSuggestModal(true);
+            }}
+          >
+            Suggest a character
+          </Btn>
+          <LeaveGameBtn
+            className={'lobby-page'}
+            setModalActive={setLeaveModalActive}
+          />
         </div>
       </div>
+      <LeaveGameModal
+        showModal={showLeaveModal}
+        setModalActive={setLeaveModalActive}
+      />
+      <SelectCharacterModal
+        playerNum={1}
+        displayModal={showSuggestModal}
+        setDisplayModal={setSuggestModal}
+      />
     </div>
   );
 }
 
-export default InputCharacter;
+export default Lobby;

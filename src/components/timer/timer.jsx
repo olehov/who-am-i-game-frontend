@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import convertTime from '../../helper-functions/convert-time';
+import { useNavigate } from 'react-router-dom';
 import './timer.scss';
 
 function Timer({ time = 0 }) {
   const [seconds, setSeconds] = useState(time);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,6 +16,10 @@ function Timer({ time = 0 }) {
       clearTimeout(timer);
     };
   });
+
+  if (seconds === 4) {
+    navigate('../lobby');
+  }
 
   return (
     <div className="timer">

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CountdownTimer from '../../timer/timer-countdown/timer-countdown';
 import Btn from '../../btn/btn';
 import checkGuess from '../../../helper-functions/check-guess.js';
@@ -6,6 +7,7 @@ import './guess-a-character.scss';
 
 function GuessCharacterModal({ displayModal, setDisplayModal }) {
   const [guess, setGuess] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     return () => setGuess('');
@@ -21,6 +23,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
       onSubmit={(e) => {
         e.preventDefault();
         setDisplayModal(false);
+        navigate('../');
       }}
     >
       <div className="guess-character-modal__title-container">

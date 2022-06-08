@@ -3,7 +3,7 @@ function checkGuess(guess) {
     return true;
   }
 
-  return /(\b)(on\S+)(\s*)=|javascript|<(|\/|[^\/>][^>]+|\/[^>][^>]+)>/gi.test(
+  return /(\b)(on\S+)(\s*)=|javascript|<(|\/|[^\\/>][^>]+|\/[^>][^>]+)>/gi.test(
     guess
   );
 }

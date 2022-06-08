@@ -1,8 +1,10 @@
 import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import GameTitle from '../../components/game-title/game-title';
+import { useNavigate } from 'react-router-dom';
 import './home.scss';
 
 function Homepage() {
+  const navigate = useNavigate();
   const playersNumber = 97;
 
   return (
@@ -11,7 +13,13 @@ function Homepage() {
       <span className="homepage__players_online">
         {playersNumber} {playersNumber > 1 ? 'Players' : 'Player'} Online
       </span>
-      <SetGameStatusBtn>PLAY QUICK GAME</SetGameStatusBtn>
+      <SetGameStatusBtn
+        onClick={() => {
+          navigate('loading');
+        }}
+      >
+        PLAY QUICK GAME
+      </SetGameStatusBtn>
     </div>
   );
 }

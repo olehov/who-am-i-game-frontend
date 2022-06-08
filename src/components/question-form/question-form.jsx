@@ -1,9 +1,9 @@
 import GuessCharacterModal from '../modals/guess-a-character/guess-a-character';
-import { useState } from 'react';
+import useModalActive from '../../hooks/modal-active';
 import './question-form.scss';
 
 function QuestionForm() {
-  const [displayModal, setDisplayModal] = useState(false);
+  const [active, setActive] = useModalActive(false);
 
   return (
     <>
@@ -17,14 +17,11 @@ function QuestionForm() {
           />
           <button className="btn btn_ask">Ask</button>
         </div>
-        <button className="btn btn_guess" onClick={() => setDisplayModal(true)}>
+        <button className="btn btn_guess" onClick={() => setActive(true)}>
           I'm ready to guess
         </button>
       </div>
-      <GuessCharacterModal
-        displayModal={displayModal}
-        setDisplayModal={setDisplayModal}
-      />
+      <GuessCharacterModal displayModal={active} setDisplayModal={setActive} />
     </>
   );
 }

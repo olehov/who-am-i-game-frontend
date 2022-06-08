@@ -1,14 +1,17 @@
 import ContainerWrapper from '../container-wrapper/container-wrapper';
 import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import UserItem from '../user-item/user-item';
+import useModalActive from '../../hooks/modal-active';
 import './users-container.scss';
 
 function UsersContainer() {
+  const [active] = useModalActive(false);
+
   return (
     <ContainerWrapper className="users">
       <div className="users__timer-container">
         <p className="users__turn">TURN TIME</p>
-        <CountdownTimer small={'v-small'} time={60} />
+        {!active && <CountdownTimer small={'v-small'} time={60} />}
       </div>
       <UserItem
         user={{ name: 'GreenDean', character: 'This is you' }}
