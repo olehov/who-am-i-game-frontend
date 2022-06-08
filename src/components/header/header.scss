@@ -7,13 +7,6 @@
   font-weight: 900;
   font-size: 32px;
   line-height: 39px;
-
-  .button_leave_game {
-    border: none;
-    border-radius: 200px;
-    font-weight: 700;
-    font-size: 16px;
-  }
 }
 
 @media screen and (max-width: 1280px) {
@@ -21,11 +14,5 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
-  }
-
-  .button_leave_game {
-    gap: 6px;
-    width: 160px;
-    height: 45px;
   }
 }

@@ -1,10 +1,10 @@
 import './header.scss';
 
-function Header(props) {
+function Header({ children }) {
   return (
     <header className="header">
       <h1>Who am I</h1>
-      {props.children}
+      {children}
     </header>
   );
 }

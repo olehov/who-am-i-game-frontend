@@ -1,16 +1,21 @@
 import clsx from 'clsx';
-import React from 'react';
 import './btn.scss';
 
 // <-- Use this names for Button Styles -->
 // 'btn-green-solid'
 // 'btn-pink-solid'
 // 'btn-yellow-solid'
-// 'btn-disabled'
 // 'btn-lightgray-outline'
+// 'btn-blue-outline'
+
+// <-- Use this names for icon Styles -->
+// 'check-icon'
+// 'cross-icon'
+// 'question-icon'
 
 function Btn({
   children,
+  iconClassName = 'd-none',
   type = 'button',
   onClick,
   className = 'btn-green-solid',
@@ -23,6 +28,7 @@ function Btn({
       type={type}
       disabled={disabled}
     >
+      <div className={iconClassName}></div>
       {children}
     </button>
   );
