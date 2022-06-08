@@ -42,3 +42,15 @@
     background: none;
   }
 }
+
+.message_check {
+  fill: $btn-green;
+}
+
+.message_cross {
+  fill: $btn-pink;
+}
+
+.message_question {
+  fill: $btn-orange;
+}

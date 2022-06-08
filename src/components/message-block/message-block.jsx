@@ -1,23 +1,23 @@
 import clsx from 'clsx';
-import './message-block.scss';
 import { ReactComponent as Check } from '../../assets/svg/check-icon-btn.svg';
 import { ReactComponent as Question } from '../../assets/svg/question-icon-btn.svg';
 import { ReactComponent as Cross } from '../../assets/svg/cross-icon-btn.svg';
+import './message-block.scss';
 
 function MessageBlock(props) {
   let message = props.message;
   let icon = null;
 
   if (message === 'yes') {
-    icon = <Check fill="#00faac" />;
+    icon = <Check className="message_check" />;
   }
 
   if (message === 'no') {
-    icon = <Cross fill="#ff59b3" />;
+    icon = <Cross className="message_cross" />;
   }
 
   if (message === "don't know") {
-    icon = <Question fill="#ffd1af" />;
+    icon = <Question className="message_question" />;
   }
 
   if (props.mode === 'response') {

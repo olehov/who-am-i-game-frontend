@@ -17,7 +17,7 @@ import './history-container.scss';
 function HistoryContainer() {
   const [mode, setMode] = useState('answer');
   const [message, setMessage] = useState("don't know");
-  let bottomElement = useRef(null);
+  const bottomElement = useRef(null);
 
   const handleClick = (event) => {
     setMode('wait');
