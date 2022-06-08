@@ -2,9 +2,10 @@ import HistoryItem from '../history-item/history-item';
 import ContainerWrapper from '../container-wrapper/container-wrapper';
 import QuestionForm from '../question-form/question-form';
 import { useEffect, useRef, useState } from 'react';
-import { history } from '../../store/mock-data';
+import { currentUser, history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
+import GuessCharacterModal from '../modals/guess-a-character/guess-a-character';
 import './history-container.scss';
 
 //---------types of mode-----------
@@ -14,15 +15,12 @@ import './history-container.scss';
 //'wait' - waiting for response from other prayers after giving an answer
 //'response' - giving a response for the question ('yes' or 'no')
 
-function HistoryContainer() {
-  const [mode, setMode] = useState('answer');
+function HistoryContainer(props) {
+  const [mode, setMode] = useState('ask');
   const [message, setMessage] = useState("don't know");
+  const [currentQuestion, setCurrentQuestion] = useState('');
+  const [disabled, setDisabled] = useState(false);
   const bottomElement = useRef(null);
-
-  const handleClick = (event) => {
-    setMode('wait');
-    setMessage(event.target.textContent);
-  };
 
   useEffect(() => {
     const listBottom = bottomElement.current;
@@ -35,6 +33,21 @@ function HistoryContainer() {
     });
   });
 
+  const sendQuestionHandler = () => {
+    if (currentQuestion !== '') {
+      history.push({ user: currentUser, question: currentQuestion });
+
+      setCurrentQuestion('');
+      setDisabled(true);
+      setTimeout(() => setDisabled(false), 10000);
+    }
+  };
+
+  const handleClick = (event) => {
+    setMode('wait');
+    setMessage(event.target.textContent);
+  };
+
   return (
     <ContainerWrapper className="history">
       <div className="history_list">
@@ -43,7 +56,15 @@ function HistoryContainer() {
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
-      {mode === 'ask' && <QuestionForm />}
+      {mode === 'ask' && (
+        <QuestionForm
+          disabled={disabled}
+          setCurrentQuestion={setCurrentQuestion}
+          currentQuestion={currentQuestion}
+          sendQuestion={sendQuestionHandler}
+          setDisplayModal={props.setDisplayModal}
+        />
+      )}
       {(mode === 'answer' || mode === 'guess') && (
         <AnswerForm mode={mode} onClick={handleClick} />
       )}

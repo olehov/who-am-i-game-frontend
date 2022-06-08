@@ -13,9 +13,10 @@ function HistoryItem(props) {
         <p>{question}</p>
       </div>
       <div className="history_item_icons_box">
-        {answers.map((answer, index) => (
-          <AnswerIcon answer={answer} key={index} />
-        ))}
+        {answers &&
+          answers.map((answer, index) => (
+            <AnswerIcon answer={answer} key={index} />
+          ))}
       </div>
     </div>
   );

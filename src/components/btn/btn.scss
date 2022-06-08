@@ -23,18 +23,14 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  // gap: 8px !important;
+  gap: 8px !important;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
   font-size: 16px;
   text-transform: uppercase;
   color: $font-black;
-
-  // padding: 24px 0;
-  // border: none;
-
+  border: none;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -66,15 +62,6 @@
   border: 4px solid $font-black;
 }
 
-// <<<<<<< HEAD
-// .btn-leave-game {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 8px;
-//   width: 184px;
-// =======
 .btn-blue-outline {
   border: 4px solid $main-font-color;
   background-color: $primary-background-blue;
@@ -89,15 +76,10 @@
 .btn-leave-game {
   gap: 8px;
   width: 200px;
-  // >>>>>>> develop
   height: 51px;
   background: $btn-pink;
   border-radius: 200px !important;
   font-weight: 700;
-  // <<<<<<< HEAD
-  //   font-size: 16px;
-  // =======
-  // >>>>>>> develop
 
   @media screen and (max-width: 1280px) {
     .button_leave_game {
