@@ -1,25 +1,22 @@
+import clsx from 'clsx';
+import AnswerIcon from '../answer-icon/answer-icon';
 import './history-item.scss';
 
-function HistoryItem() {
+function HistoryItem(props) {
+  const { user, question, answers, guess } = props.question;
+
   return (
     <div className="history_item">
-      <div className="history_item_question">
-        <span className="icon"></span>
-        <p>Am I from England?</p>
+      <div className={clsx('history_item_question', guess)}>
+        {guess && <span className="my_guess">My guess</span>}
+        <img src={user.iconSrc} alt="icon" />
+        <p>{question}</p>
       </div>
       <div className="history_item_icons_box">
-        <div className="icon_wrapper">
-          <span className="icon"></span>
-          <span className="icon_status icon_question"></span>
-        </div>
-        <div className="icon_wrapper">
-          <span className="icon"></span>
-          <span className="icon_status icon_check"></span>
-        </div>
-        <div className="icon_wrapper">
-          <span className="icon"></span>
-          <span className="icon_status icon_wrong"></span>
-        </div>
+        {answers &&
+          answers.map((answer, index) => (
+            <AnswerIcon answer={answer} key={index} />
+          ))}
       </div>
     </div>
   );

@@ -3,9 +3,11 @@ import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import UserItem from '../user-item/user-item';
 import useModalActive from '../../hooks/modal-active';
 import './users-container.scss';
+import { currentUser, users } from '../../store/mock-data';
 
 function UsersContainer() {
   const [active] = useModalActive(false);
+  const { character, ...withoutCharacter } = currentUser;
 
   return (
     <ContainerWrapper className="users">
@@ -14,14 +16,14 @@ function UsersContainer() {
         {!active && <CountdownTimer small={'v-small'} time={60} />}
       </div>
       <UserItem
-        user={{ name: 'GreenDean', character: 'This is you' }}
+        user={{ character: 'This is you', ...withoutCharacter }}
         className="current_user"
       />
       <hr />
       <div className="users_list">
-        <UserItem user={{ name: 'Khalilormous', character: 'Orlando Bloom' }} />
-        <UserItem user={{ name: 'KayPee', character: 'Geoffrey Rush' }} />
-        <UserItem user={{ name: 'Ted_Read', character: 'Dwayne Johnson' }} />
+        {users.map((user) => (
+          <UserItem user={user} key={user.id} />
+        ))}
       </div>
     </ContainerWrapper>
   );

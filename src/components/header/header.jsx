@@ -8,9 +8,9 @@ function Header() {
   const [displayModal, setDisplayModal] = useState(false);
 
   return (
-    <header className="header">
+    <header className="game-header">
       <GameTitle className={'small'} />
-      <LeaveGameBtn page={'game-page'} setModalActive={setDisplayModal} />
+      <LeaveGameBtn className={'game-page'} setModalActive={setDisplayModal} />
       <LeaveGameModal
         showModal={displayModal}
         setModalActive={setDisplayModal}

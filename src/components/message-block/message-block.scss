@@ -1,0 +1,56 @@
+@import '../../styles/colors';
+
+.text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  height: 48px;
+  border-radius: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  gap: 16px;
+
+  &.wait {
+    background: $primary-background-blue;
+  }
+  &.response.yes {
+    background: $btn-green;
+  }
+  &.response.no {
+    background: $btn-pink;
+  }
+  &.response.know {
+    background: $btn-orange;
+  }
+}
+
+.wait {
+  &.yes {
+    color: $btn-green;
+  }
+  &.no {
+    color: $btn-pink;
+  }
+  &.know {
+    color: $btn-orange;
+  }
+  .yes,
+  .no,
+  .know {
+    background: none;
+  }
+}
+
+.message_check {
+  fill: $btn-green;
+}
+
+.message_cross {
+  fill: $btn-pink;
+}
+
+.message_question {
+  fill: $btn-orange;
+}

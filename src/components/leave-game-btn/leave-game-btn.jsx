@@ -4,7 +4,7 @@ import './leave-game-btn.scss';
 function LeaveGameBtn({ className, setModalActive }) {
   return (
     <button
-      className={clsx('leave-game-btn', [className])}
+      className={clsx('leave-game-btn', className)}
       onClick={() => {
         setModalActive(true);
       }}
