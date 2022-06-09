@@ -44,6 +44,36 @@ Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 
    `"proxy": "http://localhost:4000"`
 
+## Deploy to Heroku
+
+Install [heroku](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli)
+
+1. Create the Heroku app
+
+   Replace $APP_NAME with the name for your unique frontend app.
+
+   ```bash
+   heroku create $APP_NAME --buildpack mars/create-react-app
+   ```
+
+2. Point the React UI app to a specific backend heroku API:
+
+   ```bash
+   heroku config:set API_URL="https://who-am-i-game-api.herokuapp.com/"
+   ```
+
+3. Deploy
+
+   ```bash
+   git push heroku develop:main
+   ```
+
+4. Visit the app's public URL in your browser
+
+   ```bash
+   heroku open
+   ```
+
 ## Code style
 
 Just use Prettier and adhere to ESLint recommendations. It should cover 90% of cases. If in doubt, just ask others.
