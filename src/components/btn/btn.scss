@@ -39,6 +39,11 @@
   height: 48px;
 }
 
+.lobby-green {
+  background: $btn-green;
+  height: 67px;
+}
+
 .btn:hover {
   font-size: 17px;
   filter: brightness(85%);
@@ -52,6 +57,7 @@
 }
 .btn-yellow-solid {
   background: $btn-yellow;
+  height: 67px;
 }
 .btn:disabled {
   background: $btn-lightgray;

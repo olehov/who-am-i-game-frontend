@@ -15,8 +15,8 @@ import './history-container.scss';
 //'response' - giving a response for the question ('yes' or 'no')
 
 function HistoryContainer(props) {
-  const [mode, setMode] = useState('ask');
-  const [message, setMessage] = useState("don't know");
+  const [mode, setMode] = useState('answer');
+  const [message, setMessage] = useState('no');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);
   const bottomElement = useRef(null);
@@ -68,7 +68,7 @@ function HistoryContainer(props) {
         <AnswerForm mode={mode} onClick={handleClick} />
       )}
       {(mode === 'wait' || mode === 'response') && (
-        <MessageBlock mode={mode} message={message} className={mode} />
+        <MessageBlock mode={mode} message={message} />
       )}
     </ContainerWrapper>
   );

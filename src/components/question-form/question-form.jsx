@@ -1,9 +1,25 @@
 import GuessCharacterModal from '../modals/guess-a-character/guess-a-character';
 import useModalActive from '../../hooks/modal-active';
+import Btn from '../btn/btn';
 import './question-form.scss';
 
-function QuestionForm() {
+function QuestionForm({
+  disabled,
+  setCurrentQuestion,
+  currentQuestion,
+  sendQuestion,
+}) {
   const [active, setActive] = useModalActive(false);
+
+  const handleChange = (event) => {
+    setCurrentQuestion(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.code === 'Enter') {
+      sendQuestion();
+    }
+  };
 
   return (
     <>
@@ -14,12 +30,22 @@ function QuestionForm() {
             type="text"
             placeholder="Type your question"
             maxLength="256"
+            value={currentQuestion}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            disabled={disabled}
           />
-          <button className="btn btn_ask">Ask</button>
+          <button
+            className="btn btn_ask"
+            onClick={sendQuestion}
+            disabled={disabled}
+          >
+            Ask
+          </button>
         </div>
-        <button className="btn btn_guess" onClick={() => setActive(true)}>
-          I'm ready to guess
-        </button>
+        <Btn className="btn-yellow-solid" onClick={() => setActive(true)}>
+          I AM READY TO GUESS
+        </Btn>
       </div>
       <GuessCharacterModal displayModal={active} setDisplayModal={setActive} />
     </>

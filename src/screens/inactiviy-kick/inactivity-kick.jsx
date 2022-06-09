@@ -10,7 +10,7 @@ function InactivityKick() {
   return (
     <div className="inactivity-kick">
       <GameTitle />
-      <PlayerCard avatar={'avatar01'} name={'BeanJean'} />
+      <PlayerCard avatarClassName={'avatar01'} name={'BeanJean'} />
       <h3 className="inactivity-kick__message">
         SORRY, YOU HAVE BEEN KICKED FROM THE GAME DUE TO INACTIVITY
       </h3>

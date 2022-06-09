@@ -52,7 +52,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
       />
       <div className="guess-character-modal__guess-container">
         <Btn
-          btnStyle="btn-yellow-solid"
+          className="btn-yellow-solid"
           disabled={checkGuess(guess)}
           type="submit"
         >

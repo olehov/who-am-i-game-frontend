@@ -1,43 +1,15 @@
+import messageConverter from '../../helper-functions/message-converter';
 import clsx from 'clsx';
-import { ReactComponent as Check } from '../../assets/svg/check-icon-btn.svg';
-import { ReactComponent as Question } from '../../assets/svg/question-icon-btn.svg';
-import { ReactComponent as Cross } from '../../assets/svg/cross-icon-btn.svg';
 import './message-block.scss';
 
-function MessageBlock(props) {
-  let message = props.message;
-  let icon = null;
-
-  if (message === 'yes') {
-    icon = <Check className="message_check" />;
-  }
-
-  if (message === 'no') {
-    icon = <Cross className="message_cross" />;
-  }
-
-  if (message === "don't know") {
-    icon = <Question className="message_question" />;
-  }
-
-  if (props.mode === 'response') {
-    if (message === 'yes') {
-      message = 'Right. Your turn';
-    }
-
-    if (message === 'no') {
-      message = 'Wrong. Passing turn';
-    }
-
-    if (message === "don't know") {
-      message = "Don't know. Try again";
-    }
-  }
+function MessageBlock({ mode, message }) {
+  const className = message === "don't know" ? 'unsure' : message;
+  const modeClassName = `${mode}-${className}`;
 
   return (
-    <div className={clsx('text', props.message, props.className)}>
-      {icon}
-      {message}
+    <div className={clsx('text', modeClassName)}>
+      {mode !== 'response' && <div className={`icon-${className}`}></div>}
+      <span className={modeClassName}>{messageConverter(mode, message)}</span>
     </div>
   );
 }

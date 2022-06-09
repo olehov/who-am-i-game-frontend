@@ -6,7 +6,7 @@ import LeaveGameBtn from '../../components/leave-game-btn/leave-game-btn';
 import LeaveGameModal from '../../components/modals/leave-game/leave-game';
 import SelectCharacterModal from '../../components/modals/select-character/select-character';
 import { useState } from 'react';
-import './input-character.scss';
+import './lobby.scss';
 
 function Lobby() {
   const [showLeaveModal, setLeaveModalActive] = useState(false);
@@ -21,31 +21,37 @@ function Lobby() {
       <div className="input-player">
         <div className="player-card-wrapp">
           <PlayerCard
-            avatar={'avatar01'}
+            avatarClassName={'avatar01'}
             name={'Player 1'}
             desription={'this is you'}
             playerStaus="yes"
           />
-          <PlayerCard avatar={'avatar02'} name={'Player 2'} playerStaus="no" />
           <PlayerCard
-            avatar={'avatar03'}
+            avatarClassName={'avatar02'}
+            name={'Player 2'}
+            playerStaus="no"
+          />
+          <PlayerCard
+            avatarClassName={'avatar03'}
             name={'Player 3'}
             playerStaus="wait"
           />
           <PlayerCard
-            avatar={'avatar04'}
+            avatarClassName={'avatar04'}
             name={'Player 4'}
             playerStaus="wait"
           />
         </div>
         <div className="btn-wrapp">
           <Btn
+            className="lobby-green"
             onClick={() => {
               setSuggestModal(true);
             }}
           >
             Suggest a character
           </Btn>
+          <div className="demarcation"></div>
           <LeaveGameBtn
             className={'lobby-page'}
             setModalActive={setLeaveModalActive}
