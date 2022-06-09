@@ -1,3 +1,20 @@
+@import '../../styles/colors.scss';
+
+.users {
+  color: $modals-background;
+
+  .timer_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+
+    p {
+      text-transform: uppercase;
+    }
+  }
+}
+
 .users_list {
   width: calc(100% + 20px);
   padding-right: 20px;
