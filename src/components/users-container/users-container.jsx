@@ -14,7 +14,7 @@ function UsersContainer() {
     <ContainerWrapper className="users">
       <div className="users__timer-container">
         <p className="users__turn">TURN TIME</p>
-        <CountdownTimer small={'v-small'} time={60} modalActive={modalActive} />
+        <CountdownTimer small={'v-small'} time={60} paused={modalActive} />
       </div>
       <UserItem
         user={{ character: 'This is you', ...withoutCharacter }}

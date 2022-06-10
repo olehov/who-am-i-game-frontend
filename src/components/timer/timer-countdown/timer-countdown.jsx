@@ -4,23 +4,21 @@ import convertTime from '../../../helper-functions/convert-time';
 import clsx from 'clsx';
 import '../timer.scss';
 
-function CountdownTimer({ inLobby, time = 60, small, modalActive }) {
+function CountdownTimer({ inLobby, time = 60, small, paused }) {
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!modalActive) {
-        setSeconds(seconds - 1);
-      }
+      setSeconds(seconds - 1);
     }, 1000);
 
-    if (seconds <= 0) {
+    if (seconds <= 0 || paused) {
       clearTimeout(timer);
     }
 
     return () => clearTimeout(timer);
-  }, [modalActive, seconds]);
+  }, [paused, seconds]);
 
   useEffect(() => {
     if (seconds === 0) {
