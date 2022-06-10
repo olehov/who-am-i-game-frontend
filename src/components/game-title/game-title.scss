@@ -7,6 +7,12 @@
   margin-bottom: 20px;
 }
 
+.small {
+  font-size: 32px;
+  margin-bottom: 0px;
+  line-height: 38px;
+}
+
 @media (max-width: 425px) {
   .game-title {
     font-weight: 700;

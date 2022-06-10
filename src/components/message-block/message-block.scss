@@ -11,46 +11,64 @@
   font-weight: 900;
   text-transform: uppercase;
   gap: 16px;
-
-  &.wait {
-    background: $primary-background-blue;
-  }
-  &.response.yes {
-    background: $btn-green;
-  }
-  &.response.no {
-    background: $btn-pink;
-  }
-  &.response.know {
-    background: $btn-orange;
-  }
 }
 
-.wait {
-  &.yes {
-    color: $btn-green;
-  }
-  &.no {
-    color: $btn-pink;
-  }
-  &.know {
-    color: $btn-orange;
-  }
-  .yes,
-  .no,
-  .know {
-    background: none;
-  }
+.response-yes {
+  background-color: $btn-green;
+  color: $font-black;
 }
 
-.message_check {
-  fill: $btn-green;
+.response-no {
+  background-color: $btn-pink;
+  color: $font-black;
 }
 
-.message_cross {
-  fill: $btn-pink;
+.response-unsure {
+  background-color: $btn-orange;
+  color: $font-black;
 }
 
-.message_question {
-  fill: $btn-orange;
+.wait-yes {
+  color: $btn-green;
+}
+
+.wait-no {
+  color: $btn-pink;
+}
+
+.wait-unsure {
+  color: $btn-orange;
+}
+
+.icon-wait-yes {
+  height: 19.2px;
+  width: 19.2px;
+  background-image: url('../../icons/check.svg');
+  filter: invert(83%) sepia(65%) saturate(3593%) hue-rotate(89deg)
+    brightness(97%) contrast(102%);
+  background-size: 19.2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-wait-no {
+  height: 19.2px;
+  width: 19.2px;
+  background-image: url('../../icons/cross.svg');
+  filter: invert(57%) sepia(65%) saturate(3655%) hue-rotate(299deg)
+    brightness(104%) contrast(101%);
+  background-size: 19.2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-wait-unsure {
+  height: 25px;
+  width: 25px;
+  background-image: url('../../icons/questionmark.svg');
+  filter: invert(86%) sepia(19%) saturate(902%) hue-rotate(319deg)
+    brightness(103%) contrast(103%);
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
 }

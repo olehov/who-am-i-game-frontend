@@ -28,7 +28,7 @@ export const history = [
     answers: [
       { userIconSrc: avatar02, status: 'yes' },
       { userIconSrc: avatar03, status: 'yes' },
-      { userIconSrc: avatar04, status: "don't know" },
+      { userIconSrc: avatar04, status: 'unsure' },
     ],
   },
   {
@@ -39,14 +39,14 @@ export const history = [
       { userIconSrc: avatar03, status: 'no' },
       { userIconSrc: avatar04, status: 'no' },
     ],
-    guess: true,
+    guess: 'guess',
   },
   {
     user: { name: 'Khalilormous', iconSrc: avatar02 },
     question: "I'm a politians?",
     answers: [
       { userIconSrc: avatar01, status: 'no' },
-      { userIconSrc: avatar03, status: "don't know" },
+      { userIconSrc: avatar03, status: 'unsure' },
       { userIconSrc: avatar04, status: 'no' },
     ],
   },
@@ -56,7 +56,7 @@ export const history = [
     answers: [
       { userIconSrc: avatar01, status: 'yes' },
       { userIconSrc: avatar02, status: 'no' },
-      { userIconSrc: avatar04, status: "don't know" },
+      { userIconSrc: avatar04, status: 'unsure' },
     ],
   },
 ];

@@ -1,17 +1,15 @@
-@import '../../styles/colors.scss';
+@import '../../styles/colors';
 
 .users {
-  color: $modals-background;
-
-  .timer_wrapper {
+  &__timer-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 24px;
+    color: $modals-background;
+  }
 
-    p {
-      text-transform: uppercase;
-    }
+  &__turn {
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 

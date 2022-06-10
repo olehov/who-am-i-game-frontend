@@ -14,9 +14,9 @@ import './history-container.scss';
 //'wait' - waiting for response from other prayers after giving an answer
 //'response' - giving a response for the question ('yes' or 'no')
 
-function HistoryContainer(props) {
+function HistoryContainer() {
   const [mode, setMode] = useState('ask');
-  const [message, setMessage] = useState("don't know");
+  const [message, setMessage] = useState('no');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);
   const bottomElement = useRef(null);
@@ -61,14 +61,13 @@ function HistoryContainer(props) {
           setCurrentQuestion={setCurrentQuestion}
           currentQuestion={currentQuestion}
           sendQuestion={sendQuestionHandler}
-          setDisplayModal={props.setDisplayModal}
         />
       )}
       {(mode === 'answer' || mode === 'guess') && (
         <AnswerForm mode={mode} onClick={handleClick} />
       )}
       {(mode === 'wait' || mode === 'response') && (
-        <MessageBlock mode={mode} message={message} className={mode} />
+        <MessageBlock mode={mode} message={message} />
       )}
     </ContainerWrapper>
   );

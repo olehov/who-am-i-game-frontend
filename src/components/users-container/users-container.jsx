@@ -1,19 +1,20 @@
 import ContainerWrapper from '../container-wrapper/container-wrapper';
+import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import UserItem from '../user-item/user-item';
+import ModalContext from '../../contexts/modal-context';
 import './users-container.scss';
 import { currentUser, users } from '../../store/mock-data';
-import CountdownTimer from '../timer/timer-countdown/timer-countdown';
-import { useState } from 'react';
+import { useContext } from 'react';
 
 function UsersContainer() {
   const { character, ...withoutCharacter } = currentUser;
-  const [time] = useState(60);
+  const modalActive = useContext(ModalContext)[0];
 
   return (
     <ContainerWrapper className="users">
-      <div className="timer_wrapper">
-        <p>Turn time</p>
-        <CountdownTimer time={time} small={true} />
+      <div className="users__timer-container">
+        <p className="users__turn">TURN TIME</p>
+        <CountdownTimer small={'v-small'} time={60} paused={modalActive} />
       </div>
       <UserItem
         user={{ character: 'This is you', ...withoutCharacter }}

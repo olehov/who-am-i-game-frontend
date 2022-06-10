@@ -1,16 +1,19 @@
 @import '../../styles/colors.scss';
 
-.header {
+.game-header {
+  width: 100%;
+  max-width: 1440px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   font-weight: 900;
   font-size: 32px;
   line-height: 39px;
+  margin-bottom: 0px;
 }
 
 @media screen and (max-width: 1280px) {
-  .header {
+  .game-header {
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;

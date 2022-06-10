@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './leave-game.scss';
 
 function LeaveGameModal({ showModal, setModalActive }) {
+  const navigate = useNavigate();
+
   if (!showModal) {
     return null;
   }
@@ -9,7 +12,7 @@ function LeaveGameModal({ showModal, setModalActive }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        setModalActive(false);
+        navigate('../');
       }}
       className="modal-container"
     >

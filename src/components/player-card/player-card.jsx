@@ -27,7 +27,7 @@ function PlayerCard({
         <div className="player-name">{name}</div>
         <div
           className={clsx('player-decription', {
-            'd-none': description == 'd-none',
+            'd-none': description === 'd-none',
           })}
         >
           {description}

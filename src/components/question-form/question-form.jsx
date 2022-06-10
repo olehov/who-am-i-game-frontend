@@ -1,46 +1,53 @@
+import ModalContext from '../../contexts/modal-context';
 import Btn from '../btn/btn';
+import { useContext } from 'react';
 import './question-form.scss';
 
-function QuestionForm(props) {
+function QuestionForm({
+  disabled,
+  setCurrentQuestion,
+  currentQuestion,
+  sendQuestion,
+}) {
+  const setModalActive = useContext(ModalContext)[1];
+
   const handleChange = (event) => {
-    props.setCurrentQuestion(event.target.value);
+    setCurrentQuestion(event.target.value);
   };
 
   const handleKeyDown = (event) => {
     if (event.code === 'Enter') {
-      props.sendQuestion();
+      sendQuestion();
     }
   };
 
   return (
-    <div className="form">
-      <div className="row">
-        <input
-          className="input_field"
-          type="text"
-          placeholder="Type your question"
-          maxLength="256"
-          value={props.currentQuestion}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          disabled={props.disabled}
-        />
-        <Btn
-          className="btn_ask"
-          onClick={props.sendQuestion}
-          disabled={props.disabled}
-        >
-          Ask
+    <>
+      <div className="form">
+        <div className="row">
+          <input
+            className="input_field"
+            type="text"
+            placeholder="Type your question"
+            maxLength="256"
+            value={currentQuestion}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            disabled={disabled}
+          />
+          <button
+            className="btn btn_ask"
+            onClick={sendQuestion}
+            disabled={disabled}
+          >
+            Ask
+          </button>
+        </div>
+        <Btn className="btn-yellow-solid" onClick={() => setModalActive(true)}>
+          I AM READY TO GUESS
         </Btn>
       </div>
-      <Btn
-        className="btn_guess"
-        onClick={() => props.setDisplayModal(true)}
-        disabled={props.disabled}
-      >
-        I'm ready to guess
-      </Btn>
-    </div>
+    </>
   );
 }
 
