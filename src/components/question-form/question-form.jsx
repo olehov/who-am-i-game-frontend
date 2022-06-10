@@ -1,6 +1,6 @@
-import GuessCharacterModal from '../modals/guess-a-character/guess-a-character';
-import useModalActive from '../../hooks/modal-active';
+import ModalContext from '../../contexts/modal-context';
 import Btn from '../btn/btn';
+import { useContext } from 'react';
 import './question-form.scss';
 
 function QuestionForm({
@@ -9,7 +9,7 @@ function QuestionForm({
   currentQuestion,
   sendQuestion,
 }) {
-  const [active, setActive] = useModalActive(false);
+  const setModalActive = useContext(ModalContext)[1];
 
   const handleChange = (event) => {
     setCurrentQuestion(event.target.value);
@@ -43,11 +43,10 @@ function QuestionForm({
             Ask
           </button>
         </div>
-        <Btn className="btn-yellow-solid" onClick={() => setActive(true)}>
+        <Btn className="btn-yellow-solid" onClick={() => setModalActive(true)}>
           I AM READY TO GUESS
         </Btn>
       </div>
-      <GuessCharacterModal displayModal={active} setDisplayModal={setActive} />
     </>
   );
 }
