@@ -15,7 +15,7 @@ import './history-container.scss';
 //'response' - giving a response for the question ('yes' or 'no')
 
 function HistoryContainer(props) {
-  const [mode, setMode] = useState('answer');
+  const [mode, setMode] = useState('guess');
   const [message, setMessage] = useState('no');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);

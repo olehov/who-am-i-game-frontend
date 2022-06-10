@@ -3,12 +3,13 @@ import clsx from 'clsx';
 import './message-block.scss';
 
 function MessageBlock({ mode, message }) {
-  const className = message === "don't know" ? 'unsure' : message;
-  const modeClassName = `${mode}-${className}`;
+  const modeClassName = `${mode}-${
+    message === "don't know" ? 'unsure' : message
+  }`;
 
   return (
     <div className={clsx('text', modeClassName)}>
-      {mode !== 'response' && <div className={`icon-${className}`}></div>}
+      <div className={`icon-${modeClassName}`}></div>
       <span className={modeClassName}>{messageConverter(mode, message)}</span>
     </div>
   );
