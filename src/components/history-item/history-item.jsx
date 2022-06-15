@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { v4 as uuidv4 } from 'uuid';
 import AnswerIcon from '../answer-icon/answer-icon';
 import './history-item.scss';
 
@@ -14,8 +15,8 @@ function HistoryItem(props) {
       </div>
       <div className="history_item_icons_box">
         {answers &&
-          answers.map((answer, index) => (
-            <AnswerIcon answer={answer} key={index} />
+          answers.map((answer) => (
+            <AnswerIcon answer={answer} key={uuidv4()} />
           ))}
       </div>
     </div>

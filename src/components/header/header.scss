@@ -1,8 +1,7 @@
 @import '../../styles/colors.scss';
 
 .game-header {
-  width: 100%;
-  max-width: 1440px;
+  width: 1280px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +9,8 @@
   font-size: 32px;
   line-height: 39px;
   margin-bottom: 0px;
+  color: $modals-background;
+  margin-bottom: 24px;
 }
 
 @media screen and (max-width: 1280px) {
