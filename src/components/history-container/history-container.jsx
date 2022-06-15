@@ -7,15 +7,7 @@ import MessageBlock from '../message-block/message-block';
 import { v4 as uuidv4 } from 'uuid';
 import './history-container.scss';
 
-//---------types of mode-----------
-//'ask' - asking a question
-//'answer' - answer a question (3 buttons)
-//'guess' - answer a quessing question (2 buttons)
-//'wait' - waiting for response from other prayers after giving an answer
-//'response' - giving a response for the question ('yes' or 'no')
-
-function HistoryContainer() {
-  const [mode, setMode] = useState('ask');
+function HistoryContainer({ mode, setMode }) {
   const [message, setMessage] = useState('unsure');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);
