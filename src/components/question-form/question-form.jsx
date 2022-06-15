@@ -22,32 +22,30 @@ function QuestionForm({
   };
 
   return (
-    <>
-      <div className="form">
-        <div className="row">
-          <input
-            className="input_field"
-            type="text"
-            placeholder="Type your question"
-            maxLength="256"
-            value={currentQuestion}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            disabled={disabled}
-          />
-          <button
-            className="btn btn_ask"
-            onClick={sendQuestion}
-            disabled={disabled}
-          >
-            Ask
-          </button>
-        </div>
-        <Btn className="btn-yellow-solid" onClick={() => setModalActive(true)}>
-          I AM READY TO GUESS
-        </Btn>
+    <div className="form">
+      <div className="row">
+        <input
+          className="input_field"
+          type="text"
+          placeholder="Type your question"
+          maxLength="256"
+          value={currentQuestion}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          disabled={disabled}
+        />
+        <button
+          className="btn btn_ask"
+          onClick={sendQuestion}
+          disabled={disabled}
+        >
+          Ask
+        </button>
       </div>
-    </>
+      <Btn className="btn-yellow-solid" onClick={() => setModalActive(true)}>
+        I AM READY TO GUESS
+      </Btn>
+    </div>
   );
 }
 

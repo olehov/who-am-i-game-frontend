@@ -1,10 +1,10 @@
 import HistoryItem from '../history-item/history-item';
-import ContainerWrapper from '../container-wrapper/container-wrapper';
 import QuestionForm from '../question-form/question-form';
 import { useEffect, useRef, useState } from 'react';
 import { currentUser, history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
+import { v4 as uuidv4 } from 'uuid';
 import './history-container.scss';
 
 //---------types of mode-----------
@@ -16,7 +16,7 @@ import './history-container.scss';
 
 function HistoryContainer() {
   const [mode, setMode] = useState('ask');
-  const [message, setMessage] = useState('no');
+  const [message, setMessage] = useState('unsure');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);
   const bottomElement = useRef(null);
@@ -48,10 +48,10 @@ function HistoryContainer() {
   };
 
   return (
-    <ContainerWrapper className="history">
+    <div className="history">
       <div className="history_list">
-        {history.map((item, index) => (
-          <HistoryItem question={item} key={index} />
+        {history.map((item) => (
+          <HistoryItem question={item} key={uuidv4()} />
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
@@ -69,7 +69,7 @@ function HistoryContainer() {
       {(mode === 'wait' || mode === 'response') && (
         <MessageBlock mode={mode} message={message} />
       )}
-    </ContainerWrapper>
+    </div>
   );
 }
 

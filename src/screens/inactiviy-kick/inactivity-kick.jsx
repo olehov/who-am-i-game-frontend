@@ -1,6 +1,7 @@
 import GameTitle from '../../components/game-title/game-title';
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import PlayerCard from '../../components/player-card/player-card';
+import Btn from '../../components/btn/btn';
+import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
 import './inactivity-kick.scss';
 
@@ -8,20 +9,22 @@ function InactivityKick() {
   const navigate = useNavigate();
 
   return (
-    <div className="inactivity-kick">
+    <ScreenWrapper>
       <GameTitle />
       <PlayerCard avatarClassName={'avatar01'} name={'BeanJean'} />
-      <h3 className="inactivity-kick__message">
+      <h3 className="inactivity-kick-message">
         SORRY, YOU HAVE BEEN KICKED FROM THE GAME DUE TO INACTIVITY
       </h3>
-      <SetGameStatusBtn
+
+      <Btn
+        className={'btn-blue-outline'}
         onClick={() => {
           navigate('/');
         }}
       >
         GO TO MAIN MENU
-      </SetGameStatusBtn>
-    </div>
+      </Btn>
+    </ScreenWrapper>
   );
 }
 

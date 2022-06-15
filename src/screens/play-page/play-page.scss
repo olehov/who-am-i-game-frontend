@@ -4,17 +4,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
   height: 100vh;
   width: 100%;
-  padding: 30px 96px;
+  padding-top: 37px;
   background: $primary-background-blue;
   color: $main-font-color;
+  padding-bottom: 86px;
 }
 
 .content_wrapper {
-  width: 100%;
-  max-width: 1440px;
+  width: 1280px;
   display: flex;
   justify-content: center;
   flex-grow: 1;
@@ -23,12 +22,8 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 1280px) {
+@media (max-width: 1440px) {
   .layout {
-    gap: 24px;
-    padding: 20px 40px;
-  }
-  .content_wrapper {
-    gap: 24px;
+    padding-bottom: 32px;
   }
 }
