@@ -6,6 +6,7 @@ import { currentUser, history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
 import './history-container.scss';
+import { users } from '../../store/mock-data';
 
 //---------types of mode-----------
 //'ask' - asking a question
@@ -51,7 +52,7 @@ function HistoryContainer() {
     <ContainerWrapper className="history">
       <div className="history_list">
         {history.map((item, index) => (
-          <HistoryItem question={item} key={index} />
+          <HistoryItem users={users} question={item} key={item.id} />
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>

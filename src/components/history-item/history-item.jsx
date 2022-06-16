@@ -4,6 +4,7 @@ import './history-item.scss';
 
 function HistoryItem(props) {
   const { user, question, answers, guess } = props.question;
+  const users = props.users;
 
   return (
     <div className="history_item">
@@ -13,10 +14,17 @@ function HistoryItem(props) {
         <p>{question}</p>
       </div>
       <div className="history_item_icons_box">
-        {answers &&
-          answers.map((answer, index) => (
-            <AnswerIcon answer={answer} key={index} />
-          ))}
+        {users.map((user) => (
+          <AnswerIcon
+            key={user.id}
+            user={user}
+            status={
+              answers
+                ? answers.find((answer) => answer.userId === user.id).status
+                : null
+            }
+          />
+        ))}
       </div>
     </div>
   );

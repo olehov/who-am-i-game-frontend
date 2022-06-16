@@ -4,7 +4,8 @@ import question_mark from '../../assets/svg/question-mark.svg';
 import x from '../../assets/svg/x.svg';
 
 function AnswerIcon(props) {
-  const { userIconSrc, status } = props.answer;
+  const userIconSrc = props.user.iconSrc;
+  const status = props.status;
   let iconSrc = null;
   switch (status) {
     case 'yes':
@@ -20,7 +21,7 @@ function AnswerIcon(props) {
   return (
     <div className="icon_wrapper">
       <img src={userIconSrc} alt="icon" />
-      <img src={iconSrc} alt={status} className="icon_status" />
+      {status && <img src={iconSrc} alt={status} className="icon_status" />}
     </div>
   );
 }
