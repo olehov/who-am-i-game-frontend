@@ -39,7 +39,6 @@ function HistoryContainer() {
 
       setCurrentQuestion('');
       setDisabled(true);
-      setTimeout(() => setDisabled(false), 10000);
     }
   };
 
@@ -52,13 +51,12 @@ function HistoryContainer() {
     <ContainerWrapper className="history">
       <div className="history_list">
         {history.map((item, index) => (
-          <HistoryItem users={users} question={item} key={item.id} />
+          <HistoryItem users={users} question={item} key={index} />
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
-      {mode === 'ask' && (
+      {mode === 'ask' && !disabled && (
         <QuestionForm
-          disabled={disabled}
           setCurrentQuestion={setCurrentQuestion}
           currentQuestion={currentQuestion}
           sendQuestion={sendQuestionHandler}
