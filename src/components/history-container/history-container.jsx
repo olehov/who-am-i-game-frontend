@@ -52,7 +52,7 @@ function HistoryContainer() {
     <ContainerWrapper className="history">
       <div className="history_list">
         {history.map((item, index) => (
-          <HistoryItem users={users} question={item} key={item.id} />
+          <HistoryItem users={users} question={item} key={index} />
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
