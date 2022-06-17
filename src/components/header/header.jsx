@@ -16,12 +16,14 @@ function Header({ inLobby }) {
         <CountdownTimer inLobby={clsx({ 'in-lobby': inLobby })} />
       ) : (
         <>
-          <Btn
-            className={'btn-leave-game'}
-            onClick={() => setDisplayModal(true)}
-          >
-            LEAVE GAME
-          </Btn>
+          <div className="game-header__leave-btn-wrapper">
+            <Btn
+              className={['btn-pink-solid', 'btn-rounded']}
+              onClick={() => setDisplayModal(true)}
+            >
+              LEAVE GAME
+            </Btn>
+          </div>
           <LeaveGameModal
             showModal={displayModal}
             setModalActive={setDisplayModal}

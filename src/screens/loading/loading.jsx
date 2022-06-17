@@ -17,12 +17,14 @@ function Loading() {
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
       <Timer />
-      <Btn
-        className={'btn-leave-game-loading'}
-        onClick={() => setModalActive(true)}
-      >
-        LEAVE GAME
-      </Btn>
+      <div className="loading__button-wrappper">
+        <Btn
+          className={['btn-pink-solid', 'btn-large']}
+          onClick={() => setModalActive(true)}
+        >
+          LEAVE GAME
+        </Btn>
+      </div>
       <LeaveGameModal showModal={modalActive} setModalActive={setModalActive} />
     </ScreenWrapper>
   );

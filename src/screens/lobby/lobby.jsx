@@ -4,7 +4,6 @@ import LeaveGameModal from '../../components/modals/leave-game/leave-game';
 import SelectCharacterModal from '../../components/modals/select-character/select-character';
 import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import './lobby.scss';
 
@@ -20,7 +19,7 @@ function Lobby() {
           <div className="input-screen__player-card-wrapper">
             {[1, 2, 3, 4].map((num) => (
               <PlayerCard
-                key={uuidv4()}
+                key={num}
                 avatarClassName={`avatar0${num}`}
                 name={`Player ${num}`}
                 playerStausClassName={'no'}
@@ -30,16 +29,18 @@ function Lobby() {
           </div>
           <div className="input-screen__btn-wrapper">
             <Btn
-              className={'lobby-green'}
+              className={['btn-green-solid', 'btn-large']}
               onClick={() => {
                 setSuggestModal(true);
               }}
             >
               Suggest a character
             </Btn>
+
             <div className="input-screen__demarcation"></div>
+
             <Btn
-              className={'btn-leave-game-lobby'}
+              className={['btn-pink-solid', 'btn-large']}
               onClick={() => setLeaveModalActive(true)}
             >
               LEAVE GAME

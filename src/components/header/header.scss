@@ -11,6 +11,11 @@
   margin-bottom: 0px;
   color: $modals-background;
   margin-bottom: 24px;
+
+  &__leave-btn-wrapper {
+    width: 184px;
+    height: 51px;
+  }
 }
 
 @media screen and (max-width: 1280px) {
