@@ -33,8 +33,10 @@
     color: $btn-green;
   }
 
-  &__btn-wrap {
+  &__button-wrappper {
     width: 100%;
-    padding-top: 32px;
+    max-width: 628px;
+    height: 67px;
+    margin-top: 32px;
   }
 }

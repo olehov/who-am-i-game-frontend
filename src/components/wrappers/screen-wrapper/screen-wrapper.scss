@@ -1,0 +1,6 @@
+@import '../../../styles/mixins';
+@import '../../../styles/colors';
+
+.screen-wrapper {
+  @include message-screen;
+}

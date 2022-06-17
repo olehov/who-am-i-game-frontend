@@ -1,24 +1,20 @@
 @import '../../styles/colors';
-@import '../../styles/mixins';
 
-.lost-game-screen {
-  @include message-screen;
+.lost-game-screen-message {
+  font-size: 24px;
+  font-weight: 900;
+  color: $btn-pink;
+  max-width: 753px;
+  line-height: 45px;
+  margin-bottom: 56px;
+}
 
-  &__message {
-    font-size: 24px;
-    font-weight: 900;
-    color: $btn-pink;
-    max-width: 753px;
-    line-height: 45px;
-  }
-
-  &__message-character {
-    font-size: 16px;
-    font-weight: 700;
-    color: $primary-background-blue;
-    background-color: $modals-background;
-    padding: 16px 32px 16px 32px;
-    border-radius: 30px;
-    margin: 5px;
-  }
+.lost-game-screen-message-character {
+  font-size: 16px;
+  font-weight: 700;
+  color: $primary-background-blue;
+  background-color: $modals-background;
+  padding: 16px 32px 16px 32px;
+  border-radius: 30px;
+  margin: 5px;
 }

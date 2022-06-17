@@ -1,39 +1,32 @@
 import GameTitle from '../../components/game-title/game-title';
-import Timer from '../../components/timer/timer';
-import GuessCharacterModal from '../../components/modals/guess-a-character/guess-a-character';
-import './loading.scss';
-import { useState } from 'react';
 import Btn from '../../components/btn/btn';
+import Timer from '../../components/timer/timer';
 import LeaveGameModal from '../../components/modals/leave-game/leave-game';
+import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
+import { useState } from 'react';
+import './loading.scss';
 
 function Loading() {
-  const [displayModal, setDisplayModal] = useState(true);
   const [modalActive, setModalActive] = useState(false);
 
   return (
-    <div className="loading">
-      <div className="loading__wrapper">
-        <GameTitle />
-        <h3 className="loading__queue-number">23 PLAYERS ARE IN QUEUE</h3>
-        <h3 className="loading__waiting-message">
-          PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
-        </h3>
-        <Timer />
-        <div className="loading__btn-wrap">
-          <Btn onClick={() => setModalActive(true)} className="btn-pink-solid">
-            Leave Game
-          </Btn>
-        </div>
-        <LeaveGameModal
-          showModal={modalActive}
-          setModalActive={setModalActive}
-        />
-        <GuessCharacterModal
-          displayModal={displayModal}
-          setDisplayModal={setDisplayModal}
-        />
+    <ScreenWrapper>
+      <GameTitle />
+      <h3 className="loading__queue-number">23 PLAYERS ARE IN QUEUE</h3>
+      <h3 className="loading__waiting-message">
+        PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
+      </h3>
+      <Timer />
+      <div className="loading__button-wrappper">
+        <Btn
+          className={['btn-pink-solid', 'btn-large']}
+          onClick={() => setModalActive(true)}
+        >
+          LEAVE GAME
+        </Btn>
       </div>
-    </div>
+      <LeaveGameModal showModal={modalActive} setModalActive={setModalActive} />
+    </ScreenWrapper>
   );
 }
 
