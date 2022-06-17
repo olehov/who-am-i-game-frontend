@@ -1,6 +1,7 @@
 import GameTitle from '../../components/game-title/game-title';
 import PlayerCard from '../../components/player-card/player-card';
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
+import Btn from '../../components/btn/btn';
+import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
 import './victory-screen.scss';
 
@@ -8,20 +9,21 @@ function Victory() {
   const navigate = useNavigate();
 
   return (
-    <div className="victory-screen">
+    <ScreenWrapper>
       <GameTitle />
       <PlayerCard avatarClassName={'avatar01'} name={'GreenDean'} />
-      <h3 className="victory-screen__message">
+      <h3 className="victory-screen-message">
         CONGRATULATIONS. YOU HAVE WON THE GAME
       </h3>
-      <SetGameStatusBtn
+      <Btn
+        className={'btn-blue-outline'}
         onClick={() => {
           navigate('/');
         }}
       >
         GO TO MAIN MENU
-      </SetGameStatusBtn>
-    </div>
+      </Btn>
+    </ScreenWrapper>
   );
 }
 

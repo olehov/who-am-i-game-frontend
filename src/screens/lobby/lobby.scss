@@ -1,54 +1,36 @@
 @import '../../styles/_colors.scss';
 
-.container {
-  padding: 0 80px;
-}
-
 .input-screen {
   background: $primary-background-blue;
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.header {
-  color: $modals-background;
-  margin-bottom: 15px;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-}
+  padding: 0px 80px 40px 80px;
 
-.demarcation {
-  margin: 4px;
-}
-
-.title {
-  color: $main-font-color;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 32px;
-  line-height: 39px;
-  text-transform: uppercase;
-}
-
-.input-player {
-  background: $secondary-background-blue;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  border-radius: 8px;
-  padding: 24px;
-
-  .player-card-wrapp {
+  &__player {
+    background: $secondary-background-blue;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    border-radius: 8px;
+    padding: 24px;
+    width: 1280px;
   }
 
-  .btn-wrapp {
+  &__player-card-wrapper {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
+    gap: 33.5px;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__demarcation {
+    margin: 4px;
   }
 }

@@ -16,7 +16,7 @@ function App() {
         <Route path="loading" element={<Loading />} />
         <Route path="lobby" element={<Lobby />} />
         <Route path="play" element={<PlayPage />} />
-        <Route path="lost" element={<LostGame />} />
+        <Route path="defeat" element={<LostGame />} />
         <Route path="victory" element={<Victory />} />
         <Route path="inactive" element={<InactivityKick />} />
         <Route path="*" element={<Navigate to="/" />} />

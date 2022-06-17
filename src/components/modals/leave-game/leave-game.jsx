@@ -20,7 +20,8 @@ function LeaveGameModal({ showModal, setModalActive }) {
         <h3 className="modal-container__title">LEAVE THE GAME</h3>
         <button
           className="modal-container__cross-btn"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setModalActive(false);
           }}
         />
@@ -34,7 +35,8 @@ function LeaveGameModal({ showModal, setModalActive }) {
         </button>
         <button
           className="modal-container__cancel-btn"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setModalActive(false);
           }}
         >

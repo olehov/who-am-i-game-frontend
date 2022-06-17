@@ -1,6 +1,7 @@
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import GameTitle from '../../components/game-title/game-title';
+import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
+import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import './home.scss';
 
 function Homepage() {
@@ -8,19 +9,20 @@ function Homepage() {
   const playersNumber = 97;
 
   return (
-    <div className="homepage">
+    <ScreenWrapper>
       <GameTitle />
-      <span className="homepage__players_online">
+      <span className="players-online">
         {playersNumber} {playersNumber > 1 ? 'Players' : 'Player'} Online
       </span>
-      <SetGameStatusBtn
+      <Btn
+        className={'btn-blue-outline'}
         onClick={() => {
           navigate('loading');
         }}
       >
         PLAY QUICK GAME
-      </SetGameStatusBtn>
-    </div>
+      </Btn>
+    </ScreenWrapper>
   );
 }
 
