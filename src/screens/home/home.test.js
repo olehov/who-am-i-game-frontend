@@ -14,7 +14,7 @@ describe('Homepage', () => {
   test('Must have title', () => {
     render(homepage);
 
-    screen.getByText('WHO AM I')
+    screen.getByText('WHO AM I');
   });
 
   test('Must have a game starting button', () => {

@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { currentUser, history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
-import { v4 as uuidv4 } from 'uuid';
 import './history-container.scss';
 
 function HistoryContainer({ mode, setMode }) {
@@ -42,8 +41,8 @@ function HistoryContainer({ mode, setMode }) {
   return (
     <div className="history">
       <div className="history_list">
-        {history.map((item) => (
-          <HistoryItem question={item} key={uuidv4()} />
+        {history.map((item, index) => (
+          <HistoryItem question={item} key={index} />
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
