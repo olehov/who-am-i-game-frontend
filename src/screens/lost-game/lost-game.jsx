@@ -1,8 +1,8 @@
 import GameTitle from '../../components/game-title/game-title';
 import PlayerCard from '../../components/player-card/player-card';
-import SetGameStatusBtn from '../../components/set-game-status-btn/set-game-status-btn';
 import { useNavigate } from 'react-router-dom';
 import './lost-game.scss';
+import Btn from '../../components/btn/btn';
 
 function LostGame() {
   const navigate = useNavigate();
@@ -17,13 +17,14 @@ function LostGame() {
           ANGLINA JLIE
         </span>
       </h3>
-      <SetGameStatusBtn
+      <Btn
         onClick={() => {
           navigate('/');
         }}
+        className="btn-blue-outline"
       >
         GO TO MAIN MENU
-      </SetGameStatusBtn>
+      </Btn>
     </div>
   );
 }
