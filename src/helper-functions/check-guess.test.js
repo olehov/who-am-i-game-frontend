@@ -24,5 +24,5 @@ describe('Check guess for XSS', () => {
 
   test('Lets in correct string', () => {
     expect(checkGuess(longStr)).toBe(false);
-  })
+  });
 });
