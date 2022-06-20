@@ -5,6 +5,7 @@ import { currentUser, history } from '../../store/mock-data';
 import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
 import './history-container.scss';
+import { users } from '../../store/mock-data';
 
 function HistoryContainer({ mode, setMode }) {
   const [message, setMessage] = useState('unsure');
@@ -29,7 +30,6 @@ function HistoryContainer({ mode, setMode }) {
 
       setCurrentQuestion('');
       setDisabled(true);
-      setTimeout(() => setDisabled(false), 10000);
     }
   };
 
@@ -42,13 +42,12 @@ function HistoryContainer({ mode, setMode }) {
     <div className="history">
       <div className="history_list">
         {history.map((item, index) => (
-          <HistoryItem question={item} key={index} />
+          <HistoryItem users={users} question={item} key={index} />
         ))}
         <div className="list_scroll_bottom" ref={bottomElement}></div>
       </div>
-      {mode === 'ask' && (
+      {mode === 'ask' && !disabled && (
         <QuestionForm
-          disabled={disabled}
           setCurrentQuestion={setCurrentQuestion}
           currentQuestion={currentQuestion}
           sendQuestion={sendQuestionHandler}
