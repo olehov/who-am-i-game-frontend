@@ -21,7 +21,7 @@ async function findAvailableGames(player) {
 }
 
 function createGame(player, playersNum) {
-  axios({
+  const response = axios({
     method: 'post',
     url: '/api/v1/games',
     headers: { 'X-Player': player },
@@ -29,6 +29,8 @@ function createGame(player, playersNum) {
       maxPlayers: playersNum,
     },
   });
+
+  return response;
 }
 
 function suggestCharacter(player, id, character) {
