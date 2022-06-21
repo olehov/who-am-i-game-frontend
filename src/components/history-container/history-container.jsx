@@ -6,7 +6,7 @@ import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
 import './history-container.scss';
 import { users } from '../../store/mock-data';
-import { askQuestion } from '../../services/game-service';
+import { answerQuestion, askQuestion } from '../../services/games-service';
 
 function HistoryContainer({ mode, setMode }) {
   const [message, setMessage] = useState('unsure');
@@ -28,7 +28,7 @@ function HistoryContainer({ mode, setMode }) {
   const sendQuestionHandler = () => {
     if (currentQuestion !== '') {
       history.push({ user: currentUser, question: currentQuestion });
-      askQuestion(currentQuestion);
+      askQuestion('Player-1', 1, currentQuestion);
 
       setCurrentQuestion('');
       setDisabled(true);
@@ -38,6 +38,12 @@ function HistoryContainer({ mode, setMode }) {
   const handleClick = (event) => {
     setMode('wait');
     setMessage(event.target.textContent);
+    let answer = event.target.textContent.toUppercase();
+
+    if (answer === "DON'T KNOW") {
+      answer = 'NOT_SURE';
+    }
+    answerQuestion('Player 1', 1, answer);
   };
 
   return (
