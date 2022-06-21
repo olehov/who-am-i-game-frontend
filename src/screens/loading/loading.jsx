@@ -10,11 +10,9 @@ import { findGameById } from '../../services/games-service';
 import './loading.scss';
 
 function Loading() {
-  const [gameData, setGameData, playerId] = useContext(GameDataContext);
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [modalActive, setModalActive] = useState(false);
   const navigate = useNavigate();
-
-  console.log(gameData);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {

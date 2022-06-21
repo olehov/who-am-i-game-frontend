@@ -6,7 +6,7 @@ import LostGame from './screens/lost-game/lost-game';
 import Victory from './screens/victory-screen/victroy-screen';
 import InactivityKick from './screens/inactiviy-kick/inactivity-kick';
 import Lobby from './screens/lobby/lobby';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import GameDataContext from './contexts/game-data-context';
 import { v4 as uuidv4 } from 'uuid';
 import './App.scss';
@@ -18,31 +18,28 @@ function App() {
     },
   });
   const [playerId] = useState(uuidv4());
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (gameData) {
-      setLoading(false);
-    }
-  }, [gameData]);
-
-  console.log(gameData);
+  function resetData() {
+    setGameData({
+      data: {
+        status: null,
+      },
+    });
+  }
 
   return (
     <div className="App">
-      <GameDataContext.Provider value={[gameData, setGameData, playerId]}>
+      <GameDataContext.Provider
+        value={{ gameData, setGameData, playerId, resetData }}
+      >
         <Routes>
           <Route path="/" element={<Homepage />} />
-          {!loading && (
-            <>
-              <Route path="loading" element={<Loading />} />
-              <Route path="lobby" element={<Lobby />} />
-              <Route path="play" element={<PlayPage />} />
-              <Route path="defeat" element={<LostGame />} />
-              <Route path="victory" element={<Victory />} />
-              <Route path="inactive" element={<InactivityKick />} />
-            </>
-          )}
+          <Route path="loading" element={<Loading />} />
+          <Route path="lobby" element={<Lobby />} />
+          <Route path="play" element={<PlayPage />} />
+          <Route path="defeat" element={<LostGame />} />
+          <Route path="victory" element={<Victory />} />
+          <Route path="inactive" element={<InactivityKick />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </GameDataContext.Provider>

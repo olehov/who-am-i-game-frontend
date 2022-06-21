@@ -8,7 +8,7 @@ import { createGame } from '../../services/games-service';
 import './home.scss';
 
 function Homepage() {
-  const [gameData, setGameData, playerId] = useContext(GameDataContext);
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const navigate = useNavigate();
   const playerNum = 97;
 
