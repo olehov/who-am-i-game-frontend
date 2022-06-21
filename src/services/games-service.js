@@ -20,15 +20,13 @@ async function findAvailableGames(player) {
   return response;
 }
 
-function createGame(player, status, id, playersInGame) {
+function createGame(player, playersNum) {
   axios({
     method: 'post',
     url: '/api/v1/games',
     headers: { 'X-Player': player },
     data: {
-      id: id,
-      status: status,
-      playersInGame: playersInGame,
+      maxPlayers: playersNum,
     },
   });
 }
