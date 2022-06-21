@@ -23,40 +23,44 @@ export const users = [
 
 export const history = [
   {
+    id: 0,
     user: { name: 'GreenDean', iconSrc: avatar01 },
     question: 'Am I from England?',
     answers: [
-      { userIconSrc: avatar02, status: 'yes' },
-      { userIconSrc: avatar03, status: 'yes' },
-      { userIconSrc: avatar04, status: 'unsure' },
+      { userId: 2, userIconSrc: avatar02, status: 'yes' },
+      { userId: 3, userIconSrc: avatar03, status: 'yes' },
+      { userId: 4, userIconSrc: avatar04, status: 'unsure' },
     ],
   },
   {
+    id: 1,
     user: { name: 'GreenDean', iconSrc: avatar01 },
     question: 'Am I Boris Johnson?',
     answers: [
-      { userIconSrc: avatar02, status: 'no' },
-      { userIconSrc: avatar03, status: 'no' },
-      { userIconSrc: avatar04, status: 'no' },
+      { userId: 2, userIconSrc: avatar02, status: 'no' },
+      { userId: 3, userIconSrc: avatar03, status: 'no' },
+      { userId: 4, userIconSrc: avatar04, status: 'no' },
     ],
     guess: 'guess',
   },
   {
+    id: 2,
     user: { name: 'Khalilormous', iconSrc: avatar02 },
     question: "I'm a politians?",
     answers: [
-      { userIconSrc: avatar01, status: 'no' },
-      { userIconSrc: avatar03, status: 'unsure' },
-      { userIconSrc: avatar04, status: 'no' },
+      { userId: 2, userIconSrc: avatar01, status: 'no' },
+      { userId: 3, userIconSrc: avatar03, status: 'unsure' },
+      { userId: 4, userIconSrc: avatar04, status: 'no' },
     ],
   },
   {
+    id: 3,
     user: { name: 'KayPee', iconSrc: avatar03 },
     question: 'Powerful?',
     answers: [
-      { userIconSrc: avatar01, status: 'yes' },
-      { userIconSrc: avatar02, status: 'no' },
-      { userIconSrc: avatar04, status: 'unsure' },
+      { userId: 2, userIconSrc: avatar01, status: 'yes' },
+      { userId: 3, userIconSrc: avatar02, status: 'no' },
+      { userId: 4, userIconSrc: avatar04, status: 'unsure' },
     ],
   },
 ];
