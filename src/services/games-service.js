@@ -31,22 +31,6 @@ function createGame(player, playersNum) {
   });
 }
 
-function startGame(player, id) {
-  axios({
-    method: 'post',
-    url: `/api/v1/games/${id}`,
-    headers: { 'X-Player': player },
-  });
-}
-
-function enrollToGame(player, id) {
-  axios({
-    method: 'post',
-    url: `/api/v1/games/${id}/players`,
-    headers: { 'X-Player': player },
-  });
-}
-
 function suggestCharacter(player, id, character) {
   axios({
     method: 'post',
@@ -105,8 +89,6 @@ export {
   findGameById,
   findAvailableGames,
   createGame,
-  startGame,
-  enrollToGame,
   suggestCharacter,
   findTurnInfo,
   askQuestion,
