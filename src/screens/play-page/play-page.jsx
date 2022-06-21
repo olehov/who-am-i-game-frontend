@@ -8,7 +8,7 @@ import './play-page.scss';
 
 function PlayPage() {
   const [displayModal, setDisplayModal] = useState(false);
-  const [mode, setMode] = useState('guess');
+  const [mode, setMode] = useState('ask');
 
   return (
     <div className="layout">

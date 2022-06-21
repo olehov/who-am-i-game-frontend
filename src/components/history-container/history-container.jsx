@@ -6,6 +6,7 @@ import AnswerForm from '../answer-form/answer-form';
 import MessageBlock from '../message-block/message-block';
 import './history-container.scss';
 import { users } from '../../store/mock-data';
+import { askQuestion } from '../../services/game-service';
 
 function HistoryContainer({ mode, setMode }) {
   const [message, setMessage] = useState('unsure');
@@ -27,6 +28,7 @@ function HistoryContainer({ mode, setMode }) {
   const sendQuestionHandler = () => {
     if (currentQuestion !== '') {
       history.push({ user: currentUser, question: currentQuestion });
+      askQuestion(currentQuestion);
 
       setCurrentQuestion('');
       setDisabled(true);
