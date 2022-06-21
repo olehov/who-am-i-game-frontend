@@ -21,7 +21,7 @@ async function findAvailableGames(player) {
 }
 
 function createGame(player, playersNum) {
-  axios({
+  const response = axios({
     method: 'post',
     url: '/api/v1/games',
     headers: { 'X-Player': player },
@@ -29,22 +29,8 @@ function createGame(player, playersNum) {
       maxPlayers: playersNum,
     },
   });
-}
 
-function startGame(player, id) {
-  axios({
-    method: 'post',
-    url: `/api/v1/games/${id}`,
-    headers: { 'X-Player': player },
-  });
-}
-
-function enrollToGame(player, id) {
-  axios({
-    method: 'post',
-    url: `/api/v1/games/${id}/players`,
-    headers: { 'X-Player': player },
-  });
+  return response;
 }
 
 function suggestCharacter(player, id, character) {
@@ -105,8 +91,6 @@ export {
   findGameById,
   findAvailableGames,
   createGame,
-  startGame,
-  enrollToGame,
   suggestCharacter,
   findTurnInfo,
   askQuestion,
