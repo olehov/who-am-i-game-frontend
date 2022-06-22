@@ -3,11 +3,31 @@ import Btn from '../../components/btn/btn';
 import Timer from '../../components/timer/timer';
 import LeaveGameModal from '../../components/modals/leave-game/leave-game';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import GameDataContext from '../../contexts/game-data-context';
+import { useNavigate } from 'react-router-dom';
+import { findGameById } from '../../services/games-service';
+import { SUGGESTING_CHARACTERS } from '../../constants/constants';
 import './loading.scss';
 
 function Loading() {
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [modalActive, setModalActive] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkStatus = setTimeout(async () => {
+      setGameData(await findGameById(playerId, gameData.data.id));
+    }, 1000);
+
+    return () => clearTimeout(checkStatus);
+  });
+
+  useEffect(() => {
+    if (gameData.data.status === SUGGESTING_CHARACTERS) {
+      navigate('lobby');
+    }
+  });
 
   return (
     <ScreenWrapper>
