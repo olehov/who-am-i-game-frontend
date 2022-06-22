@@ -8,6 +8,7 @@ import { createGame } from '../../services/games-service';
 import {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
+  NUMBER_OF_PLAYERS,
 } from '../../constants/constants';
 import './home.scss';
 
@@ -33,7 +34,7 @@ function Homepage() {
       <Btn
         className={'btn-blue-outline'}
         onClick={async () => {
-          setGameData(await createGame(playerId, 4));
+          setGameData(await createGame(playerId, NUMBER_OF_PLAYERS));
         }}
       >
         PLAY QUICK GAME
