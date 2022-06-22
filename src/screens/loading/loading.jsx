@@ -7,7 +7,7 @@ import { useState, useEffect, useContext } from 'react';
 import GameDataContext from '../../contexts/game-data-context';
 import { useNavigate } from 'react-router-dom';
 import { findGameById } from '../../services/games-service';
-import { suggestingCharacters } from '../../constants/constants';
+import { SUGGESTING_CHARACTERS } from '../../constants/constants';
 import './loading.scss';
 
 function Loading() {
@@ -24,7 +24,7 @@ function Loading() {
   });
 
   useEffect(() => {
-    if (gameData.data.status === suggestingCharacters) {
+    if (gameData.data.status === SUGGESTING_CHARACTERS) {
       navigate('lobby');
     }
   });

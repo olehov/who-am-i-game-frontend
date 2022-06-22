@@ -6,8 +6,8 @@ import GameDataContext from '../../contexts/game-data-context';
 import { useContext, useEffect } from 'react';
 import { createGame } from '../../services/games-service';
 import {
-  suggestingCharacters,
-  waitingForPlayers,
+  WAITING_FOR_PLAYERS,
+  SUGGESTING_CHARACTERS,
 } from '../../constants/constants';
 import './home.scss';
 
@@ -17,9 +17,9 @@ function Homepage() {
   const playerNum = 97;
 
   useEffect(() => {
-    if (gameData.data.status === waitingForPlayers) {
+    if (gameData.data.status === WAITING_FOR_PLAYERS) {
       navigate('loading');
-    } else if (gameData.data.status === suggestingCharacters) {
+    } else if (gameData.data.status === SUGGESTING_CHARACTERS) {
       navigate('lobby');
     }
   }, [gameData, navigate]);
