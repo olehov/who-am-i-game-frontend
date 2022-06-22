@@ -5,6 +5,10 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import GameDataContext from '../../contexts/game-data-context';
 import { useContext, useEffect } from 'react';
 import { createGame } from '../../services/games-service';
+import {
+  suggestingCharacters,
+  waitingForPlayers,
+} from '../../constants/constants';
 import './home.scss';
 
 function Homepage() {
@@ -13,15 +17,9 @@ function Homepage() {
   const playerNum = 97;
 
   useEffect(() => {
-    if (
-      gameData.data.status ===
-      'com.eleks.academy.whoami.core.state.WaitingForPlayers'
-    ) {
+    if (gameData.data.status === waitingForPlayers) {
       navigate('loading');
-    } else if (
-      gameData.data.status ===
-      'com.eleks.academy.whoami.core.state.SuggestingCharacters'
-    ) {
+    } else if (gameData.data.status === suggestingCharacters) {
       navigate('lobby');
     }
   }, [gameData, navigate]);

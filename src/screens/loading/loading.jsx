@@ -7,6 +7,7 @@ import { useState, useEffect, useContext } from 'react';
 import GameDataContext from '../../contexts/game-data-context';
 import { useNavigate } from 'react-router-dom';
 import { findGameById } from '../../services/games-service';
+import { suggestingCharacters } from '../../constants/constants';
 import './loading.scss';
 
 function Loading() {
@@ -17,16 +18,13 @@ function Loading() {
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
       setGameData(await findGameById(playerId, gameData.data.id));
-    }, 5000);
+    }, 1000);
 
     return () => clearTimeout(checkStatus);
   });
 
   useEffect(() => {
-    if (
-      gameData.data.status ===
-      'com.eleks.academy.whoami.core.state.SuggestingCharacters'
-    ) {
+    if (gameData.data.status === suggestingCharacters) {
       navigate('lobby');
     }
   });
