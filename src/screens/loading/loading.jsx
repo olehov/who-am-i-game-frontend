@@ -7,28 +7,24 @@ import { useState, useEffect, useContext } from 'react';
 import GameDataContext from '../../contexts/game-data-context';
 import { useNavigate } from 'react-router-dom';
 import { findGameById } from '../../services/games-service';
+import { SUGGESTING_CHARACTERS } from '../../constants/constants';
 import './loading.scss';
 
 function Loading() {
-  const [gameData, setGameData, playerId] = useContext(GameDataContext);
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [modalActive, setModalActive] = useState(false);
   const navigate = useNavigate();
-
-  console.log(gameData);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
       setGameData(await findGameById(playerId, gameData.data.id));
-    }, 5000);
+    }, 1000);
 
     return () => clearTimeout(checkStatus);
   });
 
   useEffect(() => {
-    if (
-      gameData.data.status ===
-      'com.eleks.academy.whoami.core.state.SuggestingCharacters'
-    ) {
+    if (gameData.data.status === SUGGESTING_CHARACTERS) {
       navigate('lobby');
     }
   });

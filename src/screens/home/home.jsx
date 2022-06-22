@@ -5,23 +5,22 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import GameDataContext from '../../contexts/game-data-context';
 import { useContext, useEffect } from 'react';
 import { createGame } from '../../services/games-service';
+import {
+  WAITING_FOR_PLAYERS,
+  SUGGESTING_CHARACTERS,
+  NUMBER_OF_PLAYERS,
+} from '../../constants/constants';
 import './home.scss';
 
 function Homepage() {
-  const [gameData, setGameData, playerId] = useContext(GameDataContext);
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const navigate = useNavigate();
   const playerNum = 97;
 
   useEffect(() => {
-    if (
-      gameData.data.status ===
-      'com.eleks.academy.whoami.core.state.WaitingForPlayers'
-    ) {
+    if (gameData.data.status === WAITING_FOR_PLAYERS) {
       navigate('loading');
-    } else if (
-      gameData.data.status ===
-      'com.eleks.academy.whoami.core.state.SuggestingCharacters'
-    ) {
+    } else if (gameData.data.status === SUGGESTING_CHARACTERS) {
       navigate('lobby');
     }
   }, [gameData, navigate]);
@@ -35,7 +34,7 @@ function Homepage() {
       <Btn
         className={'btn-blue-outline'}
         onClick={async () => {
-          setGameData(await createGame(playerId, 4));
+          setGameData(await createGame(playerId, NUMBER_OF_PLAYERS));
         }}
       >
         PLAY QUICK GAME
