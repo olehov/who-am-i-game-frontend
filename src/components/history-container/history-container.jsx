@@ -28,7 +28,7 @@ function HistoryContainer({ mode, setMode }) {
   const sendQuestionHandler = () => {
     if (currentQuestion !== '') {
       history.push({ user: currentUser, question: currentQuestion });
-      askQuestion('Player-1', 1, currentQuestion);
+      // askQuestion('Player-1', 1, currentQuestion);
 
       setCurrentQuestion('');
       setDisabled(true);
@@ -38,7 +38,7 @@ function HistoryContainer({ mode, setMode }) {
   const handleClick = (event) => {
     setMode('wait');
     setMessage(event.target.textContent);
-    let answer = event.target.textContent.toUppercase();
+    let answer = event.target.textContent.toUpperCase();
 
     if (answer === "DON'T KNOW") {
       answer = 'NOT_SURE';

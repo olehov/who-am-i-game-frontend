@@ -3,10 +3,11 @@
 .history {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  gap: 32px;
   padding: 40px;
   width: 100%;
   max-width: 653px;
-  gap: 32px;
   background: $secondary-background-blue;
   border-radius: 16px;
 

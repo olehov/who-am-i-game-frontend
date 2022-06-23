@@ -4,8 +4,11 @@ import Btn from '../../components/btn/btn';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
 import './inactivity-kick.scss';
+import { useContext } from 'react';
+import GameDataContext from '../../contexts/game-data-context';
 
 function InactivityKick() {
+  const { resetData } = useContext(GameDataContext);
   const navigate = useNavigate();
 
   return (
@@ -19,6 +22,7 @@ function InactivityKick() {
       <Btn
         className={'btn-blue-outline'}
         onClick={() => {
+          resetData();
           navigate('/');
         }}
       >
