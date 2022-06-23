@@ -2,10 +2,9 @@ import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import PlayerCard from '../player-card/player-card';
 import ModalContext from '../../contexts/modal-context';
 import './users-container.scss';
-import { users } from '../../store/mock-data';
 import { useContext } from 'react';
 
-function UsersContainer({ mode }) {
+function UsersContainer({ mode, currentPlayer, players }) {
   const modalActive = useContext(ModalContext)[0];
 
   return (
@@ -18,17 +17,29 @@ function UsersContainer({ mode }) {
           paused={modalActive}
         />
       </div>
-      <PlayerCard avatarClassName={'avatar01'} name={'GreenDean'} isYou />
+      {currentPlayer && (
+        <PlayerCard
+          className="in-users-container"
+          avatarClassName={'avatar01'}
+          name={currentPlayer.player.name}
+          isYou
+        />
+      )}
       <hr />
       <div className="users__list">
-        {users.map((user) => (
-          <PlayerCard
-            key={user.id}
-            name={user.name}
-            avatarClassName={`avatar0${user.id}`}
-            assignedCharacter={user.character}
-          />
-        ))}
+        {players ? (
+          players.map((player, index) => (
+            <PlayerCard
+              className="in-users-container"
+              key={player.player.name}
+              name={`Player ${index + 2}`}
+              avatarClassName={`avatar0${index + 2}`}
+              assignedCharacter={player.player.character}
+            />
+          ))
+        ) : (
+          <h1>Something went wrong</h1>
+        )}
       </div>
     </div>
   );
