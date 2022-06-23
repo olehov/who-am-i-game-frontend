@@ -20,6 +20,16 @@ async function findAvailableGames(player) {
   return response;
 }
 
+async function getAllPlayersCount(player) {
+  const response = await axios({
+    method: 'get',
+    url: '/api/v1/games/all-players-count',
+    headers: { 'X-Player': player },
+  });
+
+  return response;
+}
+
 function createGame(player, playersNum) {
   const response = axios({
     method: 'post',
@@ -96,4 +106,5 @@ export {
   askQuestion,
   submitGuess,
   answerQuestion,
+  getAllPlayersCount,
 };

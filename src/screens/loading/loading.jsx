@@ -32,7 +32,9 @@ function Loading() {
   return (
     <ScreenWrapper>
       <GameTitle />
-      <h3 className="loading__queue-number">{gameData.data.players.length} PLAYERS ARE IN QUEUE</h3>
+      <h3 className="loading__queue-number">
+        {gameData.data.players.length} PLAYERS ARE IN QUEUE
+      </h3>
       <h3 className="loading__waiting-message">
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
