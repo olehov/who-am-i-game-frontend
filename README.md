@@ -59,7 +59,7 @@ Install [heroku](https://devcenter.heroku.com/articles/heroku-cli#install-the-he
 2. Point the React UI app to a specific backend heroku API:
 
    ```bash
-   heroku config:set API_URL="https://who-am-i-game-api.herokuapp.com/"
+   heroku config:set API_URL="https://who-am-i-game-api.herokuapp.com/api"
    ```
 
 3. Deploy
