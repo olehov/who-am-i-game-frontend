@@ -31,3 +31,9 @@
   font-size: 32px;
   padding-left: 40px;
 }
+
+@mixin font-normal {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}

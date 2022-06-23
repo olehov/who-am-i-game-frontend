@@ -14,7 +14,7 @@ function Lobby() {
   return (
     <ScreenWrapper>
       <div className="input-screen">
-        <Header inLobby />
+        <Header type="game-lobby" />
         <div className="input-screen__player">
           <div className="input-screen__player-card-wrapper">
             {[1, 2, 3, 4].map((num) => (

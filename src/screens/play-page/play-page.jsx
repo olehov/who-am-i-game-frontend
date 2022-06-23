@@ -5,14 +5,15 @@ import Header from '../../components/header/header';
 import { useState } from 'react';
 import ModalContext from '../../contexts/modal-context';
 import './play-page.scss';
+import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 
 function PlayPage() {
   const [displayModal, setDisplayModal] = useState(false);
-  const [mode, setMode] = useState('guess');
+  const [mode, setMode] = useState('ask');
 
   return (
-    <div className="layout">
-      <Header />
+    <ScreenWrapper className="lobby-screen">
+      <Header type="play-game" />
       <div className="content_wrapper">
         <ModalContext.Provider value={[displayModal, setDisplayModal]}>
           <UsersContainer mode={mode} />
@@ -23,7 +24,7 @@ function PlayPage() {
           />
         </ModalContext.Provider>
       </div>
-    </div>
+    </ScreenWrapper>
   );
 }
 

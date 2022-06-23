@@ -10,6 +10,7 @@ import { useState } from 'react';
 import GameDataContext from './contexts/game-data-context';
 import { v4 as uuidv4 } from 'uuid';
 import './App.scss';
+import MainLobby from './components/main-lobby/main-lobby';
 
 function App() {
   const [gameData, setGameData] = useState({
@@ -34,6 +35,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/main-lobby" element={<MainLobby />} />
           <Route path="loading" element={<Loading />} />
           <Route path="lobby" element={<Lobby />} />
           <Route path="play" element={<PlayPage />} />

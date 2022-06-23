@@ -4,3 +4,8 @@
 .screen-wrapper {
   @include message-screen;
 }
+
+.lobby-screen {
+  @include font-normal;
+  padding-bottom: 40px;
+}
