@@ -3,8 +3,9 @@ import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import GameDataContext from '../../contexts/game-data-context';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { createGame, getAllPlayersCount } from '../../services/games-service';
+import { useInterval } from '../../hooks/useInterval';
 import {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
@@ -18,7 +19,7 @@ function Homepage() {
   const navigate = useNavigate();
 
   useInterval(async () => {
-    setPlayerNum(await (await getAllPlayersCount(playerId)).data);
+    setPlayerNum(await getAllPlayersCount(playerId).data);
   }, 1000 * 5);
 
   useEffect(() => {
@@ -48,22 +49,3 @@ function Homepage() {
 }
 
 export default Homepage;
-export const useInterval = (callback, delay) => {
-  const savedCallback = useRef();
-
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-
-    if (delay !== null) {
-      const id = setInterval(tick, delay);
-
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-};
