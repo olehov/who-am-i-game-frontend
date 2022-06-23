@@ -3,7 +3,7 @@ import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import GameDataContext from '../../contexts/game-data-context';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { createGame, getAllPlayersCount } from '../../services/games-service';
 import {
   WAITING_FOR_PLAYERS,
@@ -11,7 +11,6 @@ import {
   NUMBER_OF_PLAYERS,
 } from '../../constants/constants';
 import './home.scss';
-import { useState } from 'react';
 
 function Homepage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
