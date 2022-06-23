@@ -5,7 +5,7 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import GameDataContext from '../../contexts/game-data-context';
 import { useContext, useEffect, useState } from 'react';
 import { createGame, getAllPlayersCount } from '../../services/games-service';
-import { useInterval } from '../../hooks/useInterval';
+import useInterval from '../../hooks/useInterval';
 import {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
@@ -19,7 +19,7 @@ function Homepage() {
   const navigate = useNavigate();
 
   useInterval(async () => {
-    setPlayerNum(await getAllPlayersCount(playerId).data);
+    setPlayerNum((await getAllPlayersCount(playerId)).data);
   }, 1000 * 5);
 
   useEffect(() => {
