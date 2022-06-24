@@ -6,7 +6,7 @@ import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PROCESSING_QUESTION } from '../../constants/constants';
+import { PROCESSING_QUESTION, READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { findGameById } from '../../services/games-service';
@@ -19,10 +19,6 @@ function Lobby() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!gameData.data.status) navigate('/');
-  });
-
-  useEffect(() => {
     const checkStatus = setTimeout(async () => {
       setGameData(await findGameById(playerId, gameData.data.id));
     }, 1000);
@@ -31,6 +27,8 @@ function Lobby() {
   });
 
   useEffect(() => {
+    if (!gameData.data.status) navigate('/');
+
     if (gameData.data.status === PROCESSING_QUESTION) {
       navigate('/play');
     }
@@ -50,10 +48,10 @@ function Lobby() {
           <div className="input-screen__player-card-wrapper">
             {currentPlayer && (
               <PlayerCard
-                avatarClassName={`avatar0${1}`}
-                name={`Player ${1}`}
+                avatarClassName={`avatar01`}
+                name={`Player 1`}
                 playerStatusClassName={
-                  currentPlayer.state === 'NOT_READY' ? 'no' : 'yes'
+                  currentPlayer.state === READY ? 'yes' : 'no'
                 }
                 isYou
               />

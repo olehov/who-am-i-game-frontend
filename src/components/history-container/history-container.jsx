@@ -8,7 +8,7 @@ import './history-container.scss';
 import { users } from '../../store/mock-data';
 import { answerQuestion, askQuestion } from '../../services/games-service';
 
-function HistoryContainer({ mode, setMode }) {
+function HistoryContainer({ mode, setMode, playerId, gameId }) {
   const [message, setMessage] = useState('unsure');
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [disabled, setDisabled] = useState(false);
@@ -28,7 +28,7 @@ function HistoryContainer({ mode, setMode }) {
   const sendQuestionHandler = () => {
     if (currentQuestion !== '') {
       history.push({ user: currentUser, question: currentQuestion });
-      // askQuestion('Player-1', 1, currentQuestion);
+      // askQuestion(playerId, gameId, currentQuestion);
 
       setCurrentQuestion('');
       setDisabled(true);
@@ -36,14 +36,11 @@ function HistoryContainer({ mode, setMode }) {
   };
 
   const handleClick = (event) => {
+    event.preventDefault();
     setMode('wait');
-    setMessage(event.target.textContent);
-    let answer = event.target.textContent.toUpperCase();
+    setMessage(event.target.value);
 
-    if (answer === "DON'T KNOW") {
-      answer = 'NOT_SURE';
-    }
-    answerQuestion('Player 1', 1, answer);
+    // answerQuestion(playerId, gameId, answer);
   };
 
   return (
@@ -64,9 +61,7 @@ function HistoryContainer({ mode, setMode }) {
       {(mode === 'answer' || mode === 'guess') && (
         <AnswerForm mode={mode} onClick={handleClick} />
       )}
-      {(mode === 'wait' || mode === 'response') && (
-        <MessageBlock mode={mode} message={message} />
-      )}
+      {mode === 'response' && <MessageBlock mode={mode} message={message} />}
     </div>
   );
 }
