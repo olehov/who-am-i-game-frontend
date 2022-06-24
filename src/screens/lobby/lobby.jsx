@@ -6,7 +6,11 @@ import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PROCESSING_QUESTION, READY } from '../../constants/constants';
+import {
+  NOT_READY,
+  PROCESSING_QUESTION,
+  READY,
+} from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { findGameById } from '../../services/games-service';
@@ -63,7 +67,7 @@ function Lobby() {
                   avatarClassName={`avatar0${index + 2}`}
                   name={`Player ${index + 2}`}
                   playerStatusClassName={
-                    player.state === 'NOT_READY' ? 'no' : 'yes'
+                    player.state === NOT_READY ? 'no' : 'yes'
                   }
                 />
               ))
