@@ -20,6 +20,7 @@ function Btn({
   onClick,
   className = 'btn-green-solid',
   disabled,
+  value,
 }) {
   return (
     <button
@@ -27,6 +28,7 @@ function Btn({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      value={value}
     >
       <div className={iconClassName}></div>
       {children}

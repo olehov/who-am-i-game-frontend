@@ -4,6 +4,7 @@ import CountdownTimer from '../../timer/timer-countdown/timer-countdown';
 import Btn from '../../btn/btn';
 import checkGuess from '../../../helper-functions/check-guess.js';
 import './guess-a-character.scss';
+import { submitGuess } from '../../../services/games-service';
 
 function GuessCharacterModal({ displayModal, setDisplayModal }) {
   const [guess, setGuess] = useState('');
@@ -24,6 +25,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
         e.preventDefault();
         setDisplayModal(false);
         navigate('../');
+        submitGuess('Player 1', 1, guess);
       }}
     >
       <div className="guess-character-modal__title-container">
