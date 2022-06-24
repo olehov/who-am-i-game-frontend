@@ -37,8 +37,9 @@ function HistoryContainer({ mode, setMode, playerId, gameId }) {
 
   const handleClick = (event) => {
     event.preventDefault();
+    const answer = event.nativeEvent.submitter.value;
     setMode('wait');
-    setMessage(event.target.value);
+    setMessage(answer);
 
     // answerQuestion(playerId, gameId, answer);
   };

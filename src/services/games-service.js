@@ -33,12 +33,13 @@ function createGame(player, playersNum) {
   return response;
 }
 
-function suggestCharacter(player, id, character) {
+function suggestCharacter(player, id, name, character) {
   axios({
     method: 'post',
     url: `/api/v1/games/${id}/characters`,
     headers: { 'X-Player': player },
     data: {
+      name: name,
       character: character,
     },
   });

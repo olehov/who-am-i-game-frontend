@@ -17,9 +17,9 @@ function PlayPage() {
   );
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!gameData.data.status) navigate('/');
-  });
+  // useEffect(() => {
+  //   if (!gameData.data.status) navigate('/');
+  // });
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
@@ -31,9 +31,9 @@ function PlayPage() {
 
   const players = gameData.data.players;
   const currentPlayer =
-    players && players.find((player) => player.player.name === playerId);
+    players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =
-    players && players.filter((player) => player.player.name !== playerId);
+    players && players.filter((player) => player.player.id !== playerId);
 
   return (
     <div className="layout">

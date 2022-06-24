@@ -21,7 +21,7 @@ function SelectCharacterModal({
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        suggestCharacter(playerId, gameData.data.id, characterName);
+        suggestCharacter(playerId, gameData.data.id, playerName, characterName);
         setDisplayModal(false);
         setSuggestBtn(false);
       }}

@@ -36,9 +36,9 @@ function Lobby() {
 
   const players = gameData.data.players;
   const currentPlayer =
-    players && players.find((player) => player.player.name === playerId);
+    players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =
-    players && players.filter((player) => player.player.name !== playerId);
+    players && players.filter((player) => player.player.id !== playerId);
 
   return (
     <ScreenWrapper>
@@ -59,7 +59,7 @@ function Lobby() {
             {playersWithoutYou ? (
               playersWithoutYou.map((player, index) => (
                 <PlayerCard
-                  key={player.player.name}
+                  key={player.player.id}
                   avatarClassName={`avatar0${index + 2}`}
                   name={`Player ${index + 2}`}
                   playerStatusClassName={
