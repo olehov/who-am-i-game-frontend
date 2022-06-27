@@ -1,11 +1,17 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import GameDataContext from '../../../contexts/game-data-context';
+import { suggestCharacter } from '../../../services/games-service';
 import './select-character.scss';
 
-function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
+function SelectCharacterModal({
+  playerNum,
+  displayModal,
+  setDisplayModal,
+  setSuggestBtn,
+}) {
+  const { gameData, playerId } = useContext(GameDataContext);
   const [playerName, setPlayerName] = useState(`Player ${playerNum}`);
   const [characterName, setCharacterName] = useState('');
-  const navigate = useNavigate();
 
   if (!displayModal) {
     return null;
@@ -15,7 +21,9 @@ function SelectCharacterModal({ playerNum, displayModal, setDisplayModal }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        navigate('../play');
+        suggestCharacter(playerId, gameData.data.id, playerName, characterName);
+        setDisplayModal(false);
+        setSuggestBtn(false);
       }}
       className="character-modal-container"
     >

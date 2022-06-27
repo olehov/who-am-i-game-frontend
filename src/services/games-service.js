@@ -20,6 +20,16 @@ async function findAvailableGames(player) {
   return response;
 }
 
+async function getAllPlayersCount(player) {
+  const response = await axios({
+    method: 'get',
+    url: '/api/v1/games/all-players-count',
+    headers: { 'X-Player': player },
+  });
+
+  return response;
+}
+
 function createGame(player, playersNum) {
   const response = axios({
     method: 'post',
@@ -33,12 +43,13 @@ function createGame(player, playersNum) {
   return response;
 }
 
-function suggestCharacter(player, id, character) {
+function suggestCharacter(player, id, name, character) {
   axios({
     method: 'post',
     url: `/api/v1/games/${id}/characters`,
     headers: { 'X-Player': player },
     data: {
+      name: name,
       character: character,
     },
   });
@@ -96,4 +107,5 @@ export {
   askQuestion,
   submitGuess,
   answerQuestion,
+  getAllPlayersCount,
 };

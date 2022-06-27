@@ -3,12 +3,7 @@ import Btn from '../btn/btn';
 import { useContext } from 'react';
 import './question-form.scss';
 
-function QuestionForm({
-  disabled,
-  setCurrentQuestion,
-  currentQuestion,
-  sendQuestion,
-}) {
+function QuestionForm({ setCurrentQuestion, currentQuestion, sendQuestion }) {
   const setModalActive = useContext(ModalContext)[1];
 
   const handleChange = (event) => {
@@ -32,13 +27,8 @@ function QuestionForm({
           value={currentQuestion}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          disabled={disabled}
         />
-        <button
-          className="btn btn_ask"
-          onClick={sendQuestion}
-          disabled={disabled}
-        >
+        <button className="btn btn_ask" onClick={sendQuestion}>
           Ask
         </button>
       </div>

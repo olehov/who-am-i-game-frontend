@@ -3,8 +3,9 @@ import Btn from '../../components/btn/btn';
 import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import GameDataContext from '../../contexts/game-data-context';
-import { useContext, useEffect } from 'react';
-import { createGame } from '../../services/games-service';
+import { useContext, useEffect, useState } from 'react';
+import { createGame, getAllPlayersCount } from '../../services/games-service';
+import useInterval from '../../hooks/useInterval';
 import {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
@@ -14,8 +15,12 @@ import './home.scss';
 
 function Homepage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
+  const [playerNum, setPlayerNum] = useState('?');
   const navigate = useNavigate();
-  const playerNum = 97;
+
+  useInterval(async () => {
+    setPlayerNum((await getAllPlayersCount(playerId)).data);
+  }, 1000 * 5);
 
   useEffect(() => {
     if (gameData.data.status === WAITING_FOR_PLAYERS) {

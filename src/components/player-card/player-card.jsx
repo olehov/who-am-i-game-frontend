@@ -15,15 +15,16 @@ import './player-card.scss';
 // if you won't assign description and player status it will be hidden
 
 function PlayerCard({
+  className,
   avatarClassName,
   name,
-  playerStausClassName,
+  playerStatusClassName,
   assignedCharacter,
   isYou,
 }) {
   return (
     <div className="player">
-      <div className="player__card">
+      <div className={clsx('player__card', className)}>
         <div className={clsx('player__card-avatar', avatarClassName)}></div>
         <div className="player__card-name">{name}</div>
         {isYou && <div className="player__you-label">THIS IS YOU</div>}
@@ -31,7 +32,7 @@ function PlayerCard({
           <div className="player__assigned-character">{assignedCharacter}</div>
         )}
       </div>
-      <div className={clsx('player__status', playerStausClassName)}></div>
+      <div className={clsx('player__status', playerStatusClassName)}></div>
     </div>
   );
 }
