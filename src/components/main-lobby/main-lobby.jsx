@@ -1,5 +1,5 @@
-import LobbyItem from '../../components/lobby-item/lobby-item';
-import Header from '../../components/header/header';
+import LobbyItem from '../lobby-item/lobby-item';
+import Header from '../header/header';
 import './main-lobby.scss';
 import ScreenWrapper from '../wrappers/screen-wrapper/screen-wrapper';
 
@@ -15,6 +15,7 @@ function MainLobby() {
           theme="Theme"
           numberOfPlayers="Number of Players"
           type="Type"
+          icon
         />
         {[1, 2, 3, 4].map((num) => (
           <LobbyItem
@@ -25,7 +26,7 @@ function MainLobby() {
           />
         ))}
       </div>
-      {/* <SelectCharacterModal
+      {/* <JoinLobbyModal
           playerNum={1}
           displayModal={showSuggestModal}
           setDisplayModal={setSuggestModal}

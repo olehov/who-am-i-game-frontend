@@ -31,7 +31,7 @@ function Lobby() {
   });
 
   useEffect(() => {
-    if (!gameData.data.status) navigate('/');
+    // if (!gameData.data.status) navigate('/');
 
     if (gameData.data.status === PROCESSING_QUESTION) {
       navigate('/play');

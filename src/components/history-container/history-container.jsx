@@ -62,7 +62,9 @@ function HistoryContainer({ mode, setMode, playerId, gameId }) {
       {(mode === 'answer' || mode === 'guess') && (
         <AnswerForm mode={mode} onClick={handleClick} />
       )}
-      {mode === 'response' && <MessageBlock mode={mode} message={message} />}
+      {(mode === 'response' || mode === 'wait') && (
+        <MessageBlock mode={mode} message={message} />
+      )}
     </div>
   );
 }

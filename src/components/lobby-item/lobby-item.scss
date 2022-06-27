@@ -1,3 +1,5 @@
+@import '../../styles/colors';
+
 .lobby-item {
   display: flex;
   flex-direction: row;
@@ -13,6 +15,20 @@
     align-items: center;
     width: 390px;
     height: 51px;
+
+    .icon {
+      width: 24px;
+      height: 17px;
+      margin-right: 20px;
+      background: url('../../assets/icons/icon.svg');
+      filter: invert(100%) sepia(4%) saturate(169%) hue-rotate(339deg)
+        brightness(118%) contrast(96%);
+
+      &.icon-green {
+        filter: invert(82%) sepia(33%) saturate(4536%) hue-rotate(105deg)
+          brightness(100%) contrast(102%);
+      }
+    }
 
     &.type {
       width: 270px;
