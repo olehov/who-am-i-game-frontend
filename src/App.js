@@ -10,6 +10,7 @@ import { useState } from 'react';
 import GameDataContext from './contexts/game-data-context';
 import { v4 as uuidv4 } from 'uuid';
 import './App.scss';
+import LoginPage from './screens/login-page/login-page';
 
 function App() {
   const [gameData, setGameData] = useState({
@@ -40,6 +41,7 @@ function App() {
           <Route path="defeat" element={<LostGame />} />
           <Route path="victory" element={<Victory />} />
           <Route path="inactive" element={<InactivityKick />} />
+          <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </GameDataContext.Provider>

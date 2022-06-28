@@ -1,0 +1,22 @@
+@import '../../styles/colors.scss';
+
+.dividing-line {
+  width: 405px;
+  height: 2px;
+  background: $btn-lightgray;
+  margin: 32px;
+}
+
+.text-login {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.or {
+  margin: 16px;
+}
+
+.already {
+  padding-bottom: 16px;
+}
