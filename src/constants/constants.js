@@ -14,6 +14,27 @@ const YES = 'YES';
 const NO = 'NO';
 const NOT_SURE = 'NOT_SURE';
 
+const THEME_FILTER = [
+  { title: 'Actors', checked: false },
+  { title: 'Astronauts', checked: false },
+  { title: 'Superheroes', checked: false },
+];
+const NUMBER_OF_PLAYERS_FILTER = [
+  { title: '4', checked: false },
+  { title: '5', checked: false },
+  { title: '6', checked: false },
+  { title: '7', checked: false },
+  { title: '8', checked: false },
+  { title: '9', checked: false },
+  { title: '10', checked: false },
+  { title: '11', checked: false },
+  { title: '12', checked: false },
+];
+const TYPE_FILTER = [
+  { title: 'Public', checked: false },
+  { title: 'Private', checked: false },
+];
+
 export {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
@@ -27,4 +48,7 @@ export {
   YES,
   NO,
   NOT_SURE,
+  THEME_FILTER,
+  NUMBER_OF_PLAYERS_FILTER,
+  TYPE_FILTER,
 };

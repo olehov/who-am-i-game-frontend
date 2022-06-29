@@ -42,7 +42,6 @@ function Lobby() {
     nickname: `Player ${index + 1}`,
     ...player,
   }));
-  console.log(players);
 
   const currentPlayer =
     players && players.find((player) => player.player.id === playerId);
@@ -60,7 +59,7 @@ function Lobby() {
                 avatarClassName={`avatar01`}
                 name={currentPlayer.nickname}
                 playerStatusClassName={
-                  currentPlayer.state === READY ? 'yes' : 'no'
+                  currentPlayer.state === READY ? 'yes' : 'unsure'
                 }
                 isYou
               />
@@ -72,7 +71,7 @@ function Lobby() {
                   avatarClassName={`avatar0${index + 2}`}
                   name={player.nickname}
                   playerStatusClassName={
-                    player.state === NOT_READY ? 'no' : 'yes'
+                    player.state === READY ? 'yes' : 'unsure'
                   }
                 />
               ))

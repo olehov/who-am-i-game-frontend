@@ -2,12 +2,19 @@ import clsx from 'clsx';
 import Btn from '../btn/btn';
 import './lobby-item.scss';
 
-function LobbyItem({ className, theme, numberOfPlayers, type, icon, onClick }) {
-  let btnText = '';
-
-  if (className === 'table-header') {
-    btnText = 'RESET FILTERS';
-  } else btnText = 'JOIN';
+function LobbyItem({
+  className,
+  theme,
+  numberOfPlayers,
+  type,
+  icon,
+  setJoinLobbyModal,
+}) {
+  const joinLobbyClickHandler = () => {
+    if (type === 'Private') {
+      setJoinLobbyModal(true);
+    }
+  };
 
   return (
     <div className={clsx('lobby-item', className)}>
@@ -28,9 +35,9 @@ function LobbyItem({ className, theme, numberOfPlayers, type, icon, onClick }) {
       <div className={clsx('btn-wrapper', className)}>
         <Btn
           className="btn-green-solid btn-rounded btn-with-fields"
-          onClick={onClick}
+          onClick={joinLobbyClickHandler}
         >
-          {btnText}
+          JOIN
         </Btn>
       </div>
     </div>

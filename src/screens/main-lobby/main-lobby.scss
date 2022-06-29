@@ -1,0 +1,33 @@
+@import '../../styles/mixins';
+@import '../../styles/colors';
+
+.main-lobby {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  gap: 32px;
+  width: 1280px;
+  margin-top: 20px;
+  padding: 24px;
+  background-color: $secondary-background-blue;
+  border-radius: 16px;
+  overflow: auto;
+
+  .table-header {
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+
+    &__info {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .btn-with-fields {
+      width: 184px;
+      padding: 16px 32px;
+    }
+  }
+}
