@@ -5,13 +5,13 @@ import Btn from '../../btn/btn';
 import './select-character.scss';
 
 function SelectCharacterModal({
-  playerNum,
+  player,
   displayModal,
   setDisplayModal,
   setSuggestBtn,
 }) {
   const { gameData, playerId } = useContext(GameDataContext);
-  const [playerName, setPlayerName] = useState(`Player ${playerNum}`);
+  const [playerName, setPlayerName] = useState(player);
   const [characterName, setCharacterName] = useState('');
 
   if (!displayModal) {

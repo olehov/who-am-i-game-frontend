@@ -20,6 +20,7 @@ function Header({ type }) {
           <div className="game-header__timer-wrapper">
             <CountdownTimer
               inLobby={clsx({ 'in-lobby': type === 'game-lobby' })}
+              time={120}
             />
           </div>
         </>

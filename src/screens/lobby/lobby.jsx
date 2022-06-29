@@ -38,7 +38,12 @@ function Lobby() {
     }
   }, [gameData, navigate]);
 
-  const players = gameData.data.players;
+  const players = gameData.data.players.map((player, index) => ({
+    nickname: `Player ${index + 1}`,
+    ...player,
+  }));
+  console.log(players);
+
   const currentPlayer =
     players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =
@@ -53,7 +58,7 @@ function Lobby() {
             {currentPlayer && (
               <PlayerCard
                 avatarClassName={`avatar01`}
-                name={`Player 1`}
+                name={currentPlayer.nickname}
                 playerStatusClassName={
                   currentPlayer.state === READY ? 'yes' : 'no'
                 }
@@ -65,7 +70,7 @@ function Lobby() {
                 <PlayerCard
                   key={player.player.id}
                   avatarClassName={`avatar0${index + 2}`}
-                  name={`Player ${index + 2}`}
+                  name={player.nickname}
                   playerStatusClassName={
                     player.state === NOT_READY ? 'no' : 'yes'
                   }
@@ -102,7 +107,7 @@ function Lobby() {
           setModalActive={setLeaveModalActive}
         />
         <SelectCharacterModal
-          playerNum={1}
+          player={currentPlayer.nickname}
           displayModal={showSuggestModal}
           setDisplayModal={setSuggestModal}
           setSuggestBtn={setSuggestBtn}
