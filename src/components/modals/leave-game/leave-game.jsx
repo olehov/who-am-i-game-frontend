@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import GameDataContext from '../../../contexts/game-data-context';
 import { useContext } from 'react';
 import './leave-game.scss';
+import Btn from '../../btn/btn';
 
 function LeaveGameModal({ showModal, setModalActive }) {
   const { resetData } = useContext(GameDataContext);
@@ -34,10 +35,10 @@ function LeaveGameModal({ showModal, setModalActive }) {
         Are you sure you want to leave the game?
       </p>
       <div className="modal-container__selector-container">
-        <button type="submit" className="modal-container__leave-btn">
+        <Btn type="submit" className="btn-pink-solid">
           LEAVE
-        </button>
-        <button
+        </Btn>
+        <Btn
           className="modal-container__cancel-btn"
           onClick={(e) => {
             e.preventDefault();
@@ -45,7 +46,7 @@ function LeaveGameModal({ showModal, setModalActive }) {
           }}
         >
           CANCEL
-        </button>
+        </Btn>
       </div>
     </form>
   );

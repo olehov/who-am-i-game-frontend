@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Btn from '../btn/btn';
 import './lobby-item.scss';
 
-function LobbyItem({ className, theme, numberOfPlayers, type, icon }) {
+function LobbyItem({ className, theme, numberOfPlayers, type, icon, onClick }) {
   let btnText = '';
 
   if (className === 'table-header') {
@@ -26,7 +26,10 @@ function LobbyItem({ className, theme, numberOfPlayers, type, icon }) {
         </div>
       </div>
       <div className={clsx('btn-wrapper', className)}>
-        <Btn className="btn-green-solid btn-rounded btn-with-fields">
+        <Btn
+          className="btn-green-solid btn-rounded btn-with-fields"
+          onClick={onClick}
+        >
           {btnText}
         </Btn>
       </div>

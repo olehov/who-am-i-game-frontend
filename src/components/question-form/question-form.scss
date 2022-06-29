@@ -42,19 +42,3 @@
   border: none;
   background: $font-yellow;
 }
-
-@media screen and (max-width: 1280px) {
-  .input_field {
-    padding: 16px 24px;
-    height: 55px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-  }
-
-  .btn_ask,
-  .btn_guess {
-    gap: 30px;
-    height: 48px;
-  }
-}

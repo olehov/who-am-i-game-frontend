@@ -52,15 +52,13 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
           setGuess(e.target.value);
         }}
       />
-      <div className="guess-character-modal__guess-container">
-        <Btn
-          className="btn-yellow-solid"
-          disabled={checkGuess(guess)}
-          type="submit"
-        >
-          I WANT TO GUESS
-        </Btn>
-      </div>
+      <Btn
+        className="btn-yellow-solid"
+        disabled={checkGuess(guess)}
+        type="submit"
+      >
+        I WANT TO GUESS
+      </Btn>
     </form>
   );
 }

@@ -2,9 +2,11 @@ import LobbyItem from '../lobby-item/lobby-item';
 import Header from '../header/header';
 import './main-lobby.scss';
 import ScreenWrapper from '../wrappers/screen-wrapper/screen-wrapper';
+import JoinLobbyModal from '../modals/join-lobby-modal/join-lobby-modal';
+import { useState } from 'react';
 
 function MainLobby() {
-  // const [showSuggestModal, setSuggestModal] = useState(false);
+  const [showJoinLobbyModal, setJoinLobbyModal] = useState(false);
 
   return (
     <ScreenWrapper className="lobby-screen">
@@ -23,14 +25,14 @@ function MainLobby() {
             theme="Actors"
             numberOfPlayers={`5/12 players`}
             type="Public"
+            onClick={() => setJoinLobbyModal(true)}
           />
         ))}
       </div>
-      {/* <JoinLobbyModal
-          playerNum={1}
-          displayModal={showSuggestModal}
-          setDisplayModal={setSuggestModal}
-        /> */}
+      <JoinLobbyModal
+        displayModal={showJoinLobbyModal}
+        setDisplayModal={setJoinLobbyModal}
+      />
     </ScreenWrapper>
   );
 }

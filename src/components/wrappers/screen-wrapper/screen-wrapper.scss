@@ -3,6 +3,7 @@
 
 .screen-wrapper {
   @include message-screen;
+  min-width: 1280px;
 }
 
 .lobby-screen {

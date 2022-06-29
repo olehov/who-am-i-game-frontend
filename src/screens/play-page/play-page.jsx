@@ -13,14 +13,15 @@ import { useNavigate } from 'react-router-dom';
 function PlayPage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [displayModal, setDisplayModal] = useState(false);
-  const [mode, setMode] = useState(
-    gameData.data.currentTurn === playerId ? 'ask' : 'answer'
-  );
+  // const [mode, setMode] = useState(
+  //   gameData.data.currentTurn === playerId ? 'ask' : 'answer'
+  // );
+  const [mode, setMode] = useState('ask');
   const navigate = useNavigate();
 
   // useEffect(() => {
   //   if (!gameData.data.status) navigate('/');
-  // });
+  // }, [gameData, navigate]);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
