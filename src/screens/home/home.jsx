@@ -30,9 +30,9 @@ function Homepage() {
       <GameTitle />
       <PlayersOnlineTitle />
       {isLogin ? (
-        <AfterLogin setIsLogin={setIsLogin} />
+        <AfterLogin setIsLogin={setIsLogin} navigate={navigate} />
       ) : (
-        <BeforeLogin setIsLogin={setIsLogin} />
+        <BeforeLogin setIsLogin={setIsLogin} navigate={navigate} />
       )}
     </ScreenWrapper>
   );

@@ -1,0 +1,15 @@
+@import '../../styles/colors.scss';
+
+.create-account-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 842px;
+  gap: 32px;
+  padding-top: 32px;
+
+  .btn-wraper {
+    display: flex;
+    gap: 32px;
+  }
+}
