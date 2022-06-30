@@ -19,6 +19,10 @@
 
   &__input-field {
     @include modal-input-field;
+
+    &.error {
+      border: 4px solid $btn-pink;
+    }
   }
 
   &__create-container {
@@ -27,5 +31,11 @@
 
   &__cancel-btn {
     @include modal-cancel-btn;
+  }
+
+  .error-message {
+    margin-top: -24px;
+    padding-left: 27px;
+    color: $btn-pink;
   }
 }

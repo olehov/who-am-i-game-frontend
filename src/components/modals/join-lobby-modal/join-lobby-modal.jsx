@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MAIN_LOBBY } from '../../../constants/constants';
@@ -8,7 +9,9 @@ function JoinLobbyModal({ displayModal, setDisplayModal }) {
   const [theme, setTheme] = useState('');
   const [number, setNumber] = useState('');
   const [privateLobby, setPrivateLobby] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+  const password = 'password';
 
   useEffect(() => {
     return () => {
@@ -22,20 +25,20 @@ function JoinLobbyModal({ displayModal, setDisplayModal }) {
     return null;
   }
 
-  const privateChangeHandler = () => {
-    setPrivateLobby((state) => !state);
-  };
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setDisplayModal(false);
-    navigate(MAIN_LOBBY);
   };
 
   const cancelClickHandler = (e) => {
     e.preventDefault();
     setDisplayModal(false);
-    navigate(MAIN_LOBBY);
+    setError('');
+  };
+
+  const inputPasswordHandler = (event) => {
+    if (event.target.value !== password) setError('error');
+    else setError('');
   };
 
   return (
@@ -49,10 +52,12 @@ function JoinLobbyModal({ displayModal, setDisplayModal }) {
       </div>
       <p className="p">This is private lobby: Enter the password</p>
       <input
-        className="join-lobby-modal__input-field"
+        className={clsx('join-lobby-modal__input-field', error)}
         type="password"
         placeholder="Password"
+        onChange={inputPasswordHandler}
       />
+      {error && <p className="error-message ">Wrong password</p>}
       <div className="join-lobby-modal__create-container">
         <Btn className="btn-green-solid btn-half" type="submit">
           CREATE
