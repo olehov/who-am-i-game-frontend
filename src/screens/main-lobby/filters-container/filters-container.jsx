@@ -21,7 +21,7 @@ function FiltersContainer({ name, filtersGroup, setFilter }) {
               <FilterItem
                 name={name}
                 title={filter.title}
-                checked={filter.checked ? 'checked' : ''}
+                checked={filter.checked}
                 onChange={changeFilter}
               />
             </li>
