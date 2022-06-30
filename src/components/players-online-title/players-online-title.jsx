@@ -1,8 +1,9 @@
-import { useEffect, useState, useContext, useRef } from 'react';
+import { useState, useContext } from 'react';
 import Spinner from '@atlaskit/spinner';
 import { getAllPlayersCount } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
 import './players-online-title.scss';
+import useInterval from '../../hooks/useInterval';
 
 function PlayersOnlineTitle() {
   const { playerId } = useContext(GameDataContext);
@@ -21,25 +22,3 @@ function PlayersOnlineTitle() {
 }
 
 export default PlayersOnlineTitle;
-
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
-
-  useEffect(() => {
-    if (typeof callback === 'function') savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    function tick() {
-      if (savedCallback.current != null) {
-        savedCallback.current();
-      }
-    }
-
-    if (delay !== null) {
-      const id = setInterval(tick, delay);
-
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
