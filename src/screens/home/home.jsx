@@ -10,6 +10,8 @@ import {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
   NUMBER_OF_PLAYERS,
+  LOADING,
+  LOBBY,
 } from '../../constants/constants';
 import './home.scss';
 
@@ -24,9 +26,9 @@ function Homepage() {
 
   useEffect(() => {
     if (gameData.data.status === WAITING_FOR_PLAYERS) {
-      navigate('loading');
+      navigate(LOADING);
     } else if (gameData.data.status === SUGGESTING_CHARACTERS) {
-      navigate('lobby');
+      navigate(LOBBY);
     }
   }, [gameData, navigate]);
 

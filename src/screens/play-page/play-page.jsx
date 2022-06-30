@@ -9,12 +9,13 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import { findGameById } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
 import { useNavigate } from 'react-router-dom';
+import { ANSWERING, ASKING } from '../../constants/constants';
 
 function PlayPage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [displayModal, setDisplayModal] = useState(false);
   const [mode, setMode] = useState(
-    gameData.data.currentTurn === playerId ? 'ask' : 'answer'
+    gameData.data.currentTurn === playerId ? ASKING : ANSWERING
   );
   const navigate = useNavigate();
 
@@ -30,10 +31,12 @@ function PlayPage() {
     return () => clearTimeout(checkStatus);
   });
 
-  const players = gameData.data.players.map((player, index) => ({
-    avatar: `avatar0${index + 1}`,
-    ...player,
-  }));
+  const players =
+    gameData.data.players &&
+    gameData.data.players.map((player, index) => ({
+      avatar: `avatar0${index + 1}`,
+      ...player,
+    }));
   const currentPlayer =
     players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =
@@ -64,9 +67,9 @@ export default PlayPage;
 
 /*
 ---------Modes-----------
-'ask' - ask a question
-'answer' - answer a question (3 buttons)
-'guess' - answer a quessing question (2 buttons)
-'wait' - waiting for response from other prayers after giving an answer
-'response' - giving a response for the question ('yes' or 'no')
+ASLING - ask a question
+ANSWERING - answer a question (3 buttons)
+GUESSING - answer a quessing question (2 buttons)
+WAITING - waiting for response from other prayers after giving an answer
+RESPONSE - giving a response for the question ('yes' or 'no')
 */

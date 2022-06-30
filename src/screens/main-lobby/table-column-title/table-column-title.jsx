@@ -11,21 +11,21 @@ function TableColumnTitle({
   setDisplayDropdown,
   children,
 }) {
-  const iconClassName = filtersGroup.find((filter) => filter.checked === true)
-    ? 'icon-green'
-    : '';
-
   const onClickHandler = (event) => {
     if (event.target.className.includes('table-header__column'))
       setDisplayDropdown((state) => !state);
   };
 
   return (
-    <div
+    <th
       className={clsx('table-header__column', className)}
       onClick={onClickHandler}
     >
-      <div className={clsx('icon', iconClassName)}></div>
+      <div
+        className={clsx('icon', {
+          'icon-green': filtersGroup.some((filter) => filter.checked),
+        })}
+      ></div>
       {displayDropdown && (
         <FiltersContainer
           name={name}
@@ -34,7 +34,7 @@ function TableColumnTitle({
         />
       )}
       {children}
-    </div>
+    </th>
   );
 }
 

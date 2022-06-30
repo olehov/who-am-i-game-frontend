@@ -13,6 +13,17 @@ const FINISHED = 'FINISHED';
 const YES = 'YES';
 const NO = 'NO';
 const NOT_SURE = 'NOT_SURE';
+const GUESSING = 'GUESSING';
+const WAITING = 'WAITING';
+const RESPONSE = 'RESPONSE';
+
+const MAIN_LOBBY = '/main-lobby';
+const LOADING = '/loading';
+const LOBBY = '/lobby';
+const PLAY = '/play';
+const DEFEAT = '/defeat';
+const VICTORY = '/victory';
+const INACTIVE = '/inactive';
 
 const THEME_FILTER = [
   { title: 'Actors', checked: false },
@@ -48,6 +59,16 @@ export {
   YES,
   NO,
   NOT_SURE,
+  GUESSING,
+  WAITING,
+  RESPONSE,
+  MAIN_LOBBY,
+  LOADING,
+  LOBBY,
+  PLAY,
+  DEFEAT,
+  VICTORY,
+  INACTIVE,
   THEME_FILTER,
   NUMBER_OF_PLAYERS_FILTER,
   TYPE_FILTER,

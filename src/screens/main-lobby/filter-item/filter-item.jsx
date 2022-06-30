@@ -1,8 +1,8 @@
 import './filter-item.scss';
 
-const FilterItem = ({ name, title, checked, changeFilter }) => {
+const FilterItem = ({ name, title, checked, onChange }) => {
   const handleChange = (event) => {
-    changeFilter(event);
+    onChange(event);
   };
 
   return (
@@ -15,7 +15,7 @@ const FilterItem = ({ name, title, checked, changeFilter }) => {
         onChange={handleChange}
         checked={checked}
       />
-      <label htmlFor={title} className={checked.toString()}>
+      <label htmlFor={title} className={checked}>
         {title}
       </label>
     </div>

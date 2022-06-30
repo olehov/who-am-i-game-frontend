@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MAIN_LOBBY } from '../../../constants/constants';
 import Btn from '../../btn/btn';
 import './join-lobby.scss';
 
@@ -28,13 +29,13 @@ function JoinLobbyModal({ displayModal, setDisplayModal }) {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setDisplayModal(false);
-    navigate('/main-lobby');
+    navigate(MAIN_LOBBY);
   };
 
   const cancelClickHandler = (e) => {
     e.preventDefault();
     setDisplayModal(false);
-    navigate('/main-lobby');
+    navigate(MAIN_LOBBY);
   };
 
   return (
@@ -53,11 +54,11 @@ function JoinLobbyModal({ displayModal, setDisplayModal }) {
         placeholder="Password"
       />
       <div className="join-lobby-modal__create-container">
-        <Btn className="btn-green-solid btn-half btn-large" type="submit">
+        <Btn className="btn-green-solid btn-half" type="submit">
           CREATE
         </Btn>
         <Btn
-          className="join-lobby-modal__cancel-btn btn-half btn-large"
+          className="join-lobby-modal__cancel-btn btn-half"
           onClick={cancelClickHandler}
         >
           CANCEL

@@ -1,16 +1,16 @@
-import LobbyItem from '../../components/lobby-item/lobby-item';
+import LobbyItem from './lobby-item/lobby-item';
 import Header from '../../components/header/header';
-import './main-lobby.scss';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import JoinLobbyModal from '../../components/modals/join-lobby-modal/join-lobby-modal';
-import { useState } from 'react';
+import TableColumnTitle from './table-column-title/table-column-title';
 import Btn from '../../components/btn/btn';
 import {
   NUMBER_OF_PLAYERS_FILTER,
   THEME_FILTER,
   TYPE_FILTER,
 } from '../../constants/constants';
-import TableColumnTitle from '../../components/table-column-title/table-column-title';
+import { useState } from 'react';
+import './main-lobby.scss';
 
 function MainLobby() {
   const [themeFilter, setThemeFilter] = useState(THEME_FILTER);
@@ -50,9 +50,9 @@ function MainLobby() {
   return (
     <ScreenWrapper className="lobby-screen">
       <Header type="lobbies" />
-      <div className="main-lobby" onClick={closeDropdown}>
-        <div className="table-header">
-          <div className="table-header__info">
+      <table className="main-lobby" onClick={closeDropdown}>
+        <thead className="table-header">
+          <tr className="table-header__info">
             <TableColumnTitle
               name="Theme"
               filtersGroup={themeFilter}
@@ -81,26 +81,28 @@ function MainLobby() {
             >
               Type
             </TableColumnTitle>
-          </div>
-          <div>
-            <Btn
-              className="btn-green-solid btn-rounded btn-with-fields"
-              onClick={resetFiltersHandler}
-            >
-              RESET FILTERS
-            </Btn>
-          </div>
-        </div>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
-          <LobbyItem
-            key={num}
-            theme="Actors"
-            numberOfPlayers={`${num}/12 players`}
-            type={num % 3 === 0 ? 'Public' : 'Private'}
-            setJoinLobbyModal={setJoinLobbyModal}
-          />
-        ))}
-      </div>
+            <th>
+              <Btn
+                className="btn-green-solid btn-rounded btn-with-fields"
+                onClick={resetFiltersHandler}
+              >
+                RESET FILTERS
+              </Btn>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
+            <LobbyItem
+              key={num}
+              theme="Actors"
+              numberOfPlayers={`${num}/12 players`}
+              type={num % 3 === 0 ? 'Public' : 'Private'}
+              setJoinLobbyModal={setJoinLobbyModal}
+            />
+          ))}
+        </tbody>
+      </table>
       <JoinLobbyModal
         displayModal={joinLobbyModal}
         setDisplayModal={setJoinLobbyModal}

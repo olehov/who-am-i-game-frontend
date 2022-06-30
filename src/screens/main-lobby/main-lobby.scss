@@ -6,7 +6,6 @@
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 1;
-  gap: 32px;
   width: 1280px;
   margin-top: 20px;
   padding: 24px;
@@ -15,15 +14,8 @@
   overflow: auto;
 
   .table-header {
-    display: flex;
-    flex-direction: row;
     font-weight: 700;
-
-    &__info {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-    }
+    padding-bottom: 16px;
 
     .btn-with-fields {
       width: 184px;

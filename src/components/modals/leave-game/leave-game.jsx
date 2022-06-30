@@ -1,12 +1,12 @@
-import { useNavigate } from 'react-router-dom';
 import GameDataContext from '../../../contexts/game-data-context';
 import { useContext } from 'react';
 import './leave-game.scss';
 import Btn from '../../btn/btn';
+import { leaveGame } from '../../../services/games-service';
 
 function LeaveGameModal({ showModal, setModalActive }) {
+  const { gameData, playerId } = useContext(GameDataContext);
   const { resetData } = useContext(GameDataContext);
-  const navigate = useNavigate();
 
   if (!showModal) {
     return null;
@@ -17,7 +17,7 @@ function LeaveGameModal({ showModal, setModalActive }) {
       onSubmit={(e) => {
         e.preventDefault();
         resetData();
-        navigate('/');
+        leaveGame(playerId, gameData.data.id);
       }}
       className="modal-container"
     >

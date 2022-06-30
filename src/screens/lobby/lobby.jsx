@@ -6,7 +6,7 @@ import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PROCESSING_QUESTION, READY } from '../../constants/constants';
+import { PLAY, PROCESSING_QUESTION, READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { findGameById } from '../../services/games-service';
@@ -30,7 +30,7 @@ function Lobby() {
     if (!gameData.data.status) navigate('/');
 
     if (gameData.data.status === PROCESSING_QUESTION) {
-      navigate('/play');
+      navigate(PLAY);
     }
   }, [gameData, navigate]);
 
@@ -79,7 +79,7 @@ function Lobby() {
           <div className="input-screen__btn-wrapper">
             {suggestBtn && (
               <Btn
-                className={['btn-green-solid', 'btn-large']}
+                className={['btn-green-solid']}
                 onClick={() => {
                   setSuggestModal(true);
                 }}
@@ -91,7 +91,7 @@ function Lobby() {
             <div className="input-screen__demarcation"></div>
 
             <Btn
-              className={['btn-pink-solid', 'btn-large']}
+              className={['btn-pink-solid']}
               onClick={() => setLeaveModalActive(true)}
             >
               LEAVE GAME

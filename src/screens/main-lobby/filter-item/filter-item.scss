@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import '../../../styles/colors';
 
 .filter-item {
   input {
@@ -18,11 +18,11 @@
       width: 24px;
       height: 24px;
       margin-right: 20px;
-      background: url('../../assets/icons/checkbox.svg');
+      background: url('../../../assets/icons/checkbox.svg');
     }
 
-    &.true:before {
-      background: url('../../assets/icons/checkbox-checked.svg');
+    &.checked:before {
+      background: url('../../../assets/icons/checkbox-checked.svg');
     }
   }
 }

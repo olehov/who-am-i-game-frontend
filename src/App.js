@@ -11,6 +11,15 @@ import MainLobby from './screens/main-lobby/main-lobby';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import './App.scss';
+import {
+  DEFEAT,
+  INACTIVE,
+  LOADING,
+  LOBBY,
+  MAIN_LOBBY,
+  PLAY,
+  VICTORY,
+} from './constants/constants';
 
 function App() {
   const [gameData, setGameData] = useState({
@@ -35,13 +44,13 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/main-lobby" element={<MainLobby />} />
-          <Route path="loading" element={<Loading />} />
-          <Route path="lobby" element={<Lobby />} />
-          <Route path="play" element={<PlayPage />} />
-          <Route path="defeat" element={<LostGame />} />
-          <Route path="victory" element={<Victory />} />
-          <Route path="inactive" element={<InactivityKick />} />
+          <Route path={MAIN_LOBBY} element={<MainLobby />} />
+          <Route path={LOADING} element={<Loading />} />
+          <Route path={LOBBY} element={<Lobby />} />
+          <Route path={PLAY} element={<PlayPage />} />
+          <Route path={DEFEAT} element={<LostGame />} />
+          <Route path={VICTORY} element={<Victory />} />
+          <Route path={INACTIVE} element={<InactivityKick />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </GameDataContext.Provider>
