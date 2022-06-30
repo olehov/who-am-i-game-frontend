@@ -30,7 +30,10 @@ function PlayPage() {
     return () => clearTimeout(checkStatus);
   });
 
-  const players = gameData.data.players;
+  const players = gameData.data.players.map((player, index) => ({
+    avatar: `avatar0${index + 1}`,
+    ...player,
+  }));
   const currentPlayer =
     players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =

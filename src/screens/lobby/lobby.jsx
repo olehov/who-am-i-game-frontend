@@ -6,11 +6,7 @@ import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  NOT_READY,
-  PROCESSING_QUESTION,
-  READY,
-} from '../../constants/constants';
+import { PROCESSING_QUESTION, READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { findGameById } from '../../services/games-service';
@@ -40,6 +36,7 @@ function Lobby() {
 
   const players = gameData.data.players.map((player, index) => ({
     nickname: `Player ${index + 1}`,
+    avatar: `avatar0${index + 1}`,
     ...player,
   }));
 
@@ -56,7 +53,7 @@ function Lobby() {
           <div className="input-screen__player-card-wrapper">
             {currentPlayer && (
               <PlayerCard
-                avatarClassName={`avatar01`}
+                avatarClassName={currentPlayer.avatar}
                 name={currentPlayer.nickname}
                 playerStatusClassName={
                   currentPlayer.state === READY ? 'yes' : 'unsure'
@@ -68,7 +65,7 @@ function Lobby() {
               playersWithoutYou.map((player, index) => (
                 <PlayerCard
                   key={player.player.id}
-                  avatarClassName={`avatar0${index + 2}`}
+                  avatarClassName={player.avatar}
                   name={player.nickname}
                   playerStatusClassName={
                     player.state === READY ? 'yes' : 'unsure'

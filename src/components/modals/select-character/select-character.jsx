@@ -42,6 +42,7 @@ function SelectCharacterModal({
       <input
         className="character-modal__main_input"
         type="text"
+        maxlength="51"
         value={playerName}
         onInput={(e) => {
           setPlayerName(e.target.value);
@@ -51,6 +52,7 @@ function SelectCharacterModal({
         className="character-modal__main_input"
         type="text"
         placeholder="Suggest a character"
+        maxlength="51"
         value={characterName}
         onInput={(e) => {
           setCharacterName(e.target.value);
@@ -58,7 +60,7 @@ function SelectCharacterModal({
       />
       <Btn
         className="btn-green-solid"
-        disabled={characterName.length < 3}
+        disabled={playerName.length < 3 || characterName.length < 3}
         type="submit"
       >
         SUGGEST
