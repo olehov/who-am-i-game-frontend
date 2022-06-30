@@ -15,7 +15,7 @@ import PlayersOnlineTitle from '../../components/players-online-title/players-on
 
 function Homepage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
