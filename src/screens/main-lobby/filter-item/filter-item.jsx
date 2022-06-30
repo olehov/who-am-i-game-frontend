@@ -7,22 +7,19 @@ const FilterItem = ({ name, title, checked, onChange }) => {
   };
 
   return (
-    console.log(checked),
-    (
-      <div className="filter-item">
-        <input
-          type="checkbox"
-          id={title}
-          name={name}
-          value={title}
-          onChange={handleChange}
-          checked={checked}
-        />
-        <label htmlFor={title} className={clsx({ checked })}>
-          {title}
-        </label>
-      </div>
-    )
+    <div className="filter-item">
+      <input
+        type="checkbox"
+        id={title}
+        name={name}
+        value={title}
+        onChange={handleChange}
+        checked={checked}
+      />
+      <label htmlFor={title} className={clsx({ checked })}>
+        {title}
+      </label>
+    </div>
   );
 };
 
