@@ -19,7 +19,6 @@
   width: 100%;
   height: 67px;
   transition: all 0.2s ease;
-  padding: 24px;
 }
 
 .btn:disabled {
@@ -74,6 +73,7 @@
   color: $main-font-color;
   font-weight: 500;
   text-transform: none;
+  width: 255px;
 }
 
 .btn-orange-solid {
