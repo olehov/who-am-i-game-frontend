@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import './App.scss';
 import CreateAccount from './screens/create-account/create-account';
 import SignIn from './screens/signin-page/signin-page';
+import RestorePassword from './screens/restore-password/restore-password';
 
 function App() {
   const [gameData, setGameData] = useState({
@@ -44,6 +45,7 @@ function App() {
           <Route path="inactive" element={<InactivityKick />} />
           <Route path="create-account" element={<CreateAccount />} />
           <Route path="sign-in" element={<SignIn />} />
+          <Route path="restore" element={<RestorePassword />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </GameDataContext.Provider>

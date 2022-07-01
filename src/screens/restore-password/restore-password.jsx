@@ -3,17 +3,17 @@ import GameTitle from '../../components/game-title/game-title';
 import Input from '../../components/Input/Input';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
-import './signin-page.scss';
+import './restore-password.scss';
 
-function SignIn() {
+function RestorePassword() {
   const navigate = useNavigate();
 
   return (
     <ScreenWrapper>
       <GameTitle />
       <form className="form-wrapper">
+        <div className="subtitle title-wight">restore password</div>
         <Input id="id02" placeholder="Email" type="email" />
-        <Input id="id03" placeholder="Password" type="password" />
         <div className="btn-form-wrapper">
           <Btn
             className={'btn-pink-solid'}
@@ -31,17 +31,9 @@ function SignIn() {
             sign in
           </Btn>
         </div>
-        <div
-          className="subtitle title-red"
-          onClick={() => {
-            navigate("restore");
-          }}
-        >
-          restore password
-        </div>
       </form>
     </ScreenWrapper>
   );
 }
 
-export default SignIn;
+export default RestorePassword;
