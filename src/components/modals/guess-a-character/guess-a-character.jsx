@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import CountdownTimer from '../../timer/timer-countdown/timer-countdown';
 import Btn from '../../btn/btn';
 import checkGuess from '../../../helper-functions/check-guess.js';
@@ -7,16 +6,15 @@ import './guess-a-character.scss';
 import { submitGuess } from '../../../services/games-service';
 import GameDataContext from '../../../contexts/game-data-context';
 
-function GuessCharacterModal({ displayModal, setDisplayModal }) {
+function GuessCharacterModal({ modalActive, setModalActive }) {
   const [guess, setGuess] = useState('');
   const { gameData, playerId } = useContext(GameDataContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
     return () => setGuess('');
-  }, [displayModal]);
+  }, [modalActive]);
 
-  if (!displayModal) {
+  if (!modalActive) {
     return null;
   }
 
@@ -25,7 +23,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
       className="guess-character-modal"
       onSubmit={(e) => {
         e.preventDefault();
-        setDisplayModal(false);
+        setModalActive(false);
         submitGuess(playerId, gameData.data.id, guess);
       }}
     >
@@ -36,7 +34,7 @@ function GuessCharacterModal({ displayModal, setDisplayModal }) {
         <div
           className="guess-character-modal__title-container_close-btn"
           onClick={() => {
-            setDisplayModal(false);
+            setModalActive(false);
           }}
         ></div>
       </div>

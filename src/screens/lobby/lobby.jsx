@@ -13,8 +13,8 @@ import { findGameById } from '../../services/games-service';
 
 function Lobby() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
-  const [showLeaveModal, setLeaveModalActive] = useState(false);
-  const [showSuggestModal, setSuggestModal] = useState(false);
+  const [leaveModalActive, setLeaveModalActive] = useState(false);
+  const [suggestModalActive, setSuggestModalActive] = useState(false);
   const [suggestBtn, setSuggestBtn] = useState(true);
   const navigate = useNavigate();
 
@@ -81,15 +81,12 @@ function Lobby() {
               <Btn
                 className={['btn-green-solid']}
                 onClick={() => {
-                  setSuggestModal(true);
+                  setSuggestModalActive(true);
                 }}
               >
                 Suggest a character
               </Btn>
             )}
-
-            <div className="input-screen__demarcation"></div>
-
             <Btn
               className={['btn-pink-solid']}
               onClick={() => setLeaveModalActive(true)}
@@ -99,13 +96,13 @@ function Lobby() {
           </div>
         </div>
         <LeaveGameModal
-          showModal={showLeaveModal}
+          modalActive={leaveModalActive}
           setModalActive={setLeaveModalActive}
         />
         <SelectCharacterModal
           player={currentPlayer.nickname}
-          displayModal={showSuggestModal}
-          setDisplayModal={setSuggestModal}
+          modalActive={suggestModalActive}
+          setModalActive={setSuggestModalActive}
           setSuggestBtn={setSuggestBtn}
         />
       </div>

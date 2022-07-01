@@ -13,15 +13,15 @@ import { ANSWERING, ASKING } from '../../constants/constants';
 
 function PlayPage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
-  const [displayModal, setDisplayModal] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
   const [mode, setMode] = useState(
     gameData.data.currentTurn === playerId ? ASKING : ANSWERING
   );
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!gameData.data.status) navigate('/');
-  }, [gameData, navigate]);
+  // useEffect(() => {
+  //   if (!gameData.data.status) navigate('/');
+  // }, [gameData, navigate]);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
@@ -46,7 +46,7 @@ function PlayPage() {
     <ScreenWrapper className="lobby-screen">
       <Header type="play-game" />
       <div className="content_wrapper">
-        <ModalContext.Provider value={[displayModal, setDisplayModal]}>
+        <ModalContext.Provider value={[modalActive, setModalActive]}>
           <UsersContainer
             mode={mode}
             currentPlayer={currentPlayer}
@@ -54,8 +54,8 @@ function PlayPage() {
           />
           <HistoryContainer mode={mode} setMode={setMode} />
           <GuessCharacterModal
-            displayModal={displayModal}
-            setDisplayModal={setDisplayModal}
+            modalActive={modalActive}
+            setModalActive={setModalActive}
           />
         </ModalContext.Provider>
       </div>

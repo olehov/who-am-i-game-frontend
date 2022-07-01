@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import Btn from '../../../components/btn/btn';
+import { useNavigate } from 'react-router-dom';
 import './lobby-item.scss';
+import { GAME_LOBBY } from '../../../constants/constants';
 
 function LobbyItem({
   className,
@@ -10,9 +12,12 @@ function LobbyItem({
   icon,
   setJoinLobbyModal,
 }) {
+  const navigate = useNavigate();
   const joinLobbyClickHandler = () => {
     if (type === 'Private') {
       setJoinLobbyModal(true);
+    } else {
+      navigate(GAME_LOBBY);
     }
   };
 

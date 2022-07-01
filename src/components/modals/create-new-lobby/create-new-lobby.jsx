@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MAIN_LOBBY } from '../../../constants/constants';
+import { GAME_LOBBY } from '../../../constants/constants';
 import Btn from '../../btn/btn';
 import './create-new-lobby.scss';
 
-function CreateNewLobbyModal({ displayModal, setDisplayModal }) {
+function CreateNewLobbyModal({ modalActive, setModalActive }) {
   const [theme, setTheme] = useState('');
   const [number, setNumber] = useState('');
   const [privateLobby, setPrivateLobby] = useState(false);
@@ -16,26 +16,21 @@ function CreateNewLobbyModal({ displayModal, setDisplayModal }) {
       setNumber('');
       setPrivateLobby(false);
     };
-  }, [displayModal]);
+  }, [modalActive]);
 
-  if (!displayModal) {
+  if (!modalActive) {
     return null;
   }
 
-  const privateChangeHandler = () => {
-    setPrivateLobby((state) => !state);
-  };
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setDisplayModal(false);
-    navigate(MAIN_LOBBY);
+    setModalActive(false);
+    navigate(GAME_LOBBY);
   };
 
   const cancelClickHandler = (e) => {
     e.preventDefault();
-    setDisplayModal(false);
-    navigate(MAIN_LOBBY);
+    setModalActive(false);
   };
 
   return (
@@ -52,8 +47,8 @@ function CreateNewLobbyModal({ displayModal, setDisplayModal }) {
       <select
         name="lobbyTheme"
         className="create-lobby-modal__select-field"
-        onChange={(e) => {
-          setTheme(e.target.value);
+        onChange={(event) => {
+          setTheme(event.target.value);
         }}
       >
         <option className="d-none" value="">
@@ -66,8 +61,8 @@ function CreateNewLobbyModal({ displayModal, setDisplayModal }) {
       <select
         name="numberOfPlayers"
         className="create-lobby-modal__select-field"
-        onChange={(e) => {
-          setNumber(e.target.value);
+        onChange={(event) => {
+          setNumber(event.target.value);
         }}
       >
         <option className="d-none" value="">
@@ -89,7 +84,7 @@ function CreateNewLobbyModal({ displayModal, setDisplayModal }) {
           className="checkbox-input"
           type="checkbox"
           value="Private"
-          onChange={privateChangeHandler}
+          onChange={() => setPrivateLobby((state) => !state)}
         />
         <label htmlFor="lobbyType" className={privateLobby.toString()}>
           Private lobby
@@ -103,7 +98,11 @@ function CreateNewLobbyModal({ displayModal, setDisplayModal }) {
         />
       )}
       <div className="create-lobby-modal__create-container">
-        <Btn className="btn-green-solid btn-half" type="submit">
+        <Btn
+          className="btn-green-solid btn-half"
+          type="submit"
+          disabled={!theme || !number}
+        >
           CREATE
         </Btn>
         <Btn

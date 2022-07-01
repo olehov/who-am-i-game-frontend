@@ -6,15 +6,15 @@ import './select-character.scss';
 
 function SelectCharacterModal({
   player,
-  displayModal,
-  setDisplayModal,
+  modalActive,
+  setModalActive,
   setSuggestBtn,
 }) {
   const { gameData, playerId } = useContext(GameDataContext);
   const [playerName, setPlayerName] = useState(player);
   const [characterName, setCharacterName] = useState('');
 
-  if (!displayModal) {
+  if (!modalActive) {
     return null;
   }
 
@@ -23,7 +23,7 @@ function SelectCharacterModal({
       onSubmit={(e) => {
         e.preventDefault();
         suggestCharacter(playerId, gameData.data.id, playerName, characterName);
-        setDisplayModal(false);
+        setModalActive(false);
         setSuggestBtn(false);
       }}
       className="character-modal"
@@ -35,14 +35,14 @@ function SelectCharacterModal({
         <div
           className="character-modal__message-container_close-btn"
           onClick={() => {
-            setDisplayModal(false);
+            setModalActive(false);
           }}
         />
       </div>
       <input
         className="character-modal__main_input"
         type="text"
-        maxlength="51"
+        maxLength="51"
         value={playerName}
         onInput={(e) => {
           setPlayerName(e.target.value);
@@ -52,7 +52,7 @@ function SelectCharacterModal({
         className="character-modal__main_input"
         type="text"
         placeholder="Suggest a character"
-        maxlength="51"
+        maxLength="51"
         value={characterName}
         onInput={(e) => {
           setCharacterName(e.target.value);

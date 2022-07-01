@@ -3,24 +3,26 @@ import { useContext } from 'react';
 import './leave-game.scss';
 import Btn from '../../btn/btn';
 import { leaveGame } from '../../../services/games-service';
+import { useNavigate } from 'react-router-dom';
 
-function LeaveGameModal({ showModal, setModalActive }) {
+function LeaveGameModal({ modalActive, setModalActive }) {
   const { gameData, playerId } = useContext(GameDataContext);
   const { resetData } = useContext(GameDataContext);
+  const navigate = useNavigate();
 
-  if (!showModal) {
+  if (!modalActive) {
     return null;
   }
 
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    resetData();
+    leaveGame(playerId, gameData.data.id);
+    navigate('/');
+  };
+
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        resetData();
-        leaveGame(playerId, gameData.data.id);
-      }}
-      className="modal-container"
-    >
+    <form onSubmit={onSubmitHandler} className="modal-container">
       <div className="modal-container__title-container">
         <h3 className="modal-container__title">LEAVE THE GAME</h3>
         <button

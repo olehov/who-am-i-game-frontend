@@ -7,16 +7,16 @@ import { useState } from 'react';
 import './header.scss';
 import CreateNewLobbyModal from '../modals/create-new-lobby/create-new-lobby';
 
-function Header({ type }) {
-  const [displayModal, setDisplayModal] = useState(false);
-  const [showCreateModal, setShowCreateModal] = useState(false);
+function Header({ type, lobby, startGame }) {
+  const [modalActive, setModalActive] = useState(false);
+  const [createModalActive, setCreateModalActive] = useState(false);
 
   return (
     <header className="game-header">
       <GameTitle className={'small'} />
       {type === 'game-lobby' && (
         <>
-          <div>SUGGEST A CHARACTER</div>
+          <div className="game-header__title">SUGGEST A CHARACTER</div>
           <div className="game-header__timer-wrapper">
             <CountdownTimer
               inLobby={clsx({ 'in-lobby': type === 'game-lobby' })}
@@ -31,15 +31,15 @@ function Header({ type }) {
           <div className="create-btn-wrapper">
             <Btn
               className="btn-green-solid"
-              onClick={() => setShowCreateModal(true)}
+              onClick={() => setCreateModalActive(true)}
             >
               CREATE NEW LOBBY
             </Btn>
           </div>
 
           <CreateNewLobbyModal
-            displayModal={showCreateModal}
-            setDisplayModal={setShowCreateModal}
+            modalActive={createModalActive}
+            setModalActive={setCreateModalActive}
           />
         </>
       )}
@@ -49,15 +49,30 @@ function Header({ type }) {
           <div className="game-header__leave-btn-wrapper">
             <Btn
               className={['btn-pink-solid', 'btn-rounded']}
-              onClick={() => setDisplayModal(true)}
+              onClick={() => setModalActive(true)}
             >
               LEAVE GAME
             </Btn>
           </div>
+
           <LeaveGameModal
-            showModal={displayModal}
-            setModalActive={setDisplayModal}
+            modalActive={modalActive}
+            setModalActive={setModalActive}
           />
+        </>
+      )}
+
+      {type === 'lobby' && (
+        <>
+          {startGame && (
+            <CountdownTimer
+              time={15}
+              inLobby
+              small={'v-small'}
+              colored={'colored'}
+            />
+          )}
+          <div className="game-header__title">LOBBY:{lobby}</div>
         </>
       )}
     </header>

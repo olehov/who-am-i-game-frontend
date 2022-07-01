@@ -47,7 +47,10 @@ function Loading() {
           LEAVE GAME
         </Btn>
       </div>
-      <LeaveGameModal showModal={modalActive} setModalActive={setModalActive} />
+      <LeaveGameModal
+        modalActive={modalActive}
+        setModalActive={setModalActive}
+      />
     </ScreenWrapper>
   );
 }
