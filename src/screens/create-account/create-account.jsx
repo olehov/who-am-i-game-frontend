@@ -3,6 +3,7 @@ import GameTitle from '../../components/game-title/game-title';
 import Input from '../../components/Input/Input';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ function CreateAccount() {
     <ScreenWrapper>
       <GameTitle />
       <form className='form-wrapper'>
-        <Input id="id01" placeholder='Username' type="text"/>
-        <Input id="id02" placeholder='Email' type="email"/>
-        <Input id="id03" placeholder='Password' type="password"/>
+        <Input id={uuidv4()} placeholder='Username' type="text"/>
+        <Input id={uuidv4()} placeholder='Email' type="email"/>
+        <Input id={uuidv4()} placeholder='Password' type="password"/>
         <div className="btn-form-wrapper">
           <Btn className={'btn-pink-solid'} onClick={() => {navigate("/")}} >Cancel</Btn>
           <Btn onClick={() => {navigate("/")}} >create account</Btn>

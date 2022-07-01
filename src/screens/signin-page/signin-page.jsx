@@ -3,6 +3,7 @@ import GameTitle from '../../components/game-title/game-title';
 import Input from '../../components/Input/Input';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import './signin-page.scss';
 
 function SignIn() {
@@ -12,8 +13,8 @@ function SignIn() {
     <ScreenWrapper>
       <GameTitle />
       <form className="form-wrapper">
-        <Input id="id02" placeholder="Email" type="email" />
-        <Input id="id03" placeholder="Password" type="password" />
+        <Input id={uuidv4()} placeholder="Email" type="email" />
+        <Input id={uuidv4()} placeholder="Password" type="password" />
         <div className="btn-form-wrapper">
           <Btn
             className={'btn-pink-solid'}
@@ -34,7 +35,7 @@ function SignIn() {
         <div
           className="subtitle title-red"
           onClick={() => {
-            navigate("restore");
+            navigate('restore');
           }}
         >
           restore password
