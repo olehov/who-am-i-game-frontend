@@ -4,7 +4,7 @@ import Input from '../../components/Input/Input';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
- 
+
 function ConfirmPassword() {
   const navigate = useNavigate();
 

@@ -8,7 +8,7 @@ const Input = ({ id, type, error, ...attrs }) => {
     <div className="input-container">
       <div className="input-wrapper">
         <input className={classes} name={id} id={id} {...attrs} />
-        {type == 'password' && <div className="eye-icon"></div>}
+        {type === 'password' && <div className="eye-icon"></div>}
       </div>
       {error && <div className="inputError">{error}</div>}
     </div>

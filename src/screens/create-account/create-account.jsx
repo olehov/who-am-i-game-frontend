@@ -11,13 +11,26 @@ function CreateAccount() {
   return (
     <ScreenWrapper>
       <GameTitle />
-      <form className='form-wrapper'>
-        <Input id={uuidv4()} placeholder='Username' type="text"/>
-        <Input id={uuidv4()} placeholder='Email' type="email"/>
-        <Input id={uuidv4()} placeholder='Password' type="password"/>
+      <form className="form-wrapper">
+        <Input id={uuidv4()} placeholder="Username" type="text" />
+        <Input id={uuidv4()} placeholder="Email" type="email" />
+        <Input id={uuidv4()} placeholder="Password" type="password" />
         <div className="btn-form-wrapper">
-          <Btn className={'btn-pink-solid'} onClick={() => {navigate("/")}} >Cancel</Btn>
-          <Btn onClick={() => {navigate("/")}} >create account</Btn>
+          <Btn
+            className={'btn-pink-solid'}
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            Cancel
+          </Btn>
+          <Btn
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            create account
+          </Btn>
         </div>
       </form>
     </ScreenWrapper>

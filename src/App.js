@@ -6,9 +6,10 @@ import LostGame from './screens/lost-game/lost-game';
 import Victory from './screens/victory-screen/victroy-screen';
 import InactivityKick from './screens/inactiviy-kick/inactivity-kick';
 import Lobby from './screens/lobby/lobby';
-import { useState } from 'react';
 import GameDataContext from './contexts/game-data-context';
+import MainLobby from './screens/main-lobby/main-lobby';
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
 import './App.scss';
 import {
   DEFEAT,
