@@ -6,9 +6,10 @@ import LostGame from './screens/lost-game/lost-game';
 import Victory from './screens/victory-screen/victroy-screen';
 import InactivityKick from './screens/inactiviy-kick/inactivity-kick';
 import Lobby from './screens/lobby/lobby';
-import { useState } from 'react';
 import GameDataContext from './contexts/game-data-context';
+import MainLobby from './screens/main-lobby/main-lobby';
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
 import './App.scss';
 import {
   DEFEAT,
@@ -29,6 +30,7 @@ import SignIn from './screens/signin-page/signin-page';
 import RestorePassword from './screens/restore-password/restore-password';
 import ConfirmPassword from './screens/confirm-password/confirm-password';
 import NewPassword from './screens/new-password/new-password';
+
 
 function App() {
   const [gameData, setGameData] = useState({
