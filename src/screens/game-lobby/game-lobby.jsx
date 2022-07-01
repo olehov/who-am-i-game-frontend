@@ -3,12 +3,14 @@ import Btn from '../../components/btn/btn';
 import Header from '../../components/header/header';
 import LeaveGameModal from '../../components/modals/leave-game/leave-game';
 import PlayerCard from '../../components/player-card/player-card';
+import ReadyToPlayModal from '../../components/modals/ready-to-play/ready-to-play';
 import { READY } from '../../constants/constants';
 import { currentUser, users } from '../../store/mock-data';
 import './game-lobby.scss';
 
 function GameLobby() {
   const [leaveModalActive, setLeaveModalActive] = useState(false);
+  const [readyPlayModalActive, setReadyPlayModalActive] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [lobbyOwner] = useState(!!Math.round(Math.random()));
 
@@ -104,6 +106,11 @@ function GameLobby() {
       <LeaveGameModal
         modalActive={leaveModalActive}
         setModalActive={setLeaveModalActive}
+      />
+      <ReadyToPlayModal
+        modalActive={readyPlayModalActive}
+        setModalActive={setReadyPlayModalActive}
+        setLeaveModalActive={setLeaveModalActive}
       />
     </div>
   );

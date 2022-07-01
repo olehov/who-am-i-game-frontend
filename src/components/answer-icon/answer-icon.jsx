@@ -4,10 +4,7 @@ import { ReactComponent as ReactQuestion } from '../../assets/svg/question-mark.
 import { ReactComponent as ReactCross } from '../../assets/svg/x.svg';
 import clsx from 'clsx';
 
-function AnswerIcon(props) {
-  console.log(props.user);
-  const userIconSrc = props.user.iconSrc;
-  const status = props.status;
+function AnswerIcon({ status, user }) {
   let icon = null;
   const classes = 'icon_status';
 
@@ -24,8 +21,7 @@ function AnswerIcon(props) {
 
   return (
     <div className="icon_wrapper">
-      <div className={clsx('player__card-avatar', props.user.avatar)}></div>
-      {/* <img src={props.user.avatar} alt="icon" className={props.user.avatar} /> */}
+      <div className={clsx('player__card-avatar', user.avatar)}></div>
       {status && icon}
     </div>
   );

@@ -1,5 +1,5 @@
-import './leave-game.scss';
 import Btn from '../../btn/btn';
+import './ready-to-play.scss';
 
 function ReadyToPlayModal({
   modalActive,
@@ -12,6 +12,7 @@ function ReadyToPlayModal({
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    setModalActive(false);
   };
 
   return (
@@ -26,8 +27,10 @@ function ReadyToPlayModal({
           }}
         />
       </div>
-      <p className="modal-container__question">Lobbyowner started a game.</p>
-      <p className="modal-container__question">Are you ready?</p>
+      <div>
+        <p className="modal-container__question">Lobby owner started a game.</p>
+        <p className="modal-container__question">Are you ready?</p>
+      </div>
       <div className="modal-container__selector-container">
         <Btn type="submit" className="btn-green-solid">
           I'M READY

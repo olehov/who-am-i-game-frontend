@@ -19,9 +19,9 @@ function PlayPage() {
   );
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!gameData.data.status) navigate('/');
-  // }, [gameData, navigate]);
+  useEffect(() => {
+    if (!gameData.data.status) navigate('/');
+  }, [gameData, navigate]);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
