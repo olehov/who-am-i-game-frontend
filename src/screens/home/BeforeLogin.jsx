@@ -18,9 +18,22 @@ function BeforeLogin({ setIsLogin, navigate }) {
         PLAY QUICK GAME
       </Btn>
       <div className="dividing-line"></div>
-      <Btn className={'btn-blue-outline'} onClick={() => {navigate("create-account")}}>CREATE ACCOUNT</Btn>
+      <Btn
+        className={'btn-blue-outline'}
+        onClick={() => {
+          navigate('create-account');
+        }}
+      >
+        CREATE ACCOUNT
+      </Btn>
       <div className={'text-login or'}>or</div>
-      <Btn className={'btn-fb-blue'} iconClassName={'fb'}>
+      <Btn
+        className={'btn-fb-blue'}
+        iconClassName={'fb'}
+        onClick={() => {
+          setIsLogin(true);
+        }}
+      >
         Continue with Facebook
       </Btn>
       <div className={'dividing-line'}></div>
@@ -28,7 +41,7 @@ function BeforeLogin({ setIsLogin, navigate }) {
       <Btn
         className={'btn-blue-outline'}
         onClick={() => {
-          setIsLogin(true);
+          navigate('sign-in');
         }}
       >
         SIGN IN

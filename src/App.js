@@ -11,6 +11,7 @@ import GameDataContext from './contexts/game-data-context';
 import { v4 as uuidv4 } from 'uuid';
 import './App.scss';
 import CreateAccount from './screens/create-account/create-account';
+import SignIn from './screens/signin-page/signin-page';
 
 function App() {
   const [gameData, setGameData] = useState({
@@ -42,6 +43,7 @@ function App() {
           <Route path="victory" element={<Victory />} />
           <Route path="inactive" element={<InactivityKick />} />
           <Route path="create-account" element={<CreateAccount />} />
+          <Route path="sign-in" element={<SignIn />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </GameDataContext.Provider>
