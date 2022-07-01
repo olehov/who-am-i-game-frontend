@@ -31,6 +31,7 @@ import RestorePassword from './screens/restore-password/restore-password';
 import ConfirmPassword from './screens/confirm-password/confirm-password';
 import NewPassword from './screens/new-password/new-password';
 
+
 function App() {
   const [gameData, setGameData] = useState({
     data: {

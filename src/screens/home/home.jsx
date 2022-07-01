@@ -6,6 +6,8 @@ import { useContext, useEffect, useState } from 'react';
 import {
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
+  LOADING,
+  LOBBY,
 } from '../../constants/constants';
 import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
@@ -19,9 +21,9 @@ function Homepage() {
 
   useEffect(() => {
     if (gameData.data.status === WAITING_FOR_PLAYERS) {
-      navigate('loading');
+      navigate(LOADING);
     } else if (gameData.data.status === SUGGESTING_CHARACTERS) {
-      navigate('lobby');
+      navigate(LOBBY);
     }
   }, [gameData, navigate]);
 
