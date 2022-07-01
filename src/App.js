@@ -10,6 +10,20 @@ import { useState } from 'react';
 import GameDataContext from './contexts/game-data-context';
 import { v4 as uuidv4 } from 'uuid';
 import './App.scss';
+import {
+  DEFEAT,
+  INACTIVE,
+  LOADING,
+  LOBBY,
+  MAIN_LOBBY,
+  PLAY,
+  VICTORY,
+  CREATE_ACCOUNT,
+  SIGN_IN,
+  RESTORE,
+  CONFIRM,
+  NEW_PASSWORD,
+} from './constants/constants';
 import CreateAccount from './screens/create-account/create-account';
 import SignIn from './screens/signin-page/signin-page';
 import RestorePassword from './screens/restore-password/restore-password';
@@ -39,17 +53,18 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="loading" element={<Loading />} />
-          <Route path="lobby" element={<Lobby />} />
-          <Route path="play" element={<PlayPage />} />
-          <Route path="defeat" element={<LostGame />} />
-          <Route path="victory" element={<Victory />} />
-          <Route path="inactive" element={<InactivityKick />} />
-          <Route path="create-account" element={<CreateAccount />} />
-          <Route path="sign-in" element={<SignIn />} />
-          <Route path="restore" element={<RestorePassword />} />
-          <Route path="confirm" element={<ConfirmPassword />} />
-          <Route path="new-password" element={<NewPassword />} />
+          <Route path={MAIN_LOBBY} element={<MainLobby />} />
+          <Route path={LOADING} element={<Loading />} />
+          <Route path={LOBBY} element={<Lobby />} />
+          <Route path={PLAY} element={<PlayPage />} />
+          <Route path={DEFEAT} element={<LostGame />} />
+          <Route path={VICTORY} element={<Victory />} />
+          <Route path={INACTIVE} element={<InactivityKick />} />
+          <Route path={CREATE_ACCOUNT} element={<CreateAccount />} />
+          <Route path={SIGN_IN} element={<SignIn />} />
+          <Route path={RESTORE} element={<RestorePassword />} />
+          <Route path={CONFIRM} element={<ConfirmPassword />} />
+          <Route path={NEW_PASSWORD} element={<NewPassword />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </GameDataContext.Provider>
