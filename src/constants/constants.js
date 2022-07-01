@@ -83,7 +83,3 @@ export {
   CONFIRM,
   NEW_PASSWORD,
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> feb3222307d85e9db8eb5c6f62c8d998061db7e2
