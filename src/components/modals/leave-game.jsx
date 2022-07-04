@@ -4,8 +4,9 @@ import './modal.scss';
 import Btn from '../btn/btn';
 import { leaveGame } from '../../services/games-service';
 import { useNavigate } from 'react-router-dom';
+import ModalWrapper from './modal-wrapper';
 
-function LeaveGameModal({ active, setActive }) {
+function LeaveGameModal({ active, onCancel }) {
   const { gameData, playerId, resetData } = useContext(GameDataContext);
   const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ function LeaveGameModal({ active, setActive }) {
     return null;
   }
 
-  const onSubmitHandler = (event) => {
+  const submitLeaveGame = (event) => {
     event.preventDefault();
     leaveGame(playerId, gameData.data.id);
     resetData();
@@ -21,35 +22,25 @@ function LeaveGameModal({ active, setActive }) {
   };
 
   return (
-    <form onSubmit={onSubmitHandler} className="modal">
-      <div className="modal__title-container">
-        <h3 className="modal__title-container_title">LEAVE THE GAME</h3>
-        <button
-          className="modal__title-container_close-btn"
-          onClick={(e) => {
-            e.preventDefault();
-            setActive(false);
-          }}
-        />
-      </div>
-      <p className="modal__question">
-        Are you sure you want to leave the game?
-      </p>
-      <div className="modal__buttons-container">
-        <Btn type="submit" className="btn-pink-solid">
-          LEAVE
-        </Btn>
-        <Btn
-          className="modal__cancel-btn"
-          onClick={(e) => {
-            e.preventDefault();
-            setActive(false);
-          }}
-        >
-          CANCEL
-        </Btn>
-      </div>
-    </form>
+    <ModalWrapper
+      title="LEAVE THE GAME"
+      className="leave-modal"
+      onCancel={onCancel}
+    >
+      <form className="modal-form leave-modal" onSubmit={submitLeaveGame}>
+        <p className="modal__question">
+          Are you sure you want to leave the game?
+        </p>
+        <div className="modal__buttons-container">
+          <Btn type="submit" className="btn-pink-solid">
+            LEAVE
+          </Btn>
+          <Btn className="modal__cancel-btn" onClick={onCancel}>
+            CANCEL
+          </Btn>
+        </div>
+      </form>
+    </ModalWrapper>
   );
 }
 

@@ -18,13 +18,24 @@
   color: $font-black;
   z-index: 100;
 
+  &.leave-modal {
+    z-index: 200;
+  }
+
   h3 {
     margin: 0;
+    line-height: 39px;
   }
 
   p {
     margin: 0;
     text-align: start;
+  }
+
+  .title-timer {
+    display: flex;
+    gap: 16px;
+    align-items: center;
   }
 
   &__title-container {
@@ -66,6 +77,12 @@
     font-weight: 900;
     font-size: 24px;
     margin: 0px;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
   }
 
   &__select-field,

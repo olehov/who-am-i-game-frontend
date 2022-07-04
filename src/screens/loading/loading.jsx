@@ -49,7 +49,7 @@ function Loading() {
       </div>
       <LeaveGameModal
         active={leaveModalActive}
-        setActive={setLeaveModalActive}
+        onCancel={() => setLeaveModalActive(false)}
       />
     </ScreenWrapper>
   );

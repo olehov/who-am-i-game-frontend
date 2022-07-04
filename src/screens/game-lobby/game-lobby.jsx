@@ -21,6 +21,11 @@ function GameLobby() {
   const maxNumber = '12';
   const players = users;
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setReadyPlayModalActive(false);
+  };
+
   return (
     <div className="lobby-screen">
       <Header type="lobby" lobby={299483} startGame={startGame} />
@@ -85,7 +90,12 @@ function GameLobby() {
                 >
                   Start a game
                 </Btn>
-                <Btn className="btn-pink-solid">TERMINATE LOBBY</Btn>
+                <Btn
+                  className="btn-pink-solid"
+                  onClick={() => setReadyPlayModalActive(true)}
+                >
+                  TERMINATE LOBBY
+                </Btn>
               </>
             )
           ) : (
@@ -100,12 +110,12 @@ function GameLobby() {
       </div>
       <LeaveGameModal
         active={leaveModalActive}
-        setActive={setLeaveModalActive}
+        onCancel={() => setLeaveModalActive(false)}
       />
       <ReadyToPlayModal
         active={readyPlayModalActive}
-        setActive={setReadyPlayModalActive}
-        setLeaveActive={setLeaveModalActive}
+        onCancel={() => setLeaveModalActive(true)}
+        onSubmit={onSubmit}
       />
     </div>
   );

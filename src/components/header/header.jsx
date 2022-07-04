@@ -6,10 +6,19 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import './header.scss';
 import CreateNewLobbyModal from '../modals/create-new-lobby';
+import { GAME_LOBBY } from '../../constants/constants';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ type, lobby, startGame }) {
   const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [createModalActive, setCreateModalActive] = useState(false);
+  const navigate = useNavigate();
+
+  const createNewLobbySubmit = (event) => {
+    event.preventDefault();
+    setCreateModalActive(false);
+    navigate(GAME_LOBBY);
+  };
 
   return (
     <header className="game-header">
@@ -39,7 +48,8 @@ function Header({ type, lobby, startGame }) {
 
           <CreateNewLobbyModal
             active={createModalActive}
-            setActive={setCreateModalActive}
+            onSubmit={createNewLobbySubmit}
+            onCancel={() => setCreateModalActive(false)}
           />
         </>
       )}
@@ -57,7 +67,7 @@ function Header({ type, lobby, startGame }) {
 
           <LeaveGameModal
             active={leaveModalActive}
-            setActive={setLeaveModalActive}
+            onCancel={() => setLeaveModalActive(false)}
           />
         </>
       )}

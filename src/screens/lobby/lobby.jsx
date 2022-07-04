@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import { PLAY, PROCESSING_QUESTION, READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
-import { findGameById } from '../../services/games-service';
+import { findGameById, suggestCharacter } from '../../services/games-service';
 
 function Lobby() {
-  const { gameData, setGameData, playerId } = useContext(GameDataContext);
+  const { gameData, playerId, setGameData } = useContext(GameDataContext);
   const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [suggestModalActive, setSuggestModalActive] = useState(false);
   const [suggestBtn, setSuggestBtn] = useState(true);
@@ -34,16 +34,25 @@ function Lobby() {
     }
   }, [gameData, navigate]);
 
-  const players = gameData.data.players.map((player, index) => ({
-    nickname: `Player ${index + 1}`,
-    avatar: `avatar0${index + 1}`,
-    ...player,
-  }));
+  const players =
+    gameData.data.players &&
+    gameData.data.players.map((player, index) => ({
+      nickname: `Player ${index + 1}`,
+      avatar: `avatar0${index + 1}`,
+      ...player,
+    }));
 
   const currentPlayer =
     players && players.find((player) => player.player.id === playerId);
   const playersWithoutYou =
     players && players.filter((player) => player.player.id !== playerId);
+
+  const submitCharacter = (event, playerName, characterName) => {
+    event.preventDefault();
+    suggestCharacter(playerId, gameData.data.id, playerName, characterName);
+    setSuggestModalActive(false);
+    setSuggestBtn(false);
+  };
 
   return (
     <ScreenWrapper>
@@ -97,13 +106,13 @@ function Lobby() {
         </div>
         <LeaveGameModal
           active={leaveModalActive}
-          setActive={setLeaveModalActive}
+          onCancel={() => setLeaveModalActive(false)}
         />
         <SelectCharacterModal
-          player={currentPlayer.nickname}
+          player={currentPlayer && currentPlayer.nickname}
           active={suggestModalActive}
-          setActive={setSuggestModalActive}
-          setSuggestBtn={setSuggestBtn}
+          onSubmit={submitCharacter}
+          onCancel={() => setSuggestModalActive(false)}
         />
       </div>
     </ScreenWrapper>

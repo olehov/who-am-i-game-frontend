@@ -6,22 +6,22 @@ import { useContext, useEffect, useState } from 'react';
 import ModalContext from '../../contexts/modal-context';
 import './play-page.scss';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { findGameById } from '../../services/games-service';
+import { askQuestion, findGameById } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
 import { useNavigate } from 'react-router-dom';
 import { ANSWERING, ASKING } from '../../constants/constants';
 
 function PlayPage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
-  const [modalActive, setModalActive] = useState(false);
+  const [active, setActive] = useState(false);
   const [mode, setMode] = useState(
     gameData.data.currentTurn === playerId ? ASKING : ANSWERING
   );
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!gameData.data.status) navigate('/');
-  }, [gameData, navigate]);
+  // useEffect(() => {
+  //   if (!gameData.data.status) navigate('/');
+  // }, [gameData, navigate]);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
@@ -42,11 +42,17 @@ function PlayPage() {
   const playersWithoutYou =
     players && players.filter((player) => player.player.id !== playerId);
 
+  const submitGuess = (event, guess) => {
+    event.preventDefault();
+    askQuestion(playerId, gameData.data.id, guess);
+    setActive(false);
+  };
+
   return (
     <ScreenWrapper className="lobby-screen">
       <Header type="play-game" />
       <div className="content_wrapper">
-        <ModalContext.Provider value={[modalActive, setModalActive]}>
+        <ModalContext.Provider value={[active, setActive]}>
           <UsersContainer
             mode={mode}
             currentPlayer={currentPlayer}
@@ -54,8 +60,9 @@ function PlayPage() {
           />
           <HistoryContainer mode={mode} setMode={setMode} />
           <GuessCharacterModal
-            active={modalActive}
-            setActive={setModalActive}
+            active={active}
+            onSubmit={submitGuess}
+            onCancel={() => setActive(false)}
           />
         </ModalContext.Provider>
       </div>

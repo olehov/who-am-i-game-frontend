@@ -1,14 +1,12 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import Btn from '../btn/btn';
 import checkGuess from '../../helper-functions/check-guess.js';
 import './modal.scss';
-import { submitGuess } from '../../services/games-service';
-import GameDataContext from '../../contexts/game-data-context';
+import ModalWrapper from './modal-wrapper';
 
-function GuessCharacterModal({ active, setActive }) {
+function GuessCharacterModal({ active, onSubmit, onCancel }) {
   const [guess, setGuess] = useState('');
-  const { gameData, playerId } = useContext(GameDataContext);
 
   useEffect(() => {
     return () => setGuess('');
@@ -19,44 +17,30 @@ function GuessCharacterModal({ active, setActive }) {
   }
 
   return (
-    <form
-      className="modal"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setActive(false);
-        submitGuess(playerId, gameData.data.id, guess);
-      }}
-    >
-      <div className="modal__title-container">
-        <h3 className="modal__title-container_title">READY TO GUESS?</h3>
-        <div
-          className="modal__title-container_close-btn"
-          onClick={() => {
-            setActive(false);
+    <ModalWrapper title="READY TO GUESS?" onCancel={onCancel}>
+      <form className="modal-form" onSubmit={(event) => onSubmit(event, guess)}>
+        <div className="modal__timer-container">
+          <p className="modal__timer-container_name">TIME LEFT</p>
+          <CountdownTimer time={60} inLobby={'in-lobby'} small={'v-small'} />
+        </div>
+        <input
+          className="modal__input-field"
+          type="text"
+          placeholder="Enter your guess"
+          value={guess}
+          onChange={(e) => {
+            setGuess(e.target.value);
           }}
-        ></div>
-      </div>
-      <div className="modal__timer-container">
-        <p className="modal__timer-container_name">TIME LEFT</p>
-        <CountdownTimer time={60} inLobby={'in-lobby'} small={'v-small'} />
-      </div>
-      <input
-        className="modal__input-field"
-        type="text"
-        placeholder="Enter your guess"
-        value={guess}
-        onChange={(e) => {
-          setGuess(e.target.value);
-        }}
-      />
-      <Btn
-        className="btn-yellow-solid"
-        disabled={checkGuess(guess)}
-        type="submit"
-      >
-        I WANT TO GUESS
-      </Btn>
-    </form>
+        />
+        <Btn
+          className="btn-yellow-solid"
+          disabled={checkGuess(guess)}
+          type="submit"
+        >
+          I WANT TO GUESS
+        </Btn>
+      </form>
+    </ModalWrapper>
   );
 }
 
