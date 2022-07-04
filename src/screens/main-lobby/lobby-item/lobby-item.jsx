@@ -10,12 +10,12 @@ function LobbyItem({
   numberOfPlayers,
   type,
   icon,
-  setJoinLobbyModal,
+  setJoinLobbyActive,
 }) {
   const navigate = useNavigate();
   const joinLobbyClickHandler = () => {
     if (type === 'Private') {
-      setJoinLobbyModal(true);
+      setJoinLobbyActive(true);
     } else {
       navigate(GAME_LOBBY);
     }

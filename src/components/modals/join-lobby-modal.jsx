@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GAME_LOBBY } from '../../../constants/constants';
-import Btn from '../../btn/btn';
-import './join-lobby.scss';
+import { GAME_LOBBY } from '../../constants/constants';
+import Btn from '../btn/btn';
+import './modal.scss';
 
-function JoinLobbyModal({ modalActive, setModalActive }) {
+function JoinLobbyModal({ active, setActive }) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -15,9 +15,9 @@ function JoinLobbyModal({ modalActive, setModalActive }) {
     return () => {
       setInputValue('');
     };
-  }, [modalActive]);
+  }, [active]);
 
-  if (!modalActive) {
+  if (!active) {
     return null;
   }
 
@@ -27,14 +27,14 @@ function JoinLobbyModal({ modalActive, setModalActive }) {
     if (inputValue !== password) setError('error');
     else {
       setError('');
-      setModalActive(false);
+      setActive(false);
       navigate(GAME_LOBBY);
     }
   };
 
   const cancelClickHandler = (event) => {
     event.preventDefault();
-    setModalActive(false);
+    setActive(false);
     setError('');
   };
 
@@ -44,23 +44,23 @@ function JoinLobbyModal({ modalActive, setModalActive }) {
   };
 
   return (
-    <form className="join-lobby-modal" onSubmit={onSubmitHandler}>
-      <div className="join-lobby-modal__title-container">
-        <h3 className="join-lobby-modal__title-container_title">JOIN LOBBY</h3>
+    <form className="modal" onSubmit={onSubmitHandler}>
+      <div className="modal__title-container">
+        <h3 className="modal__title-container_title">JOIN LOBBY</h3>
         <div
-          className="join-lobby-modal__title-container_close-btn"
+          className="modal__title-container_close-btn"
           onClick={cancelClickHandler}
         ></div>
       </div>
       <p className="p">This is private lobby: Enter the password</p>
       <input
-        className={clsx('join-lobby-modal__input-field', error)}
+        className={clsx('modal__input-field', error)}
         type="password"
         placeholder="Password"
         onChange={inputPasswordHandler}
       />
       {error && <p className="error-message ">Wrong password</p>}
-      <div className="join-lobby-modal__create-container">
+      <div className="modal__buttons-container">
         <Btn
           className="btn-green-solid btn-half"
           type="submit"
@@ -69,7 +69,7 @@ function JoinLobbyModal({ modalActive, setModalActive }) {
           JOIN
         </Btn>
         <Btn
-          className="join-lobby-modal__cancel-btn btn-half"
+          className="modal__cancel-btn btn-half"
           onClick={cancelClickHandler}
         >
           CANCEL

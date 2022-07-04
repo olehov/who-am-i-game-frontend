@@ -1,20 +1,15 @@
 import { useContext, useState } from 'react';
-import GameDataContext from '../../../contexts/game-data-context';
-import { suggestCharacter } from '../../../services/games-service';
-import Btn from '../../btn/btn';
-import './select-character.scss';
+import GameDataContext from '../../contexts/game-data-context';
+import { suggestCharacter } from '../../services/games-service';
+import Btn from '../btn/btn';
+import './modal.scss';
 
-function SelectCharacterModal({
-  player,
-  modalActive,
-  setModalActive,
-  setSuggestBtn,
-}) {
+function SelectCharacterModal({ player, active, setActive, setSuggestBtn }) {
   const { gameData, playerId } = useContext(GameDataContext);
   const [playerName, setPlayerName] = useState(player);
   const [characterName, setCharacterName] = useState('');
 
-  if (!modalActive) {
+  if (!active) {
     return null;
   }
 
@@ -23,24 +18,22 @@ function SelectCharacterModal({
       onSubmit={(e) => {
         e.preventDefault();
         suggestCharacter(playerId, gameData.data.id, playerName, characterName);
-        setModalActive(false);
+        setActive(false);
         setSuggestBtn(false);
       }}
-      className="character-modal"
+      className="modal"
     >
-      <div className="character-modal__message-container">
-        <h3 className="character-modal__message-container_message">
-          BEFORE WE START
-        </h3>
+      <div className="modal__title-container">
+        <h3 className="modal__title-container_title">BEFORE WE START</h3>
         <div
-          className="character-modal__message-container_close-btn"
+          className="modal__title-container_close-btn"
           onClick={() => {
-            setModalActive(false);
+            setActive(false);
           }}
         />
       </div>
       <input
-        className="character-modal__main_input"
+        className="modal__input-field"
         type="text"
         maxLength="51"
         value={playerName}
@@ -49,7 +42,7 @@ function SelectCharacterModal({
         }}
       />
       <input
-        className="character-modal__main_input"
+        className="modal__input-field"
         type="text"
         placeholder="Suggest a character"
         maxLength="51"

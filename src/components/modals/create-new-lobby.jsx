@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GAME_LOBBY } from '../../../constants/constants';
-import Btn from '../../btn/btn';
-import './create-new-lobby.scss';
+import { GAME_LOBBY } from '../../constants/constants';
+import Btn from '../btn/btn';
+import './modal.scss';
 
-function CreateNewLobbyModal({ modalActive, setModalActive }) {
+function CreateNewLobbyModal({ active, setActive }) {
   const [theme, setTheme] = useState('');
   const [number, setNumber] = useState('');
   const [privateLobby, setPrivateLobby] = useState(false);
@@ -16,37 +16,35 @@ function CreateNewLobbyModal({ modalActive, setModalActive }) {
       setNumber('');
       setPrivateLobby(false);
     };
-  }, [modalActive]);
+  }, [active]);
 
-  if (!modalActive) {
+  if (!active) {
     return null;
   }
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setModalActive(false);
+    setActive(false);
     navigate(GAME_LOBBY);
   };
 
   const cancelClickHandler = (e) => {
     e.preventDefault();
-    setModalActive(false);
+    setActive(false);
   };
 
   return (
-    <form className="create-lobby-modal" onSubmit={onSubmitHandler}>
-      <div className="create-lobby-modal__title-container">
-        <h3 className="create-lobby-modal__title-container_title">
-          CREATE NEW LOBBY
-        </h3>
+    <form className="modal" onSubmit={onSubmitHandler}>
+      <div className="modal__title-container">
+        <h3 className="modal__title-container_title">CREATE NEW LOBBY</h3>
         <div
-          className="create-lobby-modal__title-container_close-btn"
+          className="modal__title-container_close-btn"
           onClick={cancelClickHandler}
         ></div>
       </div>
       <select
         name="lobbyTheme"
-        className="create-lobby-modal__select-field"
+        className="modal__select-field"
         onChange={(event) => {
           setTheme(event.target.value);
         }}
@@ -60,7 +58,7 @@ function CreateNewLobbyModal({ modalActive, setModalActive }) {
       </select>
       <select
         name="numberOfPlayers"
-        className="create-lobby-modal__select-field"
+        className="modal__select-field"
         onChange={(event) => {
           setNumber(event.target.value);
         }}
@@ -78,7 +76,7 @@ function CreateNewLobbyModal({ modalActive, setModalActive }) {
         <option value="11">11</option>
         <option value="12">12</option>
       </select>
-      <div className="create-lobby-modal__checkbox">
+      <div className="modal__checkbox">
         <input
           id="lobbyType"
           className="checkbox-input"
@@ -92,12 +90,12 @@ function CreateNewLobbyModal({ modalActive, setModalActive }) {
       </div>
       {privateLobby && (
         <input
-          className="create-lobby-modal__input-field"
+          className="modal__input-field"
           type="password"
           placeholder="Password"
         />
       )}
-      <div className="create-lobby-modal__create-container">
+      <div className="modal__buttons-container">
         <Btn
           className="btn-green-solid btn-half"
           type="submit"
@@ -106,7 +104,7 @@ function CreateNewLobbyModal({ modalActive, setModalActive }) {
           CREATE
         </Btn>
         <Btn
-          className="create-lobby-modal__cancel-btn btn-half"
+          className="modal__cancel-btn btn-half"
           onClick={cancelClickHandler}
         >
           CANCEL

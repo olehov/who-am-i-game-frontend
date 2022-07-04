@@ -1,6 +1,6 @@
 import UsersContainer from '../../components/users-container/users-container';
 import HistoryContainer from '../../components/history-container/history-container';
-import GuessCharacterModal from '../../components/modals/guess-a-character/guess-a-character';
+import GuessCharacterModal from '../../components/modals/guess-a-character';
 import Header from '../../components/header/header';
 import { useContext, useEffect, useState } from 'react';
 import ModalContext from '../../contexts/modal-context';
@@ -54,8 +54,8 @@ function PlayPage() {
           />
           <HistoryContainer mode={mode} setMode={setMode} />
           <GuessCharacterModal
-            modalActive={modalActive}
-            setModalActive={setModalActive}
+            active={modalActive}
+            setActive={setModalActive}
           />
         </ModalContext.Provider>
       </div>

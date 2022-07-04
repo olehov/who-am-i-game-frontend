@@ -1,7 +1,7 @@
 import Btn from '../../components/btn/btn';
 import PlayerCard from '../../components/player-card/player-card';
-import LeaveGameModal from '../../components/modals/leave-game/leave-game';
-import SelectCharacterModal from '../../components/modals/select-character/select-character';
+import LeaveGameModal from '../../components/modals/leave-game';
+import SelectCharacterModal from '../../components/modals/select-character';
 import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { useContext, useEffect, useState } from 'react';
@@ -96,13 +96,13 @@ function Lobby() {
           </div>
         </div>
         <LeaveGameModal
-          modalActive={leaveModalActive}
-          setModalActive={setLeaveModalActive}
+          active={leaveModalActive}
+          setActive={setLeaveModalActive}
         />
         <SelectCharacterModal
           player={currentPlayer.nickname}
-          modalActive={suggestModalActive}
-          setModalActive={setSuggestModalActive}
+          active={suggestModalActive}
+          setActive={setSuggestModalActive}
           setSuggestBtn={setSuggestBtn}
         />
       </div>

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Btn from '../../components/btn/btn';
 import Header from '../../components/header/header';
-import LeaveGameModal from '../../components/modals/leave-game/leave-game';
+import LeaveGameModal from '../../components/modals/leave-game';
 import PlayerCard from '../../components/player-card/player-card';
-import ReadyToPlayModal from '../../components/modals/ready-to-play/ready-to-play';
+import ReadyToPlayModal from '../../components/modals/ready-to-play';
 import { READY } from '../../constants/constants';
 import { currentUser, users } from '../../store/mock-data';
 import './game-lobby.scss';
@@ -12,7 +12,7 @@ function GameLobby() {
   const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [readyPlayModalActive, setReadyPlayModalActive] = useState(false);
   const [startGame, setStartGame] = useState(false);
-  const [lobbyOwner] = useState(!!Math.round(Math.random()));
+  const [lobbyOwner] = useState(true);
 
   const theme = 'Actors';
   const type = 'Public';
@@ -85,12 +85,7 @@ function GameLobby() {
                 >
                   Start a game
                 </Btn>
-                <Btn
-                  className="btn-pink-solid"
-                  onClick={() => setLeaveModalActive(true)}
-                >
-                  TERMINATE LOBBY
-                </Btn>
+                <Btn className="btn-pink-solid">TERMINATE LOBBY</Btn>
               </>
             )
           ) : (
@@ -104,13 +99,13 @@ function GameLobby() {
         </div>
       </div>
       <LeaveGameModal
-        modalActive={leaveModalActive}
-        setModalActive={setLeaveModalActive}
+        active={leaveModalActive}
+        setActive={setLeaveModalActive}
       />
       <ReadyToPlayModal
-        modalActive={readyPlayModalActive}
-        setModalActive={setReadyPlayModalActive}
-        setLeaveModalActive={setLeaveModalActive}
+        active={readyPlayModalActive}
+        setActive={setReadyPlayModalActive}
+        setLeaveActive={setLeaveModalActive}
       />
     </div>
   );

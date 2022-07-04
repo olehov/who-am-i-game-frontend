@@ -1,14 +1,14 @@
 import GameTitle from '../game-title/game-title';
 import Btn from '../btn/btn';
-import LeaveGameModal from '../modals/leave-game/leave-game';
+import LeaveGameModal from '../modals/leave-game';
 import CountdownTimer from '../timer/timer-countdown/timer-countdown';
 import clsx from 'clsx';
 import { useState } from 'react';
 import './header.scss';
-import CreateNewLobbyModal from '../modals/create-new-lobby/create-new-lobby';
+import CreateNewLobbyModal from '../modals/create-new-lobby';
 
 function Header({ type, lobby, startGame }) {
-  const [modalActive, setModalActive] = useState(false);
+  const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [createModalActive, setCreateModalActive] = useState(false);
 
   return (
@@ -38,8 +38,8 @@ function Header({ type, lobby, startGame }) {
           </div>
 
           <CreateNewLobbyModal
-            modalActive={createModalActive}
-            setModalActive={setCreateModalActive}
+            active={createModalActive}
+            setActive={setCreateModalActive}
           />
         </>
       )}
@@ -49,15 +49,15 @@ function Header({ type, lobby, startGame }) {
           <div className="game-header__leave-btn-wrapper">
             <Btn
               className={['btn-pink-solid', 'btn-rounded']}
-              onClick={() => setModalActive(true)}
+              onClick={() => setLeaveModalActive(true)}
             >
               LEAVE GAME
             </Btn>
           </div>
 
           <LeaveGameModal
-            modalActive={modalActive}
-            setModalActive={setModalActive}
+            active={leaveModalActive}
+            setActive={setLeaveModalActive}
           />
         </>
       )}
