@@ -7,11 +7,13 @@ function CreateNewLobbyModal({ active, onSubmit, onCancel }) {
   const [theme, setTheme] = useState('');
   const [number, setNumber] = useState('');
   const [privateLobby, setPrivateLobby] = useState(false);
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     return () => {
       setTheme('');
       setNumber('');
+      setPassword('');
       setPrivateLobby(false);
     };
   }, [active]);
@@ -74,13 +76,17 @@ function CreateNewLobbyModal({ active, onSubmit, onCancel }) {
             className="modal__input-field"
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         )}
         <div className="modal__buttons-container">
           <Btn
             className="btn-green-solid btn-half"
             type="submit"
-            disabled={!theme || !number}
+            disabled={
+              !theme || !number || (privateLobby && password.length < 8)
+            }
           >
             CREATE
           </Btn>

@@ -1,15 +1,12 @@
 import clsx from 'clsx';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { GAME_LOBBY } from '../../constants/constants';
 import Btn from '../btn/btn';
 import ModalWrapper from './modal-wrapper';
 import './modal.scss';
 
-function JoinLobbyModal({ active, setActive }) {
+function JoinLobbyModal({ active, onSubmit, onCancel }) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
   const password = 'password';
 
   useEffect(() => {
@@ -33,8 +30,7 @@ function JoinLobbyModal({ active, setActive }) {
     if (inputValue !== password) setError('error');
     else {
       setError('');
-      setActive(false);
-      navigate(GAME_LOBBY);
+      onSubmit();
     }
   };
 
@@ -42,7 +38,7 @@ function JoinLobbyModal({ active, setActive }) {
     <ModalWrapper
       title="JOIN LOBBY"
       onCancel={() => {
-        setActive(false);
+        onCancel();
         setError('');
       }}
     >
@@ -66,7 +62,7 @@ function JoinLobbyModal({ active, setActive }) {
           <Btn
             className="modal__cancel-btn btn-half"
             onClick={() => {
-              setActive(false);
+              onCancel();
               setError('');
             }}
           >

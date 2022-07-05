@@ -37,7 +37,7 @@ function Lobby() {
   const players =
     gameData.data.players &&
     gameData.data.players.map((player, index) => ({
-      nickname: `Player ${index + 1}`,
+      nickname: player.player.name || `Player ${index + 1}`,
       avatar: `avatar0${index + 1}`,
       ...player,
     }));
@@ -60,18 +60,20 @@ function Lobby() {
         <Header type="game-lobby" />
         <div className="input-screen__player">
           <div className="input-screen__player-card-wrapper">
-            {currentPlayer && (
-              <PlayerCard
-                avatarClassName={currentPlayer.avatar}
-                name={currentPlayer.nickname}
-                playerStatusClassName={
-                  currentPlayer.state === READY ? 'yes' : 'unsure'
-                }
-                isYou
-              />
-            )}
+            {currentPlayer &&
+              (console.log('players', gameData.data.players),
+              (
+                <PlayerCard
+                  avatarClassName={currentPlayer.avatar}
+                  name={currentPlayer.nickname}
+                  playerStatusClassName={
+                    currentPlayer.state === READY ? 'yes' : 'unsure'
+                  }
+                  isYou
+                />
+              ))}
             {playersWithoutYou ? (
-              playersWithoutYou.map((player, index) => (
+              playersWithoutYou.map((player) => (
                 <PlayerCard
                   key={player.player.id}
                   avatarClassName={player.avatar}

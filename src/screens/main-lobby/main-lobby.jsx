@@ -5,12 +5,14 @@ import JoinLobbyModal from '../../components/modals/join-lobby-modal';
 import TableColumnTitle from './table-column-title/table-column-title';
 import Btn from '../../components/btn/btn';
 import {
+  GAME_LOBBY,
   NUMBER_OF_PLAYERS_FILTER,
   THEME_FILTER,
   TYPE_FILTER,
 } from '../../constants/constants';
 import { useState } from 'react';
 import './main-lobby.scss';
+import { useNavigate } from 'react-router-dom';
 
 function MainLobby() {
   const [themeFilter, setThemeFilter] = useState(THEME_FILTER);
@@ -22,6 +24,7 @@ function MainLobby() {
   const [typeDropdown, setTypeDropdown] = useState(false);
 
   const [joinLobbyActive, setJoinLobbyActive] = useState(false);
+  const navigate = useNavigate();
 
   const resetFiltersHandler = () => {
     setThemeFilter((state) =>
@@ -45,6 +48,11 @@ function MainLobby() {
       setNumberDropdown(false);
       setTypeDropdown(false);
     }
+  };
+
+  const joinLobbySubmit = () => {
+    setJoinLobbyActive(false);
+    navigate(GAME_LOBBY);
   };
 
   return (
@@ -103,7 +111,11 @@ function MainLobby() {
           ))}
         </tbody>
       </table>
-      <JoinLobbyModal active={joinLobbyActive} setActive={setJoinLobbyActive} />
+      <JoinLobbyModal
+        active={joinLobbyActive}
+        onSubmit={joinLobbySubmit}
+        onCancel={() => setJoinLobbyActive(false)}
+      />
     </ScreenWrapper>
   );
 }

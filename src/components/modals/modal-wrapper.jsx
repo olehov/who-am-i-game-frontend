@@ -15,7 +15,7 @@ function ModalWrapper({ title, timer, className, children, onCancel }) {
           {timer && (
             <CountdownTimer
               time={15}
-              colored="colored"
+              timeClassName="colored"
               small="v-small"
               inLobby
             />

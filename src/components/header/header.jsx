@@ -78,8 +78,8 @@ function Header({ type, lobby, startGame }) {
             <CountdownTimer
               time={15}
               inLobby
-              small={'v-small'}
-              colored={'colored'}
+              small="v-small"
+              timeClassName="colored"
             />
           )}
           <div className="game-header__title">LOBBY:{lobby}</div>
