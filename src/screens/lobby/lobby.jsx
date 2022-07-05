@@ -4,6 +4,7 @@ import LeaveGameModal from '../../components/modals/leave-game';
 import SelectCharacterModal from '../../components/modals/select-character';
 import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
+import Spinner from '@atlaskit/spinner';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PLAY, PROCESSING_QUESTION, READY } from '../../constants/constants';
@@ -24,7 +25,7 @@ function Lobby() {
         navigate('/');
       } else {
         const gameId = sessionStorage.getItem('gameId');
-        console.log('REQUEST', gameId);
+        const playerId = sessionStorage.getItem('playerId');
         (async () => setGameData(await findGameById(playerId, gameId)))();
       }
     }
@@ -71,22 +72,22 @@ function Lobby() {
 
   return (
     <ScreenWrapper>
-      {players ? (
-        <div className="input-screen">
-          <Header type="game-lobby" />
-          <div className="input-screen__player">
-            <div className="input-screen__player-card-wrapper">
-              {currentPlayer && (
-                <PlayerCard
-                  avatarClassName={currentPlayer.avatar}
-                  name={currentPlayer.nickname}
-                  playerStatusClassName={
-                    currentPlayer.state === READY ? 'yes' : 'unsure'
-                  }
-                  isYou
-                />
-              )}
-              {playersWithoutYou.map((player) => (
+      <div className="input-screen">
+        <Header type="game-lobby" />
+        <div className="input-screen__player">
+          <div className="input-screen__player-card-wrapper">
+            {currentPlayer && (
+              <PlayerCard
+                avatarClassName={currentPlayer.avatar}
+                name={currentPlayer.nickname}
+                playerStatusClassName={
+                  currentPlayer.state === READY ? 'yes' : 'unsure'
+                }
+                isYou
+              />
+            )}
+            {playersWithoutYou ? (
+              playersWithoutYou.map((player) => (
                 <PlayerCard
                   key={player.player.id}
                   avatarClassName={player.avatar}
@@ -95,50 +96,43 @@ function Lobby() {
                     player.state === READY ? 'yes' : 'unsure'
                   }
                 />
-              ))}
-            </div>
-            <div className="input-screen__btn-wrapper">
-              {suggestBtn && (
-                <Btn
-                  className={['btn-green-solid']}
-                  onClick={() => {
-                    setSuggestModalActive(true);
-                    console.log(gameData);
-                  }}
-                >
-                  Suggest a character
-                </Btn>
-              )}
-              <Btn
-                className={['btn-pink-solid']}
-                onClick={() => {
-                  setLeaveModalActive(true);
-                }}
-              >
-                LEAVE GAME
-              </Btn>
-            </div>
+              ))
+            ) : (
+              <div className="spinner-wrapper">
+                <Spinner appearance="invert" />
+              </div>
+            )}
           </div>
-          <LeaveGameModal
-            active={leaveModalActive}
-            onCancel={() => setLeaveModalActive(false)}
-          />
-          <SelectCharacterModal
-            player={currentPlayer && currentPlayer.nickname}
-            active={suggestModalActive}
-            onSubmit={submitCharacter}
-            onCancel={() => setSuggestModalActive(false)}
-          />
+          <div className="input-screen__btn-wrapper">
+            {suggestBtn && (
+              <Btn
+                className={['btn-green-solid']}
+                onClick={() => setSuggestModalActive(true)}
+              >
+                Suggest a character
+              </Btn>
+            )}
+            <Btn
+              className={['btn-pink-solid']}
+              onClick={() => {
+                setLeaveModalActive(true);
+              }}
+            >
+              LEAVE GAME
+            </Btn>
+          </div>
         </div>
-      ) : (
-        <>
-          <h1>Something went wrong</h1>
-        </>
-      )}
-      <LeaveGameModal
-        active={leaveModalActive}
-        onCancel={() => setLeaveModalActive(false)}
-      />
+        <LeaveGameModal
+          active={leaveModalActive}
+          onCancel={() => setLeaveModalActive(false)}
+        />
+        <SelectCharacterModal
+          player={currentPlayer && currentPlayer.nickname}
+          active={suggestModalActive}
+          onSubmit={submitCharacter}
+          onCancel={() => setSuggestModalActive(false)}
+        />
+      </div>
     </ScreenWrapper>
   );
 }

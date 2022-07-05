@@ -24,6 +24,7 @@ function InactivityKick() {
         onClick={() => {
           resetData();
           sessionStorage.removeItem('gameId');
+          sessionStorage.removeItem('playerId');
           navigate('/');
         }}
       >

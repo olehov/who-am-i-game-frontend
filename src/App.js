@@ -29,8 +29,8 @@ function App() {
       status: null,
     },
   });
-  const [playerId] = useState(uuidv4());
-  // sessionStorage.removeItem('gameId');
+  const [playerId] = useState(sessionStorage.getItem('playerId') || uuidv4());
+  sessionStorage.setItem('playerId', playerId);
 
   function resetData() {
     setGameData({

@@ -19,6 +19,7 @@ function LeaveGameModal({ active, onCancel }) {
     leaveGame(playerId, gameData.data.id).then(() => {
       resetData();
       sessionStorage.removeItem('gameId');
+      sessionStorage.removeItem('playerId');
       navigate('/');
     });
   };
