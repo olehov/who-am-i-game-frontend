@@ -12,7 +12,9 @@ function BeforeLogin({ setIsLogin }) {
       <Btn
         className={'btn-blue-outline'}
         onClick={async () => {
-          setGameData(await createGame(playerId, NUMBER_OF_PLAYERS));
+          const gameData = await createGame(playerId, NUMBER_OF_PLAYERS);
+          setGameData(gameData);
+          sessionStorage.setItem('gameId', gameData.data.id);
         }}
       >
         PLAY QUICK GAME
