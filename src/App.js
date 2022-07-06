@@ -13,6 +13,7 @@ import { useState } from 'react';
 import './App.scss';
 import {
   DEFEAT,
+  GAME_LOBBY,
   INACTIVE,
   LOADING,
   LOBBY,
@@ -28,6 +29,8 @@ import CreateAccount from './screens/create-account/create-account';
 import SignIn from './screens/signin-page/signin-page';
 import RestorePassword from './screens/restore-password/restore-password';
 import NewPassword from './screens/new-password/new-password';
+import GameLobby from './screens/game-lobby/game-lobby';
+
 
 function App() {
   const [gameData, setGameData] = useState({
@@ -53,6 +56,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path={MAIN_LOBBY} element={<MainLobby />} />
+          <Route path={GAME_LOBBY} element={<GameLobby />} />
           <Route path={LOADING} element={<Loading />} />
           <Route path={LOBBY} element={<Lobby />} />
           <Route path={PLAY} element={<PlayPage />} />
