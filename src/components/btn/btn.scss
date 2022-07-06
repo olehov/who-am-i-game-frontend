@@ -26,6 +26,11 @@
   color: $font-gray;
 }
 
+.btn:disabled:hover {
+  filter: brightness(100%);
+  cursor: default;
+}
+
 .btn:hover {
   filter: brightness(140%);
 }
