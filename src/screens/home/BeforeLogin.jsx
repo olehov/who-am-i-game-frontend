@@ -2,7 +2,11 @@ import { useContext } from 'react';
 import Btn from '../../components/btn/btn';
 import GameDataContext from '../../contexts/game-data-context';
 import { createGame } from '../../services/games-service';
-import { CREATE_ACCOUNT, NUMBER_OF_PLAYERS, SIGN_IN } from '../../constants/constants';
+import {
+  CREATE_ACCOUNT,
+  NUMBER_OF_PLAYERS,
+  SIGN_IN,
+} from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
 
 function BeforeLogin({ setIsLogin }) {
