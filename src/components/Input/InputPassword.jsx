@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import './input.scss';
 
-const InputPassword = ({ className, error, showPasswordClick, ...attrs }) => {
+const InputPassword = ({ className, error, ...attrs }) => {
   const [toggleShowPassword, setToggleShowPassword] = useState(false);
   const showPassClick = () => {
     setToggleShowPassword(!toggleShowPassword);

@@ -31,7 +31,6 @@ import RestorePassword from './screens/restore-password/restore-password';
 import NewPassword from './screens/new-password/new-password';
 import GameLobby from './screens/game-lobby/game-lobby';
 
-
 function App() {
   const [gameData, setGameData] = useState({
     data: {
