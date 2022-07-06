@@ -5,43 +5,20 @@ import SelectCharacterModal from '../../components/modals/select-character';
 import Header from '../../components/header/header';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import Spinner from '@atlaskit/spinner';
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { PLAY, PROCESSING_QUESTION, READY } from '../../constants/constants';
+import { useContext, useState } from 'react';
+import { READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
-import { findGameById, suggestCharacter } from '../../services/games-service';
+import { suggestCharacter } from '../../services/games-service';
+import useGameData from '../../services/useGameData';
 
 function Lobby() {
-  const { gameData, playerId, setGameData } = useContext(GameDataContext);
+  const { gameData, playerId } = useContext(GameDataContext);
   const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [suggestModalActive, setSuggestModalActive] = useState(false);
   const [suggestBtn, setSuggestBtn] = useState(true);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!gameData.data.status) {
-      if (!sessionStorage.getItem('gameId')) {
-        navigate('/');
-      } else {
-        const gameId = sessionStorage.getItem('gameId');
-        const playerId = sessionStorage.getItem('playerId');
-        (async () => setGameData(await findGameById(playerId, gameId)))();
-      }
-    }
-
-    if (gameData.data && gameData.data.status === PROCESSING_QUESTION) {
-      navigate(PLAY);
-    }
-  }, [gameData, setGameData, playerId, navigate]);
-
-  useEffect(() => {
-    const checkStatus = setTimeout(async () => {
-      setGameData(await findGameById(playerId, gameData.data.id));
-    }, 1000);
-
-    return () => clearTimeout(checkStatus);
-  });
+  useGameData();
 
   const players =
     gameData.data &&
