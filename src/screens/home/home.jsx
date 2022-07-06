@@ -20,9 +20,9 @@ function Homepage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (gameData.data.status === WAITING_FOR_PLAYERS) {
+    if (gameData.status === WAITING_FOR_PLAYERS) {
       navigate(LOADING);
-    } else if (gameData.data.status === SUGGESTING_CHARACTERS) {
+    } else if (gameData.status === SUGGESTING_CHARACTERS) {
       navigate(LOBBY);
     }
   }, [gameData, navigate]);

@@ -16,7 +16,7 @@ function LeaveGameModal({ active, onCancel }) {
 
   const submitLeaveGame = (event) => {
     event.preventDefault();
-    leaveGame(playerId, gameData.data.id);
+    leaveGame(playerId, gameData.id);
     resetData();
     navigate('/');
   };

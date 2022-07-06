@@ -20,7 +20,7 @@ function AfterLogin({ setIsLogin }) {
       <Btn
         className={'btn-blue-outline'}
         onClick={async () => {
-          setGameData(await createGame(playerId, NUMBER_OF_PLAYERS));
+          setGameData((await createGame(playerId, NUMBER_OF_PLAYERS)).data);
         }}
       >
         PLAY QUICK GAME

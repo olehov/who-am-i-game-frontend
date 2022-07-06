@@ -17,23 +17,27 @@ function Loading() {
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
-      setGameData(await findGameById(playerId, gameData.data.id));
+      setGameData((await findGameById(playerId, gameData.id)).data);
     }, 1000);
 
     return () => clearTimeout(checkStatus);
   });
 
   useEffect(() => {
-    if (gameData.data.status === SUGGESTING_CHARACTERS) {
+    if (!gameData.status) {
+      navigate('/');
+    }
+
+    if (gameData.status === SUGGESTING_CHARACTERS) {
       navigate('lobby');
     }
-  });
+  }, [gameData, navigate]);
 
   return (
     <ScreenWrapper>
       <GameTitle />
       <h3 className="loading__queue-number">
-        {gameData.data.players.length} PLAYERS ARE IN QUEUE
+        {gameData.players && gameData.players.length} PLAYERS ARE IN QUEUE
       </h3>
       <h3 className="loading__waiting-message">
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS

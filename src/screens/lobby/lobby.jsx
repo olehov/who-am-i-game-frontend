@@ -21,9 +21,8 @@ function Lobby() {
   useGameData();
 
   const players =
-    gameData.data &&
-    gameData.data.players &&
-    gameData.data.players.map((player, index) => ({
+    gameData.players &&
+    gameData.players.map((player, index) => ({
       nickname: player.player.name || `Player ${index + 1}`,
       avatar: `avatar0${index + 1}`,
       ...player,
@@ -36,7 +35,7 @@ function Lobby() {
 
   const submitCharacter = (event, playerName, characterName) => {
     event.preventDefault();
-    suggestCharacter(playerId, gameData.data.id, playerName, characterName);
+    suggestCharacter(playerId, gameData.id, playerName, characterName);
     setSuggestModalActive(false);
     setSuggestBtn(false);
   };
@@ -75,7 +74,7 @@ function Lobby() {
             )}
           </div>
           <div className="input-screen__btn-wrapper">
-            {suggestBtn && (
+            {suggestBtn && currentPlayer && (
               <Btn
                 className={['btn-green-solid']}
                 onClick={() => setSuggestModalActive(true)}
@@ -97,12 +96,14 @@ function Lobby() {
           active={leaveModalActive}
           onCancel={() => setLeaveModalActive(false)}
         />
-        <SelectCharacterModal
-          player={currentPlayer && currentPlayer.nickname}
-          active={suggestModalActive}
-          onSubmit={submitCharacter}
-          onCancel={() => setSuggestModalActive(false)}
-        />
+        {currentPlayer && (
+          <SelectCharacterModal
+            player={currentPlayer.nickname}
+            active={suggestModalActive}
+            onSubmit={submitCharacter}
+            onCancel={() => setSuggestModalActive(false)}
+          />
+        )}
       </div>
     </ScreenWrapper>
   );

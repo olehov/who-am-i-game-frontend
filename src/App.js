@@ -24,20 +24,12 @@ import {
 import GameLobby from './screens/game-lobby/game-lobby';
 
 function App() {
-  const [gameData, setGameData] = useState({
-    data: {
-      status: null,
-    },
-  });
-  const [playerId] = useState(sessionStorage.getItem('playerId') || uuidv4());
+  const [gameData, setGameData] = useState({ status: null });
+  const [playerId] = useState(sessionStorage.playerId || uuidv4());
   sessionStorage.setItem('playerId', playerId);
 
   function resetData() {
-    setGameData({
-      data: {
-        status: null,
-      },
-    });
+    setGameData({ status: null });
     sessionStorage.removeItem('gameId');
     sessionStorage.removeItem('playerId');
   }

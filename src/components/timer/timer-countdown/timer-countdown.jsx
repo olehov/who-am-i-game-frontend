@@ -4,8 +4,12 @@ import convertTime from '../../../helper-functions/convert-time';
 import clsx from 'clsx';
 import '../timer.scss';
 import { INACTIVE } from '../../../constants/constants';
+import { useContext } from 'react';
+import GameDataContext from '../../../contexts/game-data-context';
+import { leaveGame } from '../../../services/games-service';
 
 function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
+  const { gameData, resetData, playerId } = useContext(GameDataContext);
   const [seconds, setSeconds] = useState(time);
   const navigate = useNavigate();
 
@@ -23,6 +27,8 @@ function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
 
   useEffect(() => {
     if (seconds === 0) {
+      leaveGame(playerId, gameData.id);
+      resetData();
       navigate(INACTIVE);
     }
   });

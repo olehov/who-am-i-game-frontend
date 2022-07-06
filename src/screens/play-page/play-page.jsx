@@ -15,25 +15,25 @@ function PlayPage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [active, setActive] = useState(false);
   const [mode, setMode] = useState(
-    gameData.data.currentTurn === playerId ? ASKING : ANSWERING
+    gameData.currentTurn === playerId ? ASKING : ANSWERING
   );
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!gameData.data.status) navigate('/');
+    if (!gameData.status) navigate('/');
   }, [gameData, navigate]);
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
-      setGameData(await findGameById(playerId, gameData.data.id));
+      setGameData((await findGameById(playerId, gameData.id)).data);
     }, 1000);
 
     return () => clearTimeout(checkStatus);
   });
 
   const players =
-    gameData.data.players &&
-    gameData.data.players.map((player, index) => ({
+    gameData.players &&
+    gameData.players.map((player, index) => ({
       avatar: `avatar0${index + 1}`,
       ...player,
     }));
@@ -44,7 +44,7 @@ function PlayPage() {
 
   const submitGuess = (event, guess) => {
     event.preventDefault();
-    askQuestion(playerId, gameData.data.id, guess);
+    askQuestion(playerId, gameData.id, guess);
     setActive(false);
   };
 
