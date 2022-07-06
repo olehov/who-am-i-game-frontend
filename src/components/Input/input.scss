@@ -28,6 +28,19 @@
   cursor: pointer;
 }
 
+.eye-slash-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 32px;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../assets/icons/eye-slash.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
 .input.error {
   border: 4px solid $btn-pink;
 }

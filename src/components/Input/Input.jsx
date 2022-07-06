@@ -1,16 +1,12 @@
 import clsx from 'clsx';
 import './input.scss';
 
-const Input = ({ className, type, error, ...attrs }) => {
-  const classes = clsx('input', className, { error });
-
+const Input = ({ className, ...attrs }) => {
   return (
     <div className="input-container">
       <div className="input-wrapper">
-        <input className={classes} {...attrs} />
-        {type === 'password' && <div className="eye-icon"></div>}
+        <input className={clsx('input', className)} {...attrs} />
       </div>
-      {error && <div className="inputError">{error}</div>}
     </div>
   );
 };

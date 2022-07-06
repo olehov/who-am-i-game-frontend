@@ -27,7 +27,6 @@ const INACTIVE = '/inactive';
 const CREATE_ACCOUNT = '/create-account';
 const SIGN_IN = '/sign-in';
 const RESTORE = '/restore';
-const CONFIRM = '/confirm';
 const NEW_PASSWORD = '/new-password';
 
 const THEME_FILTER = [
@@ -80,6 +79,5 @@ export {
   CREATE_ACCOUNT,
   SIGN_IN,
   RESTORE,
-  CONFIRM,
   NEW_PASSWORD,
 };

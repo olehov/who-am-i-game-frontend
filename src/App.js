@@ -22,13 +22,11 @@ import {
   CREATE_ACCOUNT,
   SIGN_IN,
   RESTORE,
-  CONFIRM,
   NEW_PASSWORD,
 } from './constants/constants';
 import CreateAccount from './screens/create-account/create-account';
 import SignIn from './screens/signin-page/signin-page';
 import RestorePassword from './screens/restore-password/restore-password';
-import ConfirmPassword from './screens/confirm-password/confirm-password';
 import NewPassword from './screens/new-password/new-password';
 
 function App() {
@@ -64,7 +62,6 @@ function App() {
           <Route path={CREATE_ACCOUNT} element={<CreateAccount />} />
           <Route path={SIGN_IN} element={<SignIn />} />
           <Route path={RESTORE} element={<RestorePassword />} />
-          <Route path={CONFIRM} element={<ConfirmPassword />} />
           <Route path={NEW_PASSWORD} element={<NewPassword />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
