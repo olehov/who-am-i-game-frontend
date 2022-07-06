@@ -38,6 +38,8 @@ function App() {
         status: null,
       },
     });
+    sessionStorage.removeItem('gameId');
+    sessionStorage.removeItem('playerId');
   }
 
   return (

@@ -23,8 +23,6 @@ function InactivityKick() {
         className={'btn-blue-outline'}
         onClick={() => {
           resetData();
-          sessionStorage.removeItem('gameId');
-          sessionStorage.removeItem('playerId');
           navigate('/');
         }}
       >

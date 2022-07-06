@@ -59,15 +59,9 @@ function Lobby() {
 
   const submitCharacter = (event, playerName, characterName) => {
     event.preventDefault();
-    suggestCharacter(
-      playerId,
-      gameData.data.id,
-      playerName,
-      characterName
-    ).then(() => {
-      setSuggestModalActive(false);
-      setSuggestBtn(false);
-    });
+    suggestCharacter(playerId, gameData.data.id, playerName, characterName);
+    setSuggestModalActive(false);
+    setSuggestBtn(false);
   };
 
   return (
