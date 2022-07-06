@@ -21,7 +21,7 @@ export default function ProfilePage() {
 
   return (
     <ScreenWrapper>
-      <form className="profile" >
+      <form className="profile">
         <div className="profile__avatar"></div>
         <Input
           type="text"
@@ -46,10 +46,12 @@ export default function ProfilePage() {
           >
             update
           </Btn>
-          <Btn className={'btn-blue-outline-smoll'}
-           onClick={() => {
-            navigate('/');
-          }} >
+          <Btn
+            className={'btn-blue-outline-smoll'}
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             Cancel
           </Btn>
         </div>
