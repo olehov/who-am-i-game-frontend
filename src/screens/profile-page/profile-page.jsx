@@ -19,9 +19,15 @@ export default function ProfilePage() {
     setPassword(e.target.value);
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setUsername('');
+    setPassword('');
+  };
+
   return (
     <ScreenWrapper>
-      <form className="profile">
+      <form className="profile" onSubmit={submitHandler}>
         <div className="profile__avatar"></div>
         <Input
           type="text"
@@ -37,17 +43,11 @@ export default function ProfilePage() {
           placeholder="Password"
         />
         <div className="btn-form-wrapper">
-          <Btn
-            className={'btn-green-solid'}
-            onClick={() => {
-              navigate('/');
-            }}
-            type="submit"
-          >
+          <Btn className={'btn-green-solid'} type="submit">
             update
           </Btn>
           <Btn
-            className={'btn-blue-outline-smoll'}
+            className={'btn-blue-outline-small'}
             onClick={() => {
               navigate('/');
             }}
