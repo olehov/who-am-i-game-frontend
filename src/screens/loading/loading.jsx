@@ -3,35 +3,16 @@ import Btn from '../../components/btn/btn';
 import Timer from '../../components/timer/timer';
 import LeaveGameModal from '../../components/modals/leave-game';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import GameDataContext from '../../contexts/game-data-context';
-import { useNavigate } from 'react-router-dom';
-import { findGameById } from '../../services/games-service';
-import { SUGGESTING_CHARACTERS } from '../../constants/constants';
 import './loading.scss';
+import useGameData from '../../hooks/useGameData';
 
 function Loading() {
-  const { gameData, setGameData, playerId } = useContext(GameDataContext);
+  const { gameData } = useContext(GameDataContext);
   const [leaveModalActive, setLeaveModalActive] = useState(false);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkStatus = setTimeout(async () => {
-      setGameData((await findGameById(playerId, gameData.id)).data);
-    }, 1000);
-
-    return () => clearTimeout(checkStatus);
-  });
-
-  useEffect(() => {
-    if (!gameData.status) {
-      navigate('/');
-    }
-
-    if (gameData.status === SUGGESTING_CHARACTERS) {
-      navigate('lobby');
-    }
-  }, [gameData, navigate]);
+  useGameData();
 
   return (
     <ScreenWrapper>

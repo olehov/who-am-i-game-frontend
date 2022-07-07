@@ -10,7 +10,7 @@ import { READY } from '../../constants/constants';
 import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { suggestCharacter } from '../../services/games-service';
-import useGameData from '../../services/useGameData';
+import useGameData from '../../hooks/useGameData';
 
 function Lobby() {
   const { gameData, playerId } = useContext(GameDataContext);
@@ -18,20 +18,7 @@ function Lobby() {
   const [suggestModalActive, setSuggestModalActive] = useState(false);
   const [suggestBtn, setSuggestBtn] = useState(true);
 
-  useGameData();
-
-  const players =
-    gameData.players &&
-    gameData.players.map((player, index) => ({
-      nickname: player.player.name || `Player ${index + 1}`,
-      avatar: `avatar0${index + 1}`,
-      ...player,
-    }));
-
-  const currentPlayer =
-    players && players.find((player) => player.player.id === playerId);
-  const playersWithoutYou =
-    players && players.filter((player) => player.player.id !== playerId);
+  const { currentPlayer, playersWithoutCurrent } = useGameData();
 
   const submitCharacter = (event, playerName, characterName) => {
     event.preventDefault();
@@ -56,8 +43,8 @@ function Lobby() {
                 isYou
               />
             )}
-            {playersWithoutYou ? (
-              playersWithoutYou.map((player) => (
+            {playersWithoutCurrent ? (
+              playersWithoutCurrent.map((player) => (
                 <PlayerCard
                   key={player.player.id}
                   avatarClassName={player.avatar}

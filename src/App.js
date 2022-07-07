@@ -9,7 +9,7 @@ import Lobby from './screens/lobby/lobby';
 import GameDataContext from './contexts/game-data-context';
 import MainLobby from './screens/main-lobby/main-lobby';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import {
   DEFEAT,
@@ -26,7 +26,10 @@ import GameLobby from './screens/game-lobby/game-lobby';
 function App() {
   const [gameData, setGameData] = useState({ status: null });
   const [playerId] = useState(sessionStorage.playerId || uuidv4());
-  sessionStorage.setItem('playerId', playerId);
+
+  useEffect(() => {
+    sessionStorage.setItem('playerId', playerId);
+  });
 
   function resetData() {
     setGameData({ status: null });

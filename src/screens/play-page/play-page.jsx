@@ -2,45 +2,23 @@ import UsersContainer from '../../components/users-container/users-container';
 import HistoryContainer from '../../components/history-container/history-container';
 import GuessCharacterModal from '../../components/modals/guess-a-character';
 import Header from '../../components/header/header';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import ModalContext from '../../contexts/modal-context';
 import './play-page.scss';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
-import { askQuestion, findGameById } from '../../services/games-service';
+import { askQuestion } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
-import { useNavigate } from 'react-router-dom';
 import { ANSWERING, ASKING } from '../../constants/constants';
+import useGameData from '../../hooks/useGameData';
 
 function PlayPage() {
-  const { gameData, setGameData, playerId } = useContext(GameDataContext);
+  const { gameData, playerId } = useContext(GameDataContext);
   const [active, setActive] = useState(false);
   const [mode, setMode] = useState(
     gameData.currentTurn === playerId ? ASKING : ANSWERING
   );
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!gameData.status) navigate('/');
-  }, [gameData, navigate]);
-
-  useEffect(() => {
-    const checkStatus = setTimeout(async () => {
-      setGameData((await findGameById(playerId, gameData.id)).data);
-    }, 1000);
-
-    return () => clearTimeout(checkStatus);
-  });
-
-  const players =
-    gameData.players &&
-    gameData.players.map((player, index) => ({
-      avatar: `avatar0${index + 1}`,
-      ...player,
-    }));
-  const currentPlayer =
-    players && players.find((player) => player.player.id === playerId);
-  const playersWithoutYou =
-    players && players.filter((player) => player.player.id !== playerId);
+  const { currentPlayer, playersWithoutCurrent } = useGameData();
 
   const submitGuess = (event, guess) => {
     event.preventDefault();
@@ -56,7 +34,7 @@ function PlayPage() {
           <UsersContainer
             mode={mode}
             currentPlayer={currentPlayer}
-            players={playersWithoutYou}
+            players={playersWithoutCurrent}
           />
           <HistoryContainer mode={mode} setMode={setMode} />
           <GuessCharacterModal

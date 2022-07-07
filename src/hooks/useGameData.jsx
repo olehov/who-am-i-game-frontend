@@ -1,15 +1,15 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  // LOBBY,
+  LOBBY,
   PLAY,
   PROCESSING_QUESTION,
-  // SUGGESTING_CHARACTERS,
+  SUGGESTING_CHARACTERS,
 } from '../constants/constants';
 import GameDataContext from '../contexts/game-data-context';
-import { findGameById } from './games-service';
+import { findGameById } from '../services/games-service';
 
-function useGameData() {
+export default function useGameData() {
   const { gameData, setGameData, resetData, playerId } =
     useContext(GameDataContext);
   const navigate = useNavigate();
@@ -30,16 +30,35 @@ function useGameData() {
     if (!gameData.id && !sessionStorage.getItem('gameId')) {
       resetData();
       navigate('/');
+
+      return;
     }
 
-    // if (gameData.status === SUGGESTING_CHARACTERS) {
-    //   navigate(LOBBY);
-    // }
+    if (gameData.status === SUGGESTING_CHARACTERS) {
+      navigate(LOBBY);
+
+      return;
+    }
 
     if (gameData.status === PROCESSING_QUESTION) {
       navigate(PLAY);
+
+      return;
     }
   }, [gameData, resetData, navigate]);
-}
 
-export default useGameData;
+  const players =
+    gameData.players &&
+    gameData.players.map((player, index) => ({
+      nickname: player.player.name || `Player ${index + 1}`,
+      avatar: `avatar0${index + 1}`,
+      ...player,
+    }));
+
+  const currentPlayer =
+    players && players.find((player) => player.player.id === playerId);
+  const playersWithoutCurrent =
+    players && players.filter((player) => player.player.id !== playerId);
+
+  return { currentPlayer, playersWithoutCurrent };
+}
