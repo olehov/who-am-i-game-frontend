@@ -29,6 +29,7 @@ const CREATE_ACCOUNT = '/create-account';
 const SIGN_IN = '/sign-in';
 const RESTORE = '/restore';
 const NEW_PASSWORD = '/new-password';
+const PROFILE = '/profile';
 
 const THEME_FILTER = [
   { title: 'Actors', checked: false },
@@ -82,4 +83,5 @@ export {
   SIGN_IN,
   RESTORE,
   NEW_PASSWORD,
+  PROFILE,
 };
