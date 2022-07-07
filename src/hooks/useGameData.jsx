@@ -19,7 +19,7 @@ export default function useGameData() {
       const gameId = gameData.id || sessionStorage.getItem('gameId');
       const userId = playerId || sessionStorage.getItem('playerId');
 
-      const data = (await findGameById(userId, gameId)).data;
+      const { data } = await findGameById(userId, gameId);
       setGameData(data);
     }, 1000);
 
@@ -47,18 +47,16 @@ export default function useGameData() {
     }
   }, [gameData, resetData, navigate]);
 
-  const players =
-    gameData.players &&
-    gameData.players.map((player, index) => ({
-      nickname: player.player.name || `Player ${index + 1}`,
-      avatar: `avatar0${index + 1}`,
-      ...player,
-    }));
+  const players = gameData.players.map((player, index) => ({
+    nickname: player.player.name || `Player ${index + 1}`,
+    avatar: `avatar0${index + 1}`,
+    ...player,
+  }));
 
-  const currentPlayer =
-    players && players.find((player) => player.player.id === playerId);
-  const playersWithoutCurrent =
-    players && players.filter((player) => player.player.id !== playerId);
+  const currentPlayer = players.find((player) => player.player.id === playerId);
+  const playersWithoutCurrent = players.filter(
+    (player) => player.player.id !== playerId
+  );
 
   return { currentPlayer, playersWithoutCurrent };
 }

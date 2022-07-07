@@ -43,7 +43,7 @@ function Lobby() {
                 isYou
               />
             )}
-            {playersWithoutCurrent ? (
+            {playersWithoutCurrent.length ? (
               playersWithoutCurrent.map((player) => (
                 <PlayerCard
                   key={player.player.id}

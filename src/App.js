@@ -24,15 +24,16 @@ import {
 import GameLobby from './screens/game-lobby/game-lobby';
 
 function App() {
-  const [gameData, setGameData] = useState({ status: null });
-  const [playerId] = useState(sessionStorage.playerId || uuidv4());
+  const [gameData, setGameData] = useState({ status: null, players: [] });
+  const [playerId, setPlayerId] = useState(sessionStorage.playerId || uuidv4());
 
   useEffect(() => {
     sessionStorage.setItem('playerId', playerId);
-  });
+  }, [playerId]);
 
   function resetData() {
-    setGameData({ status: null });
+    setGameData({ status: null, players: [] });
+    setPlayerId(uuidv4());
     sessionStorage.removeItem('gameId');
     sessionStorage.removeItem('playerId');
   }
