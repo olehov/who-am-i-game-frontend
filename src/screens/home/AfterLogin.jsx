@@ -28,9 +28,14 @@ function AfterLogin({ setIsLogin }) {
         PLAY QUICK GAME
       </Btn>
       <Btn className={'btn-blue-outline'}>Lobbies</Btn>
-      <Btn className={'btn-blue-outline'} onClick={() => {
-              navigate(PROFILE);
-            }}>profile</Btn>
+      <Btn
+        className={'btn-blue-outline'}
+        onClick={() => {
+          navigate(PROFILE);
+        }}
+      >
+        profile
+      </Btn>
       <Btn
         className={'btn-pink-outline'}
         onClick={() => {
