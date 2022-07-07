@@ -20,7 +20,8 @@ export default function useGameData() {
       const userId = playerId || sessionStorage.getItem('playerId');
 
       const { data } = await findGameById(userId, gameId);
-      setGameData(data);
+
+      if (data) setGameData(data);
     }, 1000);
 
     return () => clearTimeout(checkStatus);
