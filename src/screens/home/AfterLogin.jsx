@@ -2,7 +2,11 @@ import { useContext } from 'react';
 import Btn from '../../components/btn/btn';
 import GameDataContext from '../../contexts/game-data-context';
 import { createGame } from '../../services/games-service';
-import { NUMBER_OF_PLAYERS, PROFILE } from '../../constants/constants';
+import {
+  MAIN_LOBBY,
+  NUMBER_OF_PLAYERS,
+  PROFILE,
+} from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
 
 function AfterLogin({ setIsLogin }) {
@@ -27,7 +31,14 @@ function AfterLogin({ setIsLogin }) {
       >
         PLAY QUICK GAME
       </Btn>
-      <Btn className={'btn-blue-outline'}>Lobbies</Btn>
+      <Btn
+        className={'btn-blue-outline'}
+        onClick={() => {
+          navigate(MAIN_LOBBY);
+        }}
+      >
+        Lobbies
+      </Btn>
       <Btn
         className={'btn-blue-outline'}
         onClick={() => {
