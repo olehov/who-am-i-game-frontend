@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="App">
       <GameDataContext.Provider
-        value={{ gameData, setGameData, playerId, resetData }}
+        value={{ gameData, setGameData, playerId, setPlayerId, resetData }}
       >
         <Routes>
           <Route path="/" element={<Homepage />} />

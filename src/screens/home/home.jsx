@@ -14,11 +14,27 @@ import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
 import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
+import { createGame, findGameById } from '../../services/games-service';
 
 function Homepage() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getGameData() {
+      const gameId = sessionStorage.getItem('gameId');
+      const userId = playerId || sessionStorage.getItem('playerId');
+
+      if (gameId && userId) {
+        const { data } = await findGameById(userId, gameId);
+
+        if (data) setGameData(data);
+      }
+    }
+
+    getGameData();
+  });
 
   useEffect(() => {
     if (gameData.status === WAITING_FOR_PLAYERS) {
@@ -28,11 +44,14 @@ function Homepage() {
     }
   }, [gameData, navigate]);
 
-  const createGame = async () => {
+  const onCreateGame = async () => {
     try {
       const { data } = await createGame(playerId, NUMBER_OF_PLAYERS);
-      sessionStorage.setItem('gameId', data.id);
-      setGameData(data);
+
+      if (data) {
+        setGameData(data);
+        sessionStorage.setItem('gameId', data.id);
+      }
     } catch (error) {
       //todo: handle errors
     }
@@ -43,9 +62,9 @@ function Homepage() {
       <GameTitle />
       <PlayersOnlineTitle />
       {isLogin ? (
-        <AfterLogin setIsLogin={setIsLogin} createGame={createGame} />
+        <AfterLogin setIsLogin={setIsLogin} createGame={onCreateGame} />
       ) : (
-        <BeforeLogin setIsLogin={setIsLogin} createGame={createGame} />
+        <BeforeLogin setIsLogin={setIsLogin} createGame={onCreateGame} />
       )}
     </ScreenWrapper>
   );

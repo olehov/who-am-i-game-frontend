@@ -7,7 +7,7 @@ import {
   SUGGESTING_CHARACTERS,
 } from '../constants/constants';
 import GameDataContext from '../contexts/game-data-context';
-import { findGameById } from '../services/games-service';
+import { findGameById, leaveGame } from '../services/games-service';
 
 export default function useGameData() {
   const { gameData, setGameData, resetData, playerId } =
@@ -19,16 +19,18 @@ export default function useGameData() {
       const gameId = gameData.id || sessionStorage.getItem('gameId');
       const userId = playerId || sessionStorage.getItem('playerId');
 
-      const { data } = await findGameById(userId, gameId);
+      if (gameId && userId) {
+        const { data } = await findGameById(userId, gameId);
 
-      if (data) setGameData(data);
+        if (data) setGameData(data);
+      }
     }, 1000);
 
     return () => clearTimeout(checkStatus);
   });
 
   useEffect(() => {
-    if (!gameData.id && !sessionStorage.getItem('gameId')) {
+    if (!gameData.id && !sessionStorage.gameId) {
       resetData();
       navigate('/');
 
@@ -46,7 +48,7 @@ export default function useGameData() {
 
       return;
     }
-  }, [gameData, resetData, navigate]);
+  }, [gameData, resetData, playerId, navigate]);
 
   const players = gameData.players.map((player, index) => ({
     nickname: player.player.name || `Player ${index + 1}`,
@@ -58,6 +60,13 @@ export default function useGameData() {
   const playersWithoutCurrent = players.filter(
     (player) => player.player.id !== playerId
   );
+
+  // window.onunload = function () {
+  //   leaveGame(playerId, gameData.id);
+  //   resetData();
+
+  //   return;
+  // };
 
   return { currentPlayer, playersWithoutCurrent };
 }

@@ -8,15 +8,11 @@ import './play-page.scss';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import { askQuestion } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
-import { ANSWERING, ASKING } from '../../constants/constants';
 import useGameData from '../../hooks/useGameData';
 
 function PlayPage() {
   const { gameData, playerId } = useContext(GameDataContext);
   const [active, setActive] = useState(false);
-  const [mode, setMode] = useState(
-    gameData.currentTurn === playerId ? ASKING : ANSWERING
-  );
 
   const { currentPlayer, playersWithoutCurrent } = useGameData();
 
@@ -32,11 +28,14 @@ function PlayPage() {
       <div className="content_wrapper">
         <ModalContext.Provider value={[active, setActive]}>
           <UsersContainer
-            mode={mode}
+            mode={currentPlayer.state}
             currentPlayer={currentPlayer}
             players={playersWithoutCurrent}
           />
-          <HistoryContainer mode={mode} setMode={setMode} />
+          <HistoryContainer
+            mode={currentPlayer.state}
+            currentPlayer={currentPlayer}
+          />
           <GuessCharacterModal
             active={active}
             onSubmit={submitGuess}
