@@ -37,7 +37,6 @@ function HistoryContainer({ mode, currentPlayer }) {
   const sendQuestionHandler = () => {
     if (currentQuestion !== '') {
       history.push({ user: currentPlayer, question: currentQuestion });
-      console.log('HISTORY', history);
       try {
         askQuestion(playerId, gameData.id, currentQuestion);
       } catch (error) {
@@ -54,7 +53,6 @@ function HistoryContainer({ mode, currentPlayer }) {
     const answer = event.nativeEvent.submitter.value;
     setMessage(answer);
     try {
-      console.log(answer);
       answerQuestion(playerId, gameData.id, answer);
     } catch (error) {
       //to do: handle error
