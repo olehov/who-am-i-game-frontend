@@ -33,9 +33,9 @@ function App() {
 
   function resetData() {
     setGameData({ status: null, players: [] });
-    setPlayerId(uuidv4());
     sessionStorage.removeItem('gameId');
     sessionStorage.removeItem('playerId');
+    setPlayerId(uuidv4());
   }
 
   return (

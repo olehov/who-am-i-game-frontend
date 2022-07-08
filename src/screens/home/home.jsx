@@ -4,6 +4,7 @@ import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapp
 import GameDataContext from '../../contexts/game-data-context';
 import { useContext, useEffect, useState } from 'react';
 import {
+  NUMBER_OF_PLAYERS,
   WAITING_FOR_PLAYERS,
   SUGGESTING_CHARACTERS,
   LOADING,
@@ -15,7 +16,7 @@ import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
 
 function Homepage() {
-  const { gameData } = useContext(GameDataContext);
+  const { gameData, setGameData, playerId } = useContext(GameDataContext);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
@@ -27,14 +28,24 @@ function Homepage() {
     }
   }, [gameData, navigate]);
 
+  const createGame = async () => {
+    try {
+      const { data } = await createGame(playerId, NUMBER_OF_PLAYERS);
+      sessionStorage.setItem('gameId', data.id);
+      setGameData(data);
+    } catch (error) {
+      //todo: handle errors
+    }
+  };
+
   return (
     <ScreenWrapper>
       <GameTitle />
       <PlayersOnlineTitle />
       {isLogin ? (
-        <AfterLogin setIsLogin={setIsLogin} />
+        <AfterLogin setIsLogin={setIsLogin} createGame={createGame} />
       ) : (
-        <BeforeLogin setIsLogin={setIsLogin} />
+        <BeforeLogin setIsLogin={setIsLogin} createGame={createGame} />
       )}
     </ScreenWrapper>
   );

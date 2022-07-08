@@ -1,12 +1,6 @@
-import { useContext } from 'react';
 import Btn from '../../components/btn/btn';
-import GameDataContext from '../../contexts/game-data-context';
-import { createGame } from '../../services/games-service';
-import { NUMBER_OF_PLAYERS } from '../../constants/constants';
 
-function AfterLogin({ setIsLogin }) {
-  const { setGameData, playerId } = useContext(GameDataContext);
-
+function AfterLogin({ setIsLogin, createGame }) {
   return (
     <div className="after-login-wrapper">
       <div className="profile">
@@ -17,18 +11,7 @@ function AfterLogin({ setIsLogin }) {
           <div className="profile__edit-icon"></div>
         </div>
       </div>
-      <Btn
-        className={'btn-blue-outline'}
-        onClick={async () => {
-          try {
-            const { data } = await createGame(playerId, NUMBER_OF_PLAYERS);
-            sessionStorage.setItem('gameId', data.id);
-            setGameData(data);
-          } catch (error) {
-            //todo: handle errors
-          }
-        }}
-      >
+      <Btn className={'btn-blue-outline'} onClick={createGame}>
         PLAY QUICK GAME
       </Btn>
       <Btn className={'btn-blue-outline'}>Lobbies</Btn>

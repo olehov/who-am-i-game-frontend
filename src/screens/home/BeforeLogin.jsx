@@ -1,22 +1,9 @@
-import { useContext } from 'react';
 import Btn from '../../components/btn/btn';
-import GameDataContext from '../../contexts/game-data-context';
-import { createGame } from '../../services/games-service';
-import { NUMBER_OF_PLAYERS } from '../../constants/constants';
 
-function BeforeLogin({ setIsLogin }) {
-  const { setGameData, playerId } = useContext(GameDataContext);
-
+function BeforeLogin({ setIsLogin, createGame }) {
   return (
     <>
-      <Btn
-        className={'btn-blue-outline'}
-        onClick={async () => {
-          const gameData = (await createGame(playerId, NUMBER_OF_PLAYERS)).data;
-          setGameData(gameData);
-          sessionStorage.setItem('gameId', gameData.id);
-        }}
-      >
+      <Btn className={'btn-blue-outline'} onClick={createGame}>
         PLAY QUICK GAME
       </Btn>
       <div className="dividing-line"></div>
