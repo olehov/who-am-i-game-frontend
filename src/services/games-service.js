@@ -33,7 +33,7 @@ async function getAllPlayersCount(player) {
 function createGame(player, playersNum) {
   const response = axios({
     method: 'post',
-    url: '/api/v1/games',
+    url: '/api/v1/games/quick',
     headers: { 'X-Player': player },
     data: {
       maxPlayers: playersNum,
@@ -105,6 +105,8 @@ function leaveGame(player, id) {
     headers: { 'X-Player': player },
   });
 }
+
+
 
 export {
   findGameById,

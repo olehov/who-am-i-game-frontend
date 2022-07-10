@@ -1,7 +1,9 @@
 const WAITING_FOR_PLAYERS =
-  'com.eleks.academy.whoami.core.state.WaitingForPlayers';
+  //'com.eleks.academy.whoami.core.state.WaitingForPlayers';
+  'WaitingForPlayers';
 const SUGGESTING_CHARACTERS =
-  'com.eleks.academy.whoami.core.state.SuggestingCharacters';
+  //'com.eleks.academy.whoami.core.state.SuggestingCharacters';
+  'SuggestingCharacter';
 const PROCESSING_QUESTION =
   'com.eleks.academy.whoami.core.state.ProcessingQuestion';
 const NUMBER_OF_PLAYERS = 4;
