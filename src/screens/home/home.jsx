@@ -15,10 +15,9 @@ import PlayersOnlineTitle from '../../components/players-online-title/players-on
 import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
 import { createGame, leaveGame } from '../../services/games-service';
-import { v4 as uuidv4 } from 'uuid';
 
 function Homepage() {
-  const { gameData, setGameData, resetGame, playerId, setPlayerId } =
+  const { gameData, setGameData, resetData, playerId } =
     useContext(GameDataContext);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
@@ -31,10 +30,7 @@ function Homepage() {
       if (gameId && userId) {
         try {
           await leaveGame(userId, gameId);
-          resetGame();
-          const playerId = uuidv4();
-          setPlayerId(playerId);
-          sessionStorage.setItem('playerId', playerId);
+          resetData();
         } catch (error) {
           //to do: handle errors
         }
