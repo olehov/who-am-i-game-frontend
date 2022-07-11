@@ -40,14 +40,6 @@ function Homepage() {
     leaveResetData();
   }, []);
 
-  useEffect(() => {
-    if (gameData.status === WAITING_FOR_PLAYERS) {
-      navigate(LOADING);
-    } else if (gameData.status === SUGGESTING_CHARACTERS) {
-      navigate(LOBBY);
-    }
-  }, [gameData, navigate]);
-
   const onCreateGame = useCallback(async () => {
     try {
       const { data } = await createGame(playerId, NUMBER_OF_PLAYERS);
@@ -55,11 +47,12 @@ function Homepage() {
       if (data) {
         setGameData(data);
         sessionStorage.setItem('gameId', data.id);
+        navigate(LOADING);
       }
     } catch (error) {
       //todo: handle errors
     }
-  }, [setGameData, playerId]);
+  }, [setGameData, playerId, navigate]);
 
   return (
     <ScreenWrapper>

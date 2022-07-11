@@ -1,10 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
+  LOADING,
   LOBBY,
   PLAY,
   PROCESSING_QUESTION,
   SUGGESTING_CHARACTERS,
+  WAITING_FOR_PLAYERS,
 } from '../constants/constants';
 import GameDataContext from '../contexts/game-data-context';
 import { findGameById } from '../services/games-service';
@@ -40,6 +42,12 @@ export default function useGameData() {
     if (!gameData.id && !sessionStorage.gameId) {
       resetData();
       navigate('/');
+
+      return;
+    }
+
+    if (gameData.status === WAITING_FOR_PLAYERS) {
+      navigate(LOADING);
 
       return;
     }
