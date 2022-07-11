@@ -25,7 +25,12 @@ function Lobby() {
   const submitCharacter = async (event, playerName, characterName) => {
     event.preventDefault();
     try {
-      suggestCharacter(playerId, gameData.id, playerName, characterName);
+      await suggestCharacter(
+        playerId,
+        gameData.id,
+        playerName.trim(),
+        characterName.trim()
+      );
       setSuggestModalActive(false);
       setSuggestBtn(false);
     } catch (error) {
@@ -36,7 +41,7 @@ function Lobby() {
   return (
     <ScreenWrapper>
       <div className="input-screen">
-        {playersWithoutCurrent.length ? (
+        {currentPlayer ? (
           <>
             <Header type="game-lobby" />
             <div className="input-screen__player">
@@ -87,55 +92,6 @@ function Lobby() {
             <Spinner appearance="invert" />
           </div>
         )}
-        {/* <Header type="game-lobby" />
-        <div className="input-screen__player">
-          <div className="input-screen__player-card-wrapper">
-            {currentPlayer && (
-              <PlayerCard
-                avatarClassName={currentPlayer.avatar}
-                name={currentPlayer.nickname}
-                playerStatusClassName={
-                  currentPlayer.state === READY ? 'yes' : 'unsure'
-                }
-                isYou
-              />
-            )}
-            {playersWithoutCurrent.length ? (
-              playersWithoutCurrent.map((player) => (
-                <PlayerCard
-                  key={player.player.id}
-                  avatarClassName={player.avatar}
-                  name={player.nickname}
-                  playerStatusClassName={
-                    player.state === READY ? 'yes' : 'unsure'
-                  }
-                />
-              ))
-            ) : (
-              <div className="spinner-wrapper">
-                <Spinner appearance="invert" />
-              </div>
-            )}
-          </div>
-          <div className="input-screen__btn-wrapper">
-            {suggestBtn && currentPlayer && (
-              <Btn
-                className={['btn-green-solid']}
-                onClick={() => setSuggestModalActive(true)}
-              >
-                Suggest a character
-              </Btn>
-            )}
-            <Btn
-              className={['btn-pink-solid']}
-              onClick={() => {
-                setLeaveModalActive(true);
-              }}
-            >
-              LEAVE GAME
-            </Btn>
-          </div>
-        </div> */}
         <LeaveGameModal
           active={leaveModalActive}
           onCancel={() => setLeaveModalActive(false)}

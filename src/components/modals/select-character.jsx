@@ -39,7 +39,8 @@ function SelectCharacterModal({ player, active, onCancel, onSubmit }) {
         <Btn
           className="btn-green-solid"
           disabled={
-            (playerName && playerName.length < 3) || characterName.length < 3
+            (playerName && playerName.trim().length < 3) ||
+            characterName.trim().length < 3
           }
           type="submit"
         >

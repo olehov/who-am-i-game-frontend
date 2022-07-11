@@ -22,7 +22,9 @@ export default function useGameData() {
       if (gameId && userId) {
         try {
           const { data } = await findGameById(userId, gameId);
-          setGameData(data);
+
+          if (data.players.length) setGameData(data);
+          else navigate('/');
         } catch (error) {
           if (error.response.status === 404) {
             navigate('/');

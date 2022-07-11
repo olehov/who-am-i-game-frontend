@@ -22,7 +22,7 @@ function PlayPage() {
   const submitGuess = async (event, guess) => {
     event.preventDefault();
     try {
-      askQuestion(playerId, gameData.id, guess);
+      await askQuestion(playerId, gameData.id, guess);
       setActive(false);
     } catch (error) {
       //to do: handle errors
@@ -31,33 +31,35 @@ function PlayPage() {
 
   return (
     <ScreenWrapper className="lobby-screen">
-      <Header type="play-game" />
-      <div className="lobby-screen__content_wrapper">
-        <ModalContext.Provider value={[active, setActive]}>
-          {currentPlayer ? (
-            <>
-              <UsersContainer
-                mode={currentPlayer.state}
-                currentPlayer={currentPlayer}
-                players={playersWithoutCurrent}
+      {currentPlayer ? (
+        <>
+          <Header type="play-game" />
+          <div className="lobby-screen__content_wrapper">
+            <ModalContext.Provider value={[active, setActive]}>
+              {currentPlayer && (
+                <>
+                  <UsersContainer
+                    mode={currentPlayer.state}
+                    currentPlayer={currentPlayer}
+                    players={playersWithoutCurrent}
+                  />
+                  <HistoryContainer
+                    mode={currentPlayer.state}
+                    currentPlayer={currentPlayer}
+                  />
+                </>
+              )}
+              <GuessCharacterModal
+                active={active}
+                onSubmit={submitGuess}
+                onCancel={() => setActive(false)}
               />
-              <HistoryContainer
-                mode={currentPlayer.state}
-                currentPlayer={currentPlayer}
-              />
-            </>
-          ) : (
-            <div className="spinner-wrapper">
-              <Spinner appearance="invert" />
-            </div>
-          )}
-          <GuessCharacterModal
-            active={active}
-            onSubmit={submitGuess}
-            onCancel={() => setActive(false)}
-          />
-        </ModalContext.Provider>
-      </div>
+            </ModalContext.Provider>
+          </div>
+        </>
+      ) : (
+        <Spinner appearance="invert" />
+      )}
     </ScreenWrapper>
   );
 }

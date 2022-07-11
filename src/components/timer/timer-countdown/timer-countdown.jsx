@@ -26,11 +26,18 @@ function CountdownTimer({ inLobby, time = 60, small, timeClassName, paused }) {
   }, [paused, seconds]);
 
   useEffect(() => {
-    if (seconds === 0) {
-      leaveGame(playerId, gameData.id);
-      resetData();
-      navigate(INACTIVE);
+    async function leaveResetData() {
+      if (seconds === 0) {
+        try {
+          await leaveGame(playerId, gameData.id);
+          resetData();
+          navigate(INACTIVE);
+        } catch (error) {
+          //to do: handle errors
+        }
+      }
     }
+    leaveResetData();
   });
 
   return (
