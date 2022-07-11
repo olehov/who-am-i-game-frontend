@@ -20,6 +20,7 @@ async function findAvailableGames(player) {
   return response;
 }
 
+
 async function getAllPlayersCount(player) {
   const response = await axios({
     method: 'get',
@@ -33,11 +34,21 @@ async function getAllPlayersCount(player) {
 function createGame(player, playersNum) {
   const response = axios({
     method: 'post',
-    url: '/api/v1/games/quick',
+    url: '/api/v1/games/',
     headers: { 'X-Player': player },
     data: {
       maxPlayers: playersNum,
     },
+  });
+
+  return response;
+}
+
+function createQuickGame(player) {
+  const response = axios({
+    method: 'post',
+    url: '/api/v1/games/quick',
+    headers: { 'X-Player': player },
   });
 
   return response;
@@ -112,6 +123,7 @@ export {
   findGameById,
   findAvailableGames,
   createGame,
+  createQuickGame,
   suggestCharacter,
   findTurnInfo,
   askQuestion,

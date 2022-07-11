@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Btn from '../../components/btn/btn';
 import GameDataContext from '../../contexts/game-data-context';
-import { createGame } from '../../services/games-service';
+import { createQuickGame } from '../../services/games-service';
 import {
   MAIN_LOBBY,
   NUMBER_OF_PLAYERS,
@@ -26,7 +26,7 @@ function AfterLogin({ setIsLogin }) {
       <Btn
         className={'btn-blue-outline'}
         onClick={async () => {
-          setGameData(await createGame(playerId, NUMBER_OF_PLAYERS));
+          setGameData(await createQuickGame(playerId));
         }}
       >
         PLAY QUICK GAME

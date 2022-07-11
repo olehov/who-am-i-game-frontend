@@ -9,6 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import { findGameById } from '../../services/games-service';
 import { SUGGESTING_CHARACTERS } from '../../constants/constants';
 import './loading.scss';
+import{
+LOBBY,
+} from '../../constants/constants';
 
 function Loading() {
   const { gameData, setGameData, playerId } = useContext(GameDataContext);
@@ -17,7 +20,7 @@ function Loading() {
 
   useEffect(() => {
     const checkStatus = setTimeout(async () => {
-      setGameData(await findGameById(playerId, gameData.data.id));
+      //setGameData(await findGameById(playerId, gameData.data.id));
     }, 1000);
 
     return () => clearTimeout(checkStatus);
@@ -25,7 +28,7 @@ function Loading() {
 
   useEffect(() => {
     if (gameData.data.status === SUGGESTING_CHARACTERS) {
-      navigate('lobby');
+      navigate(LOBBY);
     }
   });
 
