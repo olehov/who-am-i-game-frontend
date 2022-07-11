@@ -6,36 +6,51 @@ import { useContext, useState } from 'react';
 import ModalContext from '../../contexts/modal-context';
 import './play-page.scss';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
+import Spinner from '@atlaskit/spinner';
 import { askQuestion } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
 import useGameData from '../../hooks/useGameData';
+import usePlayers from '../../hooks/usePlayers';
 
 function PlayPage() {
   const { gameData, playerId } = useContext(GameDataContext);
   const [active, setActive] = useState(false);
 
-  const { currentPlayer, playersWithoutCurrent } = useGameData();
+  useGameData();
+  const { currentPlayer, playersWithoutCurrent } = usePlayers();
 
-  const submitGuess = (event, guess) => {
+  const submitGuess = async (event, guess) => {
     event.preventDefault();
-    askQuestion(playerId, gameData.id, guess);
-    setActive(false);
+    try {
+      askQuestion(playerId, gameData.id, guess);
+      setActive(false);
+    } catch (error) {
+      //to do: handle errors
+    }
   };
 
   return (
     <ScreenWrapper className="lobby-screen">
       <Header type="play-game" />
-      <div className="content_wrapper">
+      <div className="lobby-screen__content_wrapper">
         <ModalContext.Provider value={[active, setActive]}>
-          <UsersContainer
-            mode={currentPlayer.state}
-            currentPlayer={currentPlayer}
-            players={playersWithoutCurrent}
-          />
-          <HistoryContainer
-            mode={currentPlayer.state}
-            currentPlayer={currentPlayer}
-          />
+          {currentPlayer ? (
+            <>
+              <UsersContainer
+                mode={currentPlayer.state}
+                currentPlayer={currentPlayer}
+                players={playersWithoutCurrent}
+              />
+              <HistoryContainer
+                mode={currentPlayer.state}
+                currentPlayer={currentPlayer}
+              />
+            </>
+          ) : (
+            <div className="spinner-wrapper">
+              <Spinner appearance="invert" />
+            </div>
+          )}
           <GuessCharacterModal
             active={active}
             onSubmit={submitGuess}

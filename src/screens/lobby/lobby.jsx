@@ -11,6 +11,7 @@ import './lobby.scss';
 import GameDataContext from '../../contexts/game-data-context';
 import { suggestCharacter } from '../../services/games-service';
 import useGameData from '../../hooks/useGameData';
+import usePlayers from '../../hooks/usePlayers';
 
 function Lobby() {
   const { gameData, playerId } = useContext(GameDataContext);
@@ -18,19 +19,75 @@ function Lobby() {
   const [suggestModalActive, setSuggestModalActive] = useState(false);
   const [suggestBtn, setSuggestBtn] = useState(true);
 
-  const { currentPlayer, playersWithoutCurrent } = useGameData();
+  useGameData();
+  const { currentPlayer, playersWithoutCurrent } = usePlayers();
 
-  const submitCharacter = (event, playerName, characterName) => {
+  const submitCharacter = async (event, playerName, characterName) => {
     event.preventDefault();
-    suggestCharacter(playerId, gameData.id, playerName, characterName);
-    setSuggestModalActive(false);
-    setSuggestBtn(false);
+    try {
+      suggestCharacter(playerId, gameData.id, playerName, characterName);
+      setSuggestModalActive(false);
+      setSuggestBtn(false);
+    } catch (error) {
+      //to do: handle errors
+    }
   };
 
   return (
     <ScreenWrapper>
       <div className="input-screen">
-        <Header type="game-lobby" />
+        {playersWithoutCurrent.length ? (
+          <>
+            <Header type="game-lobby" />
+            <div className="input-screen__player">
+              <div className="input-screen__player-card-wrapper">
+                {currentPlayer && (
+                  <PlayerCard
+                    avatarClassName={currentPlayer.avatar}
+                    name={currentPlayer.nickname}
+                    playerStatusClassName={
+                      currentPlayer.state === READY ? 'yes' : 'unsure'
+                    }
+                    isYou
+                  />
+                )}
+                {playersWithoutCurrent.map((player) => (
+                  <PlayerCard
+                    key={player.player.id}
+                    avatarClassName={player.avatar}
+                    name={player.nickname}
+                    playerStatusClassName={
+                      player.state === READY ? 'yes' : 'unsure'
+                    }
+                  />
+                ))}
+              </div>
+              <div className="input-screen__btn-wrapper">
+                {suggestBtn && currentPlayer && (
+                  <Btn
+                    className={['btn-green-solid']}
+                    onClick={() => setSuggestModalActive(true)}
+                  >
+                    Suggest a character
+                  </Btn>
+                )}
+                <Btn
+                  className={['btn-pink-solid']}
+                  onClick={() => {
+                    setLeaveModalActive(true);
+                  }}
+                >
+                  LEAVE GAME
+                </Btn>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="spinner-wrapper">
+            <Spinner appearance="invert" />
+          </div>
+        )}
+        {/* <Header type="game-lobby" />
         <div className="input-screen__player">
           <div className="input-screen__player-card-wrapper">
             {currentPlayer && (
@@ -78,7 +135,7 @@ function Lobby() {
               LEAVE GAME
             </Btn>
           </div>
-        </div>
+        </div> */}
         <LeaveGameModal
           active={leaveModalActive}
           onCancel={() => setLeaveModalActive(false)}

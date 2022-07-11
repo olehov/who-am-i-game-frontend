@@ -7,7 +7,7 @@ import {
   SUGGESTING_CHARACTERS,
 } from '../constants/constants';
 import GameDataContext from '../contexts/game-data-context';
-import { findGameById, leaveGame } from '../services/games-service';
+import { findGameById } from '../services/games-service';
 
 export default function useGameData() {
   const { gameData, setGameData, resetData, playerId } =
@@ -20,9 +20,14 @@ export default function useGameData() {
       const userId = playerId || sessionStorage.getItem('playerId');
 
       if (gameId && userId) {
-        const { data } = await findGameById(userId, gameId);
-
-        if (data) setGameData(data);
+        try {
+          const { data } = await findGameById(userId, gameId);
+          setGameData(data);
+        } catch (error) {
+          if (error.response.status === 404) {
+            navigate('/');
+          }
+        }
       }
     }, 1000);
 
@@ -50,23 +55,5 @@ export default function useGameData() {
     }
   }, [gameData, resetData, playerId, navigate]);
 
-  const players = gameData.players.map((player, index) => ({
-    nickname: player.player.name || `Player ${index + 1}`,
-    avatar: `avatar0${index + 1}`,
-    ...player,
-  }));
-
-  const currentPlayer = players.find((player) => player.player.id === playerId);
-  const playersWithoutCurrent = players.filter(
-    (player) => player.player.id !== playerId
-  );
-
-  // window.onunload = function () {
-  //   leaveGame(playerId, gameData.id);
-  //   resetData();
-
-  //   return;
-  // };
-
-  return { currentPlayer, playersWithoutCurrent };
+  return;
 }

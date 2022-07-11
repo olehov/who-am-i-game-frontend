@@ -34,26 +34,25 @@ function HistoryContainer({ mode, currentPlayer }) {
     });
   });
 
-  const sendQuestionHandler = () => {
+  const sendQuestionHandler = async () => {
     if (currentQuestion !== '') {
       history.push({ user: currentPlayer, question: currentQuestion });
       try {
-        askQuestion(playerId, gameData.id, currentQuestion);
+        await askQuestion(playerId, gameData.id, currentQuestion);
+        setCurrentQuestion('');
+        setDisabled(true);
       } catch (error) {
         //to do: handle error
       }
-
-      setCurrentQuestion('');
-      setDisabled(true);
     }
   };
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
     const answer = event.nativeEvent.submitter.value;
     setMessage(answer);
     try {
-      answerQuestion(playerId, gameData.id, answer);
+      await answerQuestion(playerId, gameData.id, answer);
     } catch (error) {
       //to do: handle error
     }

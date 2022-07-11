@@ -14,26 +14,34 @@ import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
 import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
-import { createGame, findGameById } from '../../services/games-service';
+import { createGame, leaveGame } from '../../services/games-service';
+import { v4 as uuidv4 } from 'uuid';
 
 function Homepage() {
-  const { gameData, setGameData, playerId } = useContext(GameDataContext);
+  const { gameData, setGameData, resetGame, playerId, setPlayerId } =
+    useContext(GameDataContext);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function getGameData() {
+    async function leaveResetData() {
       const gameId = sessionStorage.getItem('gameId');
       const userId = playerId || sessionStorage.getItem('playerId');
 
       if (gameId && userId) {
-        const { data } = await findGameById(userId, gameId);
-
-        if (data) setGameData(data);
+        try {
+          await leaveGame(userId, gameId);
+          resetGame();
+          const playerId = uuidv4();
+          setPlayerId(playerId);
+          sessionStorage.setItem('playerId', playerId);
+        } catch (error) {
+          //to do: handle errors
+        }
       }
     }
 
-    getGameData();
+    leaveResetData();
   });
 
   useEffect(() => {
