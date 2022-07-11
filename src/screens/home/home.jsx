@@ -2,7 +2,7 @@ import GameTitle from '../../components/game-title/game-title';
 import { useNavigate } from 'react-router-dom';
 import ScreenWrapper from '../../components/wrappers/screen-wrapper/screen-wrapper';
 import GameDataContext from '../../contexts/game-data-context';
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import {
   NUMBER_OF_PLAYERS,
   WAITING_FOR_PLAYERS,
@@ -42,7 +42,7 @@ function Homepage() {
     }
 
     leaveResetData();
-  });
+  }, []);
 
   useEffect(() => {
     if (gameData.status === WAITING_FOR_PLAYERS) {
@@ -52,7 +52,7 @@ function Homepage() {
     }
   }, [gameData, navigate]);
 
-  const onCreateGame = async () => {
+  const onCreateGame = useCallback(async () => {
     try {
       const { data } = await createGame(playerId, NUMBER_OF_PLAYERS);
 
@@ -63,7 +63,7 @@ function Homepage() {
     } catch (error) {
       //todo: handle errors
     }
-  };
+  }, [setGameData, playerId]);
 
   return (
     <ScreenWrapper>

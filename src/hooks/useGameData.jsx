@@ -24,9 +24,9 @@ export default function useGameData() {
           const { data } = await findGameById(userId, gameId);
 
           if (data.players.length) setGameData(data);
-          else navigate('/');
         } catch (error) {
           if (error.response.status === 404) {
+            resetData();
             navigate('/');
           }
         }
