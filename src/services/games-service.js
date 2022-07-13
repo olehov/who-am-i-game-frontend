@@ -16,7 +16,6 @@ async function findAvailableGames(player) {
   });
 }
 
-
 async function getAllPlayersCount(player) {
   return axios({
     method: 'get',
@@ -107,7 +106,13 @@ function leaveGame(player, id) {
   });
 }
 
-
+function getPlayersInGame(player, id) {
+  return axios({
+    method: 'get',
+    url: `/api/v1/games/${id}/players-in-game`,
+    headers: { 'X-Player': player },
+  });
+}
 
 export {
   findGameById,
@@ -121,4 +126,5 @@ export {
   answerQuestion,
   getAllPlayersCount,
   leaveGame,
+  getPlayersInGame,
 };

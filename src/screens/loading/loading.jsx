@@ -7,9 +7,9 @@ import { useState, useContext, useMemo } from 'react';
 import GameDataContext from '../../contexts/game-data-context';
 import './loading.scss';
 import useGameData from '../../hooks/useGameData';
+import PlayersInQueue from './PlayersInQueue';
 
 function Loading() {
-  const { gameData } = useContext(GameDataContext);
   const [leaveModalActive, setLeaveModalActive] = useState(false);
 
   useGameData();
@@ -19,9 +19,7 @@ function Loading() {
   return (
     <ScreenWrapper>
       <GameTitle />
-      <h3 className="loading__queue-number">
-        {gameData.players && gameData.players.length} PLAYERS ARE IN QUEUE
-      </h3>
+      <PlayersInQueue />
       <h3 className="loading__waiting-message">
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
       </h3>
