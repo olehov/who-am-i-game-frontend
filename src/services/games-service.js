@@ -16,6 +16,7 @@ async function findAvailableGames(player) {
   });
 }
 
+
 async function getAllPlayersCount(player) {
   return axios({
     method: 'get',
@@ -27,12 +28,22 @@ async function getAllPlayersCount(player) {
 function createGame(player, playersNum) {
   return axios({
     method: 'post',
-    url: '/api/v1/games',
+    url: '/api/v1/games/',
     headers: { 'X-Player': player },
     data: {
       maxPlayers: playersNum,
     },
   });
+}
+
+function createQuickGame(player) {
+  const response = axios({
+    method: 'post',
+    url: '/api/v1/games/quick',
+    headers: { 'X-Player': player },
+  });
+
+  return response;
 }
 
 function suggestCharacter(player, id, name, character) {
@@ -96,10 +107,13 @@ function leaveGame(player, id) {
   });
 }
 
+
+
 export {
   findGameById,
   findAvailableGames,
   createGame,
+  createQuickGame,
   suggestCharacter,
   findTurnInfo,
   askQuestion,

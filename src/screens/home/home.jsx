@@ -14,7 +14,7 @@ import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
 import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
-import { createGame, leaveGame } from '../../services/games-service';
+import { createGame, leaveGame, createQuickGame } from '../../services/games-service';
 
 function Homepage() {
   const { gameData, setGameData, resetData, playerId } =
@@ -42,7 +42,7 @@ function Homepage() {
 
   const onCreateGame = useCallback(async () => {
     try {
-      const { data } = await createGame(playerId, NUMBER_OF_PLAYERS);
+      const { data } = await createQuickGame(playerId);
 
       if (data) {
         setGameData(data);
