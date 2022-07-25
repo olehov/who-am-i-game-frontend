@@ -4,6 +4,7 @@ import GameDataContext from '../../contexts/game-data-context';
 import { useContext, useEffect, useState } from 'react';
 import './home.scss';
 import PlayersOnlineTitle from '../../components/players-online-title/players-online-title';
+import { savePlayersOnline } from '../../services/games-service';
 import AfterLogin from './AfterLogin';
 import BeforeLogin from './BeforeLogin';
 import { leaveGame } from '../../services/games-service';
@@ -11,6 +12,8 @@ import { leaveGame } from '../../services/games-service';
 function Homepage() {
   const { resetData, playerId } = useContext(GameDataContext);
   const [isLogin, setIsLogin] = useState(false);
+
+  savePlayersOnline(playerId);
 
   useEffect(() => {
     async function leaveResetData() {

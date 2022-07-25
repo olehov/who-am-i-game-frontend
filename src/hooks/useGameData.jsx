@@ -55,7 +55,7 @@ export default function useGameData() {
     if (gameData.status === SUGGESTING_CHARACTERS) {
       navigate(LOBBY);
 
-      return;
+      //return;
     }
 
     if (gameData.status === PROCESSING_QUESTION) {

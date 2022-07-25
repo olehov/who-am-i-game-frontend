@@ -8,6 +8,14 @@ async function findGameById(player, id) {
   });
 }
 
+async function savePlayersOnline(player) {
+  return axios({
+    method: 'get',
+    url: `/api/v1/`,
+    headers: { 'X-Player': player },
+  });
+}
+
 async function findAvailableGames(player) {
   return axios({
     method: 'get',
@@ -114,15 +122,25 @@ function getPlayersInGame(player, id) {
   });
 }
 
+function checkPlayerStatus(player) {
+  return axios({
+    method: 'get',
+    url: `/api/v1/check`,
+    headers: { 'X-Player': player },
+  });
+}
+
 export {
   findGameById,
   findAvailableGames,
   createGame,
+  checkPlayerStatus,
   createQuickGame,
   suggestCharacter,
   findTurnInfo,
   askQuestion,
   submitGuess,
+  savePlayersOnline,
   answerQuestion,
   getAllPlayersCount,
   leaveGame,
