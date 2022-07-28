@@ -1,12 +1,10 @@
 import Btn from '../../components/btn/btn';
 import { CREATE_ACCOUNT, SIGN_IN } from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
-import PlayerSesion from '../../components/players-online-title/player-sesion';
 import PlayQuickGameButton from './PlayQuickGameButton';
 
 function BeforeLogin({ setIsLogin }) {
   const navigate = useNavigate();
-  PlayerSesion();
 
   return (
     <>

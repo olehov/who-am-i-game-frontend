@@ -53,7 +53,7 @@ export default function useGameData() {
     }
 
     if (gameData.status === SUGGESTING_CHARACTERS) {
-      navigate(LOBBY);
+      //navigate(LOBBY);
 
       //return;
     }

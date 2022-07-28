@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import Spinner from '@atlaskit/spinner';
 import { getAllPlayersCount } from '../../services/games-service';
-import { checkPlayerStatus } from '../../services/games-service';
 import GameDataContext from '../../contexts/game-data-context';
 import './players-online-title.scss';
 import useInterval from '../../hooks/useInterval';
@@ -13,10 +12,6 @@ function PlayersOnlineTitle() {
   useInterval(async () => {
     setPlayerNum((await getAllPlayersCount(playerId)).data);
   }, 1000);
-
-  useInterval(async () => {
-    checkPlayerStatus(playerId);
-  }, 60000);
 
   return (
     <span className="players-online">

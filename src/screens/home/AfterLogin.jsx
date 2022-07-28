@@ -1,12 +1,10 @@
 import Btn from '../../components/btn/btn';
 import { MAIN_LOBBY, PROFILE } from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
-import PlayerSesion from '../../components/players-online-title/player-sesion';
 import PlayQuickGameButton from './PlayQuickGameButton';
 
 function AfterLogin({ setIsLogin }) {
   const navigate = useNavigate();
-  PlayerSesion();
 
   return (
     <div className="after-login-wrapper">
